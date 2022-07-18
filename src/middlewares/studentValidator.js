@@ -3,7 +3,10 @@ const regex = require("../libs/regexValidators");
 
 async function studentValidator(request, response, next) {
   const schema = yup.object().shape({
-    name: yup.string().required("Seu nome é obrigatório."),
+    name: yup
+      .string()
+      .required("Seu nome é obrigatório.")
+      .matches(regex.name, "Nome inválido"),
     email: yup
       .string()
       .email("Email inválido.")
@@ -23,11 +26,11 @@ async function studentValidator(request, response, next) {
       .matches(regex.phoneNumber, "Telefone inválido"),
   });
 
-  if (!(await schema.isValid(request.body))) {
-    return response
-      .status(400)
-      .json({ error: "O cadastro não foi concluído. Tente novamente." });
-  }
+  await schema.validate(request.body).catch((err) => {
+    return response.status(400).json({
+      error: err.errors,
+    });
+  });
   next();
 }
 

@@ -1,3 +1,4 @@
+const name = /[a-zA-z]/;
 const password = /[a-zA-Z0-9]/;
 const phoneNumber = /^\+[1-9][0-9]\d{1,14}$/;
 const validCPF = /^[0-9]{11}$/;
