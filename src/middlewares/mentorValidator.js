@@ -36,7 +36,7 @@ async function mentorValidator(request, response, next) {
           let isValidPhone = regex.phoneNumber.test(value);
           let isValidCPF = regex.validCPF.test(value);
           let isValidCNPJ = regex.validCNPJ.test(value);
-          let isValidEVP = regex.EVPPix.test(value);
+          let isValidEVP = regex.validEVPPix.test(value);
           if (
             !isValidEmail &&
             !isValidPhone &&
