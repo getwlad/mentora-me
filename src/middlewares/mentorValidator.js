@@ -28,7 +28,7 @@ async function mentorValidator(request, response, next) {
     chavePix: yup
       .string()
       .required("Uma chave Pix é obrigatória")
-      .test("test-name", "Enter Valid Phone/Email", function (value) {
+      .test("test-name", "Entre uma chave Pix válida", function (value) {
         let isValidEmail = regex.email.test(value);
         let isValidPhone = regex.phoneNumber.test(value);
         let isValidCPF = regex.validCPF.test(value);
