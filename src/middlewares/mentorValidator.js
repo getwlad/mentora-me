@@ -28,23 +28,27 @@ async function mentorValidator(request, response, next) {
     chavePix: yup
       .string()
       .required("Uma chave Pix é obrigatória")
-      .test("test-name", "Entre uma chave Pix válida", function (value) {
-        let isValidEmail = regex.email.test(value);
-        let isValidPhone = regex.phoneNumber.test(value);
-        let isValidCPF = regex.validCPF.test(value);
-        let isValidCNPJ = regex.validCNPJ.test(value);
-        let isValidEVP = regex.EVPPix.test(value);
-        if (
-          !isValidEmail &&
-          !isValidPhone &&
-          !isValidCPF &&
-          !isValidCNPJ &&
-          !isValidEVP
-        ) {
-          return false;
+      .test(
+        "test-name",
+        "Entre uma chave Pix válida: Telefone, Email, CPF, CNPJ ou EVP",
+        function (value) {
+          let isValidEmail = regex.email.test(value);
+          let isValidPhone = regex.phoneNumber.test(value);
+          let isValidCPF = regex.validCPF.test(value);
+          let isValidCNPJ = regex.validCNPJ.test(value);
+          let isValidEVP = regex.EVPPix.test(value);
+          if (
+            !isValidEmail &&
+            !isValidPhone &&
+            !isValidCPF &&
+            !isValidCNPJ &&
+            !isValidEVP
+          ) {
+            return false;
+          }
+          return true;
         }
-        return true;
-      }),
+      ),
   });
 
   if (!(await schema.isValid(request.body))) {
