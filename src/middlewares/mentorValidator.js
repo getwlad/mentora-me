@@ -1,5 +1,5 @@
-const yup = require("yup");
-const regex = require("../libs/regexValidators");
+import * as yup from "yup";
+import regex from "../libs/regexValidators.js";
 
 async function mentorValidator(request, response, next) {
   const schema = yup.object().shape({
