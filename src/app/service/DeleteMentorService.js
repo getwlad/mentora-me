@@ -1,18 +1,19 @@
-const ListMentorService = require('../service/ListMentorService');
+import ListMentorService from '../service/ListMentorService';
 
 const DeleteMentorService = {
     delete: (id) => {
-        const mentor = ListMentorService.listMentorService()
-        const mentorIndice = mentor.findIndex(item => item.id === Number(id))
+        const mentor = ListMentorService.listMentorService();
+        const mentorIndex = mentor.findIndex(item => item.id === Number(id));
 
-        if (mentorIndice === -1) {
+        if (mentorIndex === -1) {
             return { erro: "Mentor não encontrado" }
         }
 
-        mentor.splice(mentorIndice, 1)
+        mentor.splice(mentorIndex, 1);
 
-        return { mensagem: "O cadastro foi removido com sucesso" }
+        return { mensagem: "O cadastro do mentor foi removido com sucesso" };
     }
 }
 
-module.exports = DeleteMentorService
+export default DeleteMentorService;
+

@@ -1,12 +1,19 @@
-const Router = require('express');
+import { response, Router } from "express";
 
-const controller = require('./src/app/controllers/MentorController');
+import mentorValidator from "./src/app/middlewares/mentorValidator";
+
+import MentorController from "./src/app/controllers/MentorController";
 
 const routes = new Router();
 
-routes.get('/controllers', controller.ListData);
-routes.post('/controllers', controller.create);
-routes.put('/controllers:id', controller.update);
-routes.delete('/controllers:id', controller.delete);
+routes.post("/cadastro/", (request, response) => {
+    response.json({msg: funcionando});
+});
 
-module.exports = routes;
+routes.get("/controllers", MentorController.list);
+routes.get("/controllers", MentorController.show);
+routes.post("/controllers", mentorValidator, MentorController.create);
+routes.put("/controllers:id", mentorValidator, MentorController.update);
+routes.delete("/controllers:id", MentorController.delete);
+
+export default routes;

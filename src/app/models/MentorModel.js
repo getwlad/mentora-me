@@ -1,15 +1,17 @@
 function MentorModel(
     id,
-    nome,
+    name,
     email,
-    telefone,
-    cpf
+    password,
+    cpf,
+    phone
 ) {
     this.id = id;
-    this.nome = nome;
+    this.name = name;
     this.email = email;
-    this.telefone = telefone;
-    this.cpf = cpf
+    this.password = password;
+    this.cpf = cpf;
+    this.phone = phone
 }
 
-module.exports = MentorModel
+export default MentorModel;

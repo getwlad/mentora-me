@@ -1,38 +1,20 @@
-const {  v4  } = require('uuid')
+import MentorModel from '../models/MentorModel';
 
-const CreateMentorService = {
-    create: (nome, email, telefone, cpf) => { 
-    if (telefone < 10) {
-        const createdMetor = {
-            sucess: false,
-            message: "Número de telefone inválido"
-        }
+import { v4 } from "uuid";
 
-        return createdMetor
-    }
-
-    if(email.search("@") ==-1) {
-        return {
-            sucess: false,
-            message: "E-mail inválido"
-        }
-    }
-
-    if(cpf < 11) {
-        return {
-            sucess: false,
-            message: "CPF inválido"
-        }
-    }
-
-    const newMentor = new MentorModel(v4(), nome, email, telefone, cpf)
-
-    return {
-        sucess: true,
-        message: newMentor
+const createMentorService = {
+    create: (name, email, password, cpf, phone) => { 
+        const newMentor = new MentorModel(
+            v4(),
+            name,
+            email,
+            password,
+            cpf,
+            phone
+        )
+    
+    return newMentor
     }
   }
 
-}
-
-module.exports = CreateMentorService
+export default createMentorService;

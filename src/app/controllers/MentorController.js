@@ -1,47 +1,46 @@
-const ListMentorService = require('../service/ListMentorService');
-const CreateMentorService = require('../service/CreateMentorService');
-const UpdateMentorService = require('../service/UpdateMentorService');
-const DeleteMentorService = require('../service/DeleteMentorService');
+import ListMentorService from '../service/ListMentorService';
+import CreateMentorService from '../service/CreateMentorService';
+import UpdateMentorService from '../service/UpdateMentorService';
+import DeleteMentorService from '../service/DeleteMentorService';
 
 const controller = {
 
-    index: (request, response) => {
+    list: (request, response) => {
         const listMentor = ListMentorService.listMentorService()
         response.json(listMentor)
     },
 
-    ListData: (request, response) => {
-        const { nome } = request.query;
+    show: (request, response) => {
+        const { id } = request.params;
 
-        if (!nome) {
+        const mentor = ShowMentorService.showMentorData(id);
+
+        return response.json(mentor)
+
+        /*if (!nome) {
             return response.status(400).json({ "error": "É necessário passar o nome do mentor"})
         } 
 
         const mentor = ListMentorService.listMentorData(nome);
 
-        return response.json(mentor)
+        return response.json(mentor)*/
     },
-
-    listAll: (request, response) => {
-        const mentor = ListMentorService.listAll()
-
-        return response.send(mentor)
-    },
-
 
     create: (request, response) => {
         const {
-            nome,
+            name,
             email,
-            telefone,
-            cpf
+            password,
+            cpf,
+            phone
         } = request.body;
 
         const mentor = CreateMentorService.createMentor(
-            nome,
+            name,
             email,
-            telefone,
-            cpf
+            password,
+            cpf,
+            phone
         );
 
         return response.json(mentor)
@@ -50,25 +49,27 @@ const controller = {
     update: (request, response) => {
         const { id } = request.params
         const {
-            nome,
+            name,
             email,
-            telefone,
-            cpf
+            password,
+            cpf,
+            phone
         } = request.body;
 
         const updatedMentor = UpdateMentorService.update(
             id, 
-            nome,
+            name,
             email,
-            telefone,
-            cpf
-        )
+            password,
+            cpf,
+            phone
+        );
 
         response.json(updatedMentor)
     },
 
     delete: (request, response) => {
-        const { id } = request.params
+        const { id } = request.params;
 
         const resultado = DeleteMentorService.delete(id)
 
@@ -76,4 +77,4 @@ const controller = {
     }
 }
 
-module.exports = controller;
+export default controller;

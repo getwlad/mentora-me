@@ -1,33 +1,32 @@
-const ListMentorService = require('../service/ListMentorService');
+import ListMentorService from '../service/ListMentorService';
 
-const UpdateMentorService = {
+const updateMentorService = {
     update: (
         id, 
-        nome,
+        name,
         email,
-        telefone,
-        cpf
+        password,
+        cpf,
+        phone
     ) => {
-        const mentor = ListMentorService.listMentorService()
-        const mentorIndice = mentor.findIndex(item => item.id === Number(id))
+        const mentor = ListMentorService.listMentorService();
+        const mentorIndice = mentor.findIndex(item => item.id === id);
 
         if (mentorIndice === -1) {
-            return { erro: "Cadastro não encontrado"}
+            return { erro: "Mentor não encontrado"}
         }
 
         mentor[mentorIndice] = {
-            nome,
+            id,
+            name,
             email,
-            telefone,
-            cpf
+            password,
+            cpf,
+            phone
         }
 
-        return {
-            id,
-            ...mentor[mentorIndice]
+        return mentor[mentorIndice]
         }
     }
 
-}
-
-module.exports = UpdateMentorService
+export default updateMentorService;
