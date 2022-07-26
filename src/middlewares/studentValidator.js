@@ -1,5 +1,5 @@
-const yup = require("yup");
-const regex = require("../libs/regexValidators");
+import yup from "yup";
+import regex from "../libs/regexValidators.js";
 
 async function studentValidator(request, response, next) {
   const schema = yup.object().shape({
@@ -16,7 +16,7 @@ async function studentValidator(request, response, next) {
       .required("Sua senha é obrigatória.")
       .min(8, "A senha deve ter um mínimo de 8 caracteres.")
       .matches(regex.password, "A senha deve conter letras e números."),
-    CPF: yup
+    cpf: yup
       .string()
       .required("Seu CPF é obrigatório")
       .matches(regex.validCPF, "CPF inválido"),
@@ -34,4 +34,4 @@ async function studentValidator(request, response, next) {
   next();
 }
 
-module.exports = studentValidator;
+export default studentValidator;
