@@ -62,4 +62,4 @@ async function mentorValidator(request, response, next) {
   next();
 }
 
-module.exports = mentorValidator;
+export default mentorValidator;
