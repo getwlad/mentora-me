@@ -1,4 +1,5 @@
 import ListStudentService from "./ListStudentService.js";
+const fs = require("fs");
 
 const DeleteStudentService = {
   delete: (id) => {
@@ -10,7 +11,13 @@ const DeleteStudentService = {
     }
 
     students.splice(studentIndex, 1);
-
+    fs.writeFile(
+      "./src/database/dbStudent.json",
+      JSON.stringify(students),
+      (err) => {
+        if (err) throw err;
+      }
+    );
     return { mensagem: "Mentorado removido com sucesso" };
   },
 };

@@ -17,7 +17,13 @@ const updateStudentService = {
       cpf,
       phone,
     };
-
+    fs.writeFile(
+      "./src/database/dbStudent.json",
+      JSON.stringify(students),
+      (err) => {
+        if (err) throw err;
+      }
+    );
     return students[studentIndice];
   },
 };

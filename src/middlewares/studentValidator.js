@@ -1,4 +1,4 @@
-import yup from "yup";
+import * as yup from "yup";
 import regex from "../libs/regexValidators.js";
 
 async function studentValidator(request, response, next) {
