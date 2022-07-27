@@ -1,5 +1,5 @@
 import * as yup from "yup";
-import regex from "../libs/regexValidators.js";
+import regex from "../libs/regexValidators";
 
 async function studentValidator(request, response, next) {
   const schema = yup.object().shape({
