@@ -54,12 +54,16 @@ async function mentorValidator(request, response, next) {
       ),
   });
 
-  await schema.validate(request.body).catch((err) => {
-    return response.status(400).json({
-      error: err.errors,
+  await schema
+    .validate(request.body)
+    .then(() => {
+      next();
+    })
+    .catch((err) => {
+      return response.status(400).json({
+        error: err.errors,
+      });
     });
-  });
-  next();
 }
 
 export default mentorValidator;
