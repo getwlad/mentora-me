@@ -7,7 +7,7 @@ import showMentorService from "../../services/mentor/ShowMentorService.js";
 const controller = {
   list: (request, response) => {
     const listMentor = listMentorService.listMentorService();
-    response.json(listMentor);
+    response.status(200).json(listMentor);
   },
 
   show: (request, response) => {
@@ -15,12 +15,26 @@ const controller = {
 
     const mentor = showMentorService.showMentorData(id);
 
-    return response.json(mentor);
+    return response.status(200).json(mentor);
   },
 
   create: (request, response) => {
     const { name, email, password, cpf, publicEmail, phone, chavePix } =
       request.body;
+
+    const cpfCadastrado = listMentorService
+      .listMentorService()
+      .find((mentor) => mentor.cpf === cpf);
+    const emailCadastrado = listMentorService
+      .listMentorService()
+      .find((mentor) => mentor.email === email);
+    if (cpfCadastrado) {
+      return response.status(400).json({ Erro: "CPF Já Cadastrado" });
+    }
+    if (emailCadastrado) {
+      return response.status(400).json({ Erro: "Email Já Cadastrado" });
+    }
+
     const mentor = createMentorService.createMentor(
       name,
       email,
@@ -31,7 +45,7 @@ const controller = {
       chavePix
     );
 
-    return response.json(mentor);
+    return response.status(200).json(mentor);
   },
 
   update: (request, response) => {
@@ -50,7 +64,7 @@ const controller = {
       chavePix
     );
 
-    response.json(updateMentor);
+    response.status(200).json(updateMentor);
   },
 
   delete: (request, response) => {
@@ -58,7 +72,7 @@ const controller = {
 
     const resultado = deleteMentorService.delete(id);
 
-    response.send(resultado);
+    response.status(200).send(resultado);
   },
 };
 

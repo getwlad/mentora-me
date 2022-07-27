@@ -7,7 +7,7 @@ import showStudentService from "../../services/student/ShowStudentService.js";
 const controller = {
   list: (request, response) => {
     const listStudents = listStudentService.listStudentsService();
-    response.json(listStudents);
+    response.status(200).json(listStudents);
   },
 
   show: (request, response) => {
@@ -15,11 +15,24 @@ const controller = {
 
     const student = showStudentService.showStudentData(id);
 
-    return response.json(student);
+    return response.status(200).json(student);
   },
 
   create: (request, response) => {
     const { name, email, password, cpf, phone } = request.body;
+
+    const cpfCadastrado = listStudentService
+      .listStudentsService()
+      .find((mentor) => mentor.cpf === cpf);
+    const emailCadastrado = listStudentService
+      .listStudentsService()
+      .find((mentor) => mentor.email === email);
+    if (cpfCadastrado) {
+      return response.status(400).json({ Erro: "CPF Já Cadastrado" });
+    }
+    if (emailCadastrado) {
+      return response.status(400).json({ Erro: "Email Já Cadastrado" });
+    }
 
     const student = createStudentService.createStudent(
       name,
@@ -29,7 +42,7 @@ const controller = {
       phone
     );
 
-    return response.json(student);
+    return response.status(200).json(student);
   },
 
   update: (request, response) => {
@@ -45,7 +58,7 @@ const controller = {
       phone
     );
 
-    response.json(updatedStudent);
+    response.status(200).json(updatedStudent);
   },
 
   delete: (request, response) => {
