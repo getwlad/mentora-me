@@ -1,5 +1,5 @@
 import * as yup from "yup";
-import regex from "../libs/regexValidators.js";
+import regex from "../libs/regexValidators";
 
 async function mentorValidator(request, response, next) {
   const schema = yup.object().shape({
@@ -28,17 +28,17 @@ async function mentorValidator(request, response, next) {
       .string()
       .required("Seu telefone é obrigatório")
       .matches(regex.phoneNumber, "Telefone inválido"),
-    chavePix: yup
-      .string()
-      .required("ChavePix obrigatório")
+    chavePix: yup.string().required("ChavePix obrigatório"),
   });
 
-  await schema.validate(request.body).then(() => next()).catch((err) => {
-    return response.status(400).json({
-      error: err.errors,
+  await schema
+    .validate(request.body)
+    .then(() => next())
+    .catch((err) => {
+      return response.status(400).json({
+        error: err.errors,
+      });
     });
-  });
-
 }
 
 export default mentorValidator;

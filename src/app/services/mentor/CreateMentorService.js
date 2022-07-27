@@ -4,7 +4,7 @@ const mentorData = require("../../../database/dbMentor.json");
 const fs = require("fs");
 
 const createMentorService = {
-  createMentor: (name, email, password, cpf,publicEmail, phone,chavePix) => {
+  createMentor: (name, email, password, cpf, publicEmail, phone, chavePix) => {
     const newMentor = new MentorModel(
       v4(),
       name,

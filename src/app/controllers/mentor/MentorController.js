@@ -34,7 +34,8 @@ const controller = {
 
   update: (request, response) => {
     const { id } = request.params;
-    const { name, email, password, cpf, publicEmail, phone, chavePix } = request.body;
+    const { name, email, password, cpf, publicEmail, phone, chavePix } =
+      request.body;
 
     const updateMentor = updateMentorService.update(
       id,
