@@ -28,7 +28,27 @@ async function mentorValidator(request, response, next) {
       .string()
       .required("Seu telefone é obrigatório")
       .matches(regex.phoneNumber, "Telefone inválido"),
-    chavePix: yup.string().required("ChavePix obrigatório"),
+    chavePix: yup
+      .string()
+      .required("Uma chave Pix é obrigatória")
+      .test(
+        "test-chave-pix",
+        "Entre uma chave Pix válida: Telefone, Email, CPF, CNPJ ou EVP",
+        (value) => {
+          const isValidEmail = regex.emailRegex.test(value);
+          const isValidPhone = regex.phoneNumber.test(value);
+          const isValidCPF = regex.validCPF.test(value);
+          const isValidCNPJ = regex.validCNPJ.test(value);
+          const isValidEVP = regex.validEVPPix.test(value);
+          return (
+            isValidEmail ||
+            isValidPhone ||
+            isValidCPF ||
+            isValidCNPJ ||
+            isValidEVP
+          );
+        }
+      ),
   });
 
   await schema
