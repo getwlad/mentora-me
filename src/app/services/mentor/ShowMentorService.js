@@ -1,11 +1,11 @@
-import ListMentorService from "./ListMentorService.js";
+import ListMentorService from "./ListMentorService";
 
-const showMentorService = {
-    showMentorData: (mentorId) => {
-        const mentorShow = ListMentorService.listMentorService();
-        const mentor = mentorShow.find(item => item.id === mentorId);
-        return mentor
-    }
-}
+const ShowMentorService = {
+  showMentorData: (mentorId) => {
+    const mentorShow = ListMentorService.listMentorService();
+    const mentor = mentorShow.find((item) => item.id === mentorId);
+    return mentor;
+  },
+};
 
-export default showMentorService;
+export default ShowMentorService;
