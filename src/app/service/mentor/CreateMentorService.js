@@ -1,4 +1,4 @@
-import MentorModel from '../models/MentorModel';
+import MentorModel from '../../models/mentor/MentorModel';
 
 import { v4 } from "uuid";
 

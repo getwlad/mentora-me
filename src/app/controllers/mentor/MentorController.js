@@ -1,6 +1,6 @@
 import ListMentorService from '../service/ListMentorService';
-import CreateMentorService from '../service/CreateMentorService';
-import UpdateMentorService from '../service/UpdateMentorService';
+import CreateMentorService from '../../service/mentor/CreateMentorService';
+import UpdateMentorService from '../../service/mentor/UpdateMentorService';
 import DeleteMentorService from '../service/DeleteMentorService';
 
 const controller = {
@@ -17,13 +17,6 @@ const controller = {
 
         return response.json(mentor)
 
-        /*if (!nome) {
-            return response.status(400).json({ "error": "É necessário passar o nome do mentor"})
-        } 
-
-        const mentor = ListMentorService.listMentorData(nome);
-
-        return response.json(mentor)*/
     },
 
     create: (request, response) => {
