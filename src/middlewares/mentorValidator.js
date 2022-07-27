@@ -35,11 +35,11 @@ async function mentorValidator(request, response, next) {
         "test-chave-pix",
         "Entre uma chave Pix válida: Telefone, Email, CPF, CNPJ ou EVP",
         (value) => {
-          let isValidEmail = regex.emailRegex.test(value);
-          let isValidPhone = regex.phoneNumber.test(value);
-          let isValidCPF = regex.validCPF.test(value);
-          let isValidCNPJ = regex.validCNPJ.test(value);
-          let isValidEVP = regex.validEVPPix.test(value);
+          const isValidEmail = regex.emailRegex.test(value);
+          const isValidPhone = regex.phoneNumber.test(value);
+          const isValidCPF = regex.validCPF.test(value);
+          const isValidCNPJ = regex.validCNPJ.test(value);
+          const isValidEVP = regex.validEVPPix.test(value);
           return (
             isValidEmail ||
             isValidPhone ||
