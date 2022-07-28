@@ -13,7 +13,8 @@ function MentorModel(
   this.email = email;
   this.password = password;
   this.cpf = cpf;
-  (this.publicEmail = publicEmail), (this.phone = phone);
+  this.publicEmail = publicEmail;
+  this.phone = phone;
   this.chavePix = chavePix;
 }
 

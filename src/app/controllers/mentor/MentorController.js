@@ -3,6 +3,7 @@ import listMentorService from "../../services/mentor/ListMentorService.js";
 import updateMentorService from "../../services/mentor/UpdateMentorService.js";
 import deleteMentorService from "../../services/mentor/DeleteMentorService.js";
 import showMentorService from "../../services/mentor/ShowMentorService.js";
+import CheckEmailCpf from "../../services/mentor/CheckMentorEmailCpf.js";
 
 const controller = {
   list: (request, response) => {
@@ -22,17 +23,13 @@ const controller = {
     const { name, email, password, cpf, publicEmail, phone, chavePix } =
       request.body;
 
-    const cpfCadastrado = listMentorService
-      .listMentorService()
-      .find((mentor) => mentor.cpf === cpf);
-    const emailCadastrado = listMentorService
-      .listMentorService()
-      .find((mentor) => mentor.email === email);
+    const cpfCadastrado = CheckEmailCpf.checkCPF(cpf);
+    const emailCadastrado = CheckEmailCpf.checkEmail(email);
     if (cpfCadastrado) {
-      return response.status(400).json({ Erro: "CPF Já Cadastrado" });
+      return response.status(400).json(cpfCadastrado);
     }
     if (emailCadastrado) {
-      return response.status(400).json({ Erro: "Email Já Cadastrado" });
+      return response.status(400).json(emailCadastrado);
     }
 
     const mentor = createMentorService.createMentor(
