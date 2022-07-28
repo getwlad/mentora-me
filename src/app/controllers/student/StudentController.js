@@ -3,6 +3,7 @@ import listStudentService from "../../services/student/ListStudentService.js";
 import updateStudentService from "../../services/student/UpdateStudentService.js";
 import deleteStudentService from "../../services/student/DeleteStudentService.js";
 import showStudentService from "../../services/student/ShowStudentService.js";
+import CheckStudentEmailCpf from "../../services/student/CheckStudentEmailCpf.js";
 
 const controller = {
   list: (request, response) => {
@@ -21,17 +22,13 @@ const controller = {
   create: (request, response) => {
     const { name, email, password, cpf, phone } = request.body;
 
-    const cpfCadastrado = listStudentService
-      .listStudentsService()
-      .find((mentor) => mentor.cpf === cpf);
-    const emailCadastrado = listStudentService
-      .listStudentsService()
-      .find((mentor) => mentor.email === email);
+    const cpfCadastrado = CheckStudentEmailCpf.checkCPF(cpf);
+    const emailCadastrado = CheckStudentEmailCpf.checkEmail(email);
     if (cpfCadastrado) {
-      return response.status(400).json({ Erro: "CPF Já Cadastrado" });
+      return response.status(400).json(cpfCadastrado);
     }
     if (emailCadastrado) {
-      return response.status(400).json({ Erro: "Email Já Cadastrado" });
+      return response.status(400).json(emailCadastrado);
     }
 
     const student = createStudentService.createStudent(

@@ -1,10 +1,1 @@
-[
-  {
-    "id": "15e1ebd7-156c-4b87-acc0-4f2d990413d2",
-    "name": "Joao",
-    "email": "joao@jogo.cm",
-    "password": "23d121d2",
-    "cpf": "23132321132",
-    "phone": "+559266616"
-  }
-]
+[{"id":"15e1ebd7-156c-4b87-acc0-4f2d990413d2","name":"Joao","email":"joao@jogo.cm","password":"23d121d2","cpf":"23132321132","phone":"+559266616"},{"id":"8d9809d7-2821-41d1-bc86-40155ecc6b96","name":"Carla","email":"pere@jogo.cm","password":"23d121d2","cpf":"231323211323","phone":"+55231211213"},{"id":"83519e38-ffda-48ee-9d3a-516acac5c24f","name":"Carla","email":"pere1@jogo.cm","password":"23d121d2","cpf":"23132321134","phone":"+55231211213"}]
