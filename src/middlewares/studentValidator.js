@@ -34,8 +34,6 @@ async function studentValidator(request, response, next) {
         error: err.errors,
       });
     });
-
-  next();
 }
 
 export default studentValidator;
