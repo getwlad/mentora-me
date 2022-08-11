@@ -18,7 +18,7 @@ const DeleteMentorService = {
         if (err) throw err;
       }
     );
-    return { mensagem: "Mentorado removido com sucesso" };
+    return { mensagem: "Mentor removido com sucesso" };
   },
 };
 
