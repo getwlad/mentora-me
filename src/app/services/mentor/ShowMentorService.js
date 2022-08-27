@@ -1,14 +1,12 @@
 import ListMentorService from "./ListMentorService";
 
-const ShowMentorService = {
-  showMentorData: (mentorId) => {
-    const mentorShow = ListMentorService.listMentorService();
+export default class ShowMentorService {
+  showMentorData(mentorId) {
+    const mentorShow = new ListMentorService().listMentorService();
     const mentor = mentorShow.find((item) => item.id === mentorId);
     if (!mentor) {
       return { Erro: "Mentor não encontrado" };
     }
     return mentor;
-  },
-};
-
-export default ShowMentorService;
+  }
+}

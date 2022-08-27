@@ -1,9 +1,9 @@
 import ListMentorService from "./ListMentorService.js";
 const fs = require("fs");
 
-const DeleteMentorService = {
-  delete: (id) => {
-    const mentor = ListMentorService.listMentorService();
+export default class DeleteMentorService {
+  delete(id) {
+    const mentor = new ListMentorService().listMentorService();
     const mentorIndex = mentor.findIndex((item) => item.id === id);
 
     if (mentorIndex === -1) {
@@ -19,7 +19,5 @@ const DeleteMentorService = {
       }
     );
     return { mensagem: "Mentor removido com sucesso" };
-  },
-};
-
-export default DeleteMentorService;
+  }
+}

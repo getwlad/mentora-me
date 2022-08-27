@@ -3,8 +3,8 @@ import { v4 } from "uuid";
 const mentorData = require("../../../database/dbMentor.json");
 const fs = require("fs");
 
-const createMentorService = {
-  createMentor: (name, email, password, cpf, publicEmail, phone, chavePix) => {
+export default class CreateMentorService {
+  createMentor(name, email, password, cpf, publicEmail, phone, chavePix) {
     const newMentor = new MentorModel(
       v4(),
       name,
@@ -24,7 +24,5 @@ const createMentorService = {
       }
     );
     return newMentor;
-  },
-};
-
-export default createMentorService;
+  }
+}

@@ -1,9 +1,9 @@
 import ListStudentService from "./ListStudentService.js";
 const fs = require("fs");
 
-const DeleteStudentService = {
-  delete: (id) => {
-    const students = ListStudentService.listStudentsService();
+export default class DeleteStudentService {
+  delete(id) {
+    const students = new ListStudentService().listStudentsService();
     const studentIndex = students.findIndex((item) => item.id === id);
 
     if (studentIndex === -1) {
@@ -19,7 +19,5 @@ const DeleteStudentService = {
       }
     );
     return { mensagem: "Mentorado removido com sucesso" };
-  },
-};
-
-export default DeleteStudentService;
+  }
+}

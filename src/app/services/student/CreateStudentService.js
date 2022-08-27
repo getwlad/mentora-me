@@ -3,8 +3,8 @@ import { v4 } from "uuid";
 const studentData = require("../../../database/dbStudent.json");
 const fs = require("fs");
 
-const createStudentService = {
-  createStudent: (name, email, password, cpf, phone) => {
+export default class createStudentService {
+  createStudent(name, email, password, cpf, phone) {
     const newStudent = new StudentModel(
       v4(),
       name,
@@ -22,7 +22,5 @@ const createStudentService = {
       }
     );
     return newStudent;
-  },
-};
-
-export default createStudentService;
+  }
+}
