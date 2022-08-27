@@ -2,9 +2,9 @@ import ListMentorService from "./ListMentorService.js";
 const fs = require("fs");
 import CheckEmailCpf from "./CheckMentorEmailCpf.js";
 
-const updateMentorService = {
-  update: (id, name, email, password, cpf, publicEmail, phone, chavePix) => {
-    const mentor = ListMentorService.listMentorService();
+export default class UpdateMentorService {
+  update(id, name, email, password, cpf, publicEmail, phone, chavePix) {
+    const mentor = new ListMentorService().listMentorService();
     const mentorIndice = mentor.findIndex((item) => item.id === id);
 
     if (mentorIndice === -1) {
@@ -43,7 +43,5 @@ const updateMentorService = {
       }
     );
     return mentor[mentorIndice];
-  },
-};
-
-export default updateMentorService;
+  }
+}

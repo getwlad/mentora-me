@@ -1,8 +1,7 @@
 const mentorData = require("../../../database/dbMentor.json");
-const ListMentorService = {
-  listMentorService: () => {
-    return mentorData;
-  },
-};
 
-export default ListMentorService;
+export default class ListMentorService {
+  listMentorService() {
+    return mentorData;
+  }
+}

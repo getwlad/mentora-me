@@ -2,9 +2,9 @@ import CheckStudentEmailCpf from "./CheckStudentEmailCpf.js";
 import ListStudentService from "./ListStudentService.js";
 const fs = require("fs");
 
-const updateStudentService = {
-  update: (id, name, email, password, cpf, phone) => {
-    const students = ListStudentService.listStudentsService();
+export default class UpdateStudentService {
+  update(id, name, email, password, cpf, phone) {
+    const students = new ListStudentService().listStudentsService();
     const studentIndice = students.findIndex((item) => item.id === id);
 
     if (studentIndice === -1) {
@@ -41,7 +41,5 @@ const updateStudentService = {
       }
     );
     return students[studentIndice];
-  },
-};
-
-export default updateStudentService;
+  }
+}
