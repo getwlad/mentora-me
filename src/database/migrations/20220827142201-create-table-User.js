@@ -12,11 +12,11 @@ module.exports = {
       email: {
         type: Sequelize.STRING,
         allowNull: false,
+        unique: true,
       },
       password_hash: {
         type: Sequelize.STRING,
         allowNull: false,
-        unique: false,
       },
       user_type: {
         type: Sequelize.ENUM("MENTOR", "STUDENT"),

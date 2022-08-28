@@ -8,14 +8,17 @@ class Wallet extends Model {
           defaultValue: Sequelize.UUIDV4,
           primaryKey: true,
         },
-        email: Sequelize.STRING,
-        password_hash: Sequelize.STRING,
-        user_type: Sequelize.ENUM("STUDENT", "MENTOR"),
+        balance: {
+          type: Sequelize.DECIMAL(10, 2),
+        },
       },
       {
         sequelize,
       }
     );
+  }
+  static associate(models) {
+    this.belongsTo(models.User, { foreignKey: "user_id", targetKey: "id" });
   }
 }
 

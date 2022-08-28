@@ -4,6 +4,10 @@ import studentValidator from "./middlewares/studentValidator.js";
 import mentorValidator from "./middlewares/mentorValidator.js";
 
 import CreateUserController from "./app/controllers/user/CreateUserController.js";
+import DeleteUserController from "./app/controllers/user/DeleteUserController.js";
+import ListUserController from "./app/controllers/user/ListUserController.js";
+import ShowUserController from "./app/controllers/user/ShowUserController.js";
+import UpdateUserController from "./app/controllers/user/UpdateUserController.js";
 
 import CreateMentorController from "./app/controllers/mentor/CreateMentorController";
 import ListMentorController from "./app/controllers/mentor/ListMentorController";
@@ -35,7 +39,11 @@ routes.post("/cadastro/", (req, res) => {
   res.json({ msg: "funcionando" });
 });
 
+routes.get("/user/", ListUserController.list);
+routes.get("/user/:id", ShowUserController.show);
 routes.post("/user/", CreateUserController.create);
+routes.put("/user/:id", UpdateUserController.update);
+routes.delete("/user/:id", DeleteUserController.delete);
 
 routes.get("/students", (req, res) => listStudentController.list(req, res));
 routes.get("/students/:id", (req, res) => showStudentController.show(req, res));

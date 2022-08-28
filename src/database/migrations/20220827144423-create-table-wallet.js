@@ -2,7 +2,7 @@
 
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable("mentor", {
+    await queryInterface.createTable("wallet", {
       id: {
         type: Sequelize.UUID,
         defaultValue: Sequelize.UUIDV4,
@@ -12,20 +12,14 @@ module.exports = {
       balance: {
         type: Sequelize.DECIMAL(10, 2),
         allowNull: false,
+        defaultValue: 0,
       },
-      student_id: {
+      user_id: {
         type: Sequelize.UUID,
-        references: { model: "student", key: "id" },
+        references: { model: "user", key: "id" },
         onUpdate: "CASCADE",
         onDelete: "CASCADE",
-        allowNull: true,
-      },
-      mentor_id: {
-        type: Sequelize.UUID,
-        references: { model: "mentor", key: "id" },
-        onUpdate: "CASCADE",
-        onDelete: "CASCADE",
-        allowNull: true,
+        allowNull: false,
       },
       created_at: {
         type: Sequelize.DATE,
@@ -39,6 +33,6 @@ module.exports = {
   },
 
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable("mentor");
+    await queryInterface.dropTable("wallet");
   },
 };

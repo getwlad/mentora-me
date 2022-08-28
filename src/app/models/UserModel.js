@@ -36,6 +36,9 @@ class User extends Model {
     this.hasOne(models.Student, {
       foreignKey: "user_id",
     });
+    this.hasOne(models.Wallet, {
+      foreignKey: "user_id",
+    });
   }
 }
 

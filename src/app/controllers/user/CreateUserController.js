@@ -1,4 +1,5 @@
 import CreateUserService from "../../services/user/CreateUserService";
+import CreateWalletController from "../wallet/CreateWalletController";
 class CreateUserController {
   constructor() {}
   async create(req, res) {
@@ -9,6 +10,8 @@ class CreateUserController {
     if (!user) {
       return res.status(401).json({ error: "Email já cadastrado" });
     }
+    const { id } = user;
+    await CreateWalletController.create(id);
 
     return res.status(200).json(user);
   }
