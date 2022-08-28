@@ -7,19 +7,10 @@ async function mentorValidator(request, response, next) {
       .string()
       .required("Seu nome é obrigatório.")
       .matches(regex.name, "Nome inválido"),
-    email: yup
+    cnpj: yup
       .string()
-      .email("Email inválido.")
-      .required("Seu email é obrigatório."),
-    password: yup
-      .string()
-      .required("Sua senha é obrigatória.")
-      .min(8, "A senha deve ter um mínimo de 8 caracteres.")
-      .matches(regex.password, "A senha deve conter letras e números."),
-    cpf: yup
-      .string()
-      .required("Seu CPF é obrigatório")
-      .matches(regex.validCPF, "CPF inválido"),
+      .required("Seu CNPJ é obrigatório")
+      .matches(regex.validCPF, "CNPJ inválido"),
     publicEmail: yup
       .string()
       .email("Email inválido.")

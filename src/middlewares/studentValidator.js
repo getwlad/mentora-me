@@ -7,15 +7,6 @@ async function studentValidator(request, response, next) {
       .string()
       .required("Seu nome é obrigatório.")
       .matches(regex.name, "Nome inválido"),
-    email: yup
-      .string()
-      .email("Email inválido.")
-      .required("Seu email é obrigatório."),
-    // password: yup
-    //   .string()
-    //   .required("Sua senha é obrigatória.")
-    //   .min(8, "A senha deve ter um mínimo de 8 caracteres.")
-    //   .matches(regex.password, "A senha deve conter letras e números."),
     cpf: yup
       .string()
       .required("Seu CPF é obrigatório")

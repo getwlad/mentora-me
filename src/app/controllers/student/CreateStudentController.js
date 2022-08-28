@@ -1,23 +1,31 @@
 import CreateStudentService from "../../services/student/CreateStudentService";
-import CheckStudentEmailCpf from "../../services/student/CheckStudentEmailCpf";
+import Student from "../../models/StudentModel";
+import User from "../../models/UserModel";
 
-export default class CreateStudentController {
+class CreateStudentController {
   constructor() {}
-  create(req, res) {
-    const { name, email, cpf, phone } = req.body;
+  async create(req, res) {
+    const { name, cpf, phone } = req.body;
     const userId = req.params.user;
-    const cpfCadastrado = CheckStudentEmailCpf.checkCPF(cpf);
-    const emailCadastrado = CheckStudentEmailCpf.checkEmail(email);
-    if (cpfCadastrado) {
-      return res.status(400).json(cpfCadastrado);
-    }
-    if (emailCadastrado) {
-      return res.status(400).json(emailCadastrado);
+    const cpfCadastrado = await Student.findOne({ where: { cpf: cpf } });
+    const userCadastrado = await Student.findOne({
+      where: { user_id: userId },
+    });
+    const userExist = await User.findByPk(userId);
+
+    if (!userExist) {
+      return res.status(400).json({ error: "usuário não existe" });
     }
 
-    const student = new CreateStudentService().createStudent(
+    if (cpfCadastrado) {
+      return res.status(400).json({ error: "cpf já cadastrado" });
+    }
+    if (userCadastrado) {
+      return res.status(400).json({ error: "usuário já cadastrado" });
+    }
+
+    const student = await CreateStudentService.createStudent(
       name,
-      email,
       cpf,
       phone,
       userId
@@ -26,3 +34,5 @@ export default class CreateStudentController {
     return res.status(200).json(student);
   }
 }
+
+export default new CreateStudentController();

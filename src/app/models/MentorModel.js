@@ -10,7 +10,7 @@ class Mentor extends Model {
         },
         name: Sequelize.STRING,
         phone: Sequelize.STRING,
-        email: Sequelize.STRING,
+        cnpj: Sequelize.STRING,
         publicEmail: Sequelize.STRING,
         chavePix: Sequelize.STRING,
       },

@@ -6,7 +6,7 @@ class ShowUserController {
       attributes: { exclude: ["password_hash"] },
     });
     if (!user) {
-      res.status(404).json({ Error: "Usuário não encontrado" });
+      return res.status(404).json({ Error: "Usuário não encontrado" });
     }
     return res.status(200).json(user);
   }

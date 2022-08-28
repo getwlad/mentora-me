@@ -1,18 +1,17 @@
 import Student from "../../models/StudentModel.js";
 
-const studentData = require("../../../database/dbStudent.json");
-
-export default class createStudentService {
-  async createStudent(name, email, cpf, phone, userId) {
-    const newStudent = Student.create({
+class CreateStudentService {
+  async createStudent(name, cpf, phone, userId) {
+    const student = await Student.create({
       name,
-      email,
       cpf,
       phone,
       user_id: userId,
       points: 0,
     });
 
-    return newStudent;
+    return student;
   }
 }
+
+export default new CreateStudentService();

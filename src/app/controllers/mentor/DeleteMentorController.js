@@ -1,12 +1,15 @@
-import deleteMentorService from "../../services/mentor/DeleteMentorService";
+import Mentor from "../../models/MentorModel";
+class DeleteMentorController {
+  async delete(req, res) {
+    const id = req.params.id;
 
-export default class DeleteMentorController {
-  constructor() {}
-  delete(req, res) {
-    const { id } = req.params;
-
-    const resultado = new deleteMentorService().delete(id);
-
-    res.status(200).send(resultado);
+    const mentor = await Mentor.findByPk(id);
+    if (!mentor) {
+      return res.status(404).json({ Error: "Mentor não encontrado" });
+    }
+    await mentor.destroy();
+    return res.status(200).json({ msg: "sucesso" });
   }
 }
+
+export default new DeleteMentorController();

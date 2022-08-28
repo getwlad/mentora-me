@@ -1,5 +1,5 @@
 import User from "../../models/UserModel";
-import UpdateStudentService from "../../services/student/UpdateStudentService";
+
 class UpdateUserController {
   async update(req, res) {
     const id = req.params.id;
@@ -21,7 +21,7 @@ class UpdateUserController {
     }
 
     if (!user) {
-      res.status(404).json({ Error: "Usuário não encontrado" });
+      return res.status(404).json({ Error: "Usuário não encontrado" });
     }
 
     const { user_type, createdAt, updatedAt } = await user.update(req.body);
