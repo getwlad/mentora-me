@@ -3,6 +3,8 @@ import { Router } from "express";
 import studentValidator from "./middlewares/studentValidator.js";
 import mentorValidator from "./middlewares/mentorValidator.js";
 
+import CreateUserController from "./app/controllers/user/CreateUserController.js";
+
 import CreateMentorController from "./app/controllers/mentor/CreateMentorController";
 import ListMentorController from "./app/controllers/mentor/ListMentorController";
 import ShowMentorController from "./app/controllers/mentor/ShowMentorController";
@@ -33,9 +35,11 @@ routes.post("/cadastro/", (req, res) => {
   res.json({ msg: "funcionando" });
 });
 
+routes.post("/user/", CreateUserController.create);
+
 routes.get("/students", (req, res) => listStudentController.list(req, res));
 routes.get("/students/:id", (req, res) => showStudentController.show(req, res));
-routes.post("/students", studentValidator, (req, res) =>
+routes.post("/students/:user", studentValidator, (req, res) =>
   createStudentController.create(req, res)
 );
 routes.put("/students/:id", studentValidator, (req, res) =>

@@ -1,4 +1,4 @@
-import MentorModel from "../../models/mentor/MentorModel.js";
+import MentorModel from "../../models/MentorModel.js";
 import { v4 } from "uuid";
 const mentorData = require("../../../database/dbMentor.json");
 const fs = require("fs");
