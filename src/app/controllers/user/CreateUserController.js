@@ -15,6 +15,7 @@ class CreateUserController {
     }
 
     const { id } = user;
+
     await CreateWalletController.create(id);
 
     return res.status(200).json(user);

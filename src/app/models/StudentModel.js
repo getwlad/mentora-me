@@ -1,26 +1,28 @@
 import Sequelize, { Model } from "sequelize";
-class Student extends Model {
-  static init(sequelize) {
-    super.init(
-      {
-        id: {
-          type: Sequelize.UUID,
-          defaultValue: Sequelize.UUIDV4,
-          primaryKey: true,
-        },
-        name: Sequelize.STRING,
-        phone: Sequelize.STRING,
-        cpf: Sequelize.STRING,
-        points: Sequelize.STRING,
-      },
-      {
-        sequelize,
-      }
-    );
+import databaseConfig from "../../config/database";
+import User from "./UserModel";
+const sequelize = new Sequelize(databaseConfig);
+
+class Student extends Model {}
+
+Student.init(
+  {
+    id: {
+      type: Sequelize.UUID,
+      defaultValue: Sequelize.UUIDV4,
+      primaryKey: true,
+    },
+    name: Sequelize.STRING,
+    phone: Sequelize.STRING,
+    cpf: Sequelize.STRING,
+    points: Sequelize.STRING,
+  },
+  {
+    sequelize,
+    modelName: "Student",
   }
-  static associate(models) {
-    this.belongsTo(models.User, { foreignKey: "user_id", targetKey: "id" });
-  }
-}
+);
+
+// Student.belongsTo(User, { foreignKey: "user_id", targetKey: "id" });
 
 export default Student;

@@ -61,16 +61,19 @@ class ListUserService {
     if (sort) {
       order = sort.split(",").map((item) => item.split(":"));
     }
+    try {
+      const data = await User.findAll({
+        attributes: { exclude: ["password_hash"] },
+        where,
+        order,
+        limit,
+        offset: limit * page - limit,
+      });
 
-    const data = await User.findAll({
-      attributes: { exclude: ["password_hash"] },
-      where,
-      order,
-      limit,
-      offset: limit * page - limit,
-    });
-
-    return data;
+      return data;
+    } catch (err) {
+      return { erro: error.message };
+    }
   }
 }
 
