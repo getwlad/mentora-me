@@ -20,8 +20,4 @@ Wallet.init(
   }
 );
 
-Wallet.associations = (models) => {
-  Wallet.belongsTo(models.User, { foreignKey: "user_id", targetKey: "id" });
-};
-
 export default Wallet;
