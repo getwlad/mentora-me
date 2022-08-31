@@ -1,26 +1,17 @@
-import StudentModel from "../../models/student/StudentModel.js";
-import { v4 } from "uuid";
-const studentData = require("../../../database/dbStudent.json");
-const fs = require("fs");
+import Student from "../../models/StudentModel.js";
 
-export default class createStudentService {
-  createStudent(name, email, password, cpf, phone) {
-    const newStudent = new StudentModel(
-      v4(),
+class CreateStudentService {
+  async createStudent(name, cpf, phone, userId) {
+    const student = await Student.create({
       name,
-      email,
-      password,
       cpf,
-      phone
-    );
-    studentData.push(newStudent);
-    fs.writeFile(
-      "./src/database/dbStudent.json",
-      JSON.stringify(studentData),
-      (err) => {
-        if (err) throw err;
-      }
-    );
-    return newStudent;
+      phone,
+      user_id: userId,
+      points: 0,
+    });
+
+    return student;
   }
 }
+
+export default new CreateStudentService();

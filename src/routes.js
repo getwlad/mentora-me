@@ -3,6 +3,12 @@ import { Router } from "express";
 import studentValidator from "./middlewares/studentValidator.js";
 import mentorValidator from "./middlewares/mentorValidator.js";
 
+import CreateUserController from "./app/controllers/user/CreateUserController.js";
+import DeleteUserController from "./app/controllers/user/DeleteUserController.js";
+import ListUserController from "./app/controllers/user/ListUserController.js";
+import ShowUserController from "./app/controllers/user/ShowUserController.js";
+import UpdateUserController from "./app/controllers/user/UpdateUserController.js";
+
 import CreateMentorController from "./app/controllers/mentor/CreateMentorController";
 import ListMentorController from "./app/controllers/mentor/ListMentorController";
 import ShowMentorController from "./app/controllers/mentor/ShowMentorController";
@@ -17,44 +23,38 @@ import DeleteStudentController from "./app/controllers/student/DeleteStudentCont
 
 const routes = new Router();
 
-const createStudentController = new CreateStudentController();
-const listStudentController = new ListStudentController();
-const showStudentController = new ShowStudentController();
-const updateStudentController = new UpdateStudentController();
-const deleteStudentController = new DeleteStudentController();
-
-const createMentorController = new CreateMentorController();
-const listMentorController = new ListMentorController();
-const showMentorController = new ShowMentorController();
-const updateMentorController = new UpdateMentorController();
-const deleteMentorController = new DeleteMentorController();
-
 routes.post("/cadastro/", (req, res) => {
   res.json({ msg: "funcionando" });
 });
 
-routes.get("/students", (req, res) => listStudentController.list(req, res));
-routes.get("/students/:id", (req, res) => showStudentController.show(req, res));
-routes.post("/students", studentValidator, (req, res) =>
-  createStudentController.create(req, res)
+routes.get("/user/", ListUserController.list);
+routes.get("/user/:id", ShowUserController.show);
+routes.post("/user/", CreateUserController.create);
+routes.put("/user/:id", UpdateUserController.update);
+routes.delete("/user/:id", DeleteUserController.delete);
+
+routes.get("/student", (req, res) => ListStudentController.list(req, res));
+routes.get("/student/:id", (req, res) => ShowStudentController.show(req, res));
+routes.post("/student/:user", studentValidator, (req, res) =>
+  CreateStudentController.create(req, res)
 );
-routes.put("/students/:id", studentValidator, (req, res) =>
-  updateStudentController.update(req, res)
+routes.put("/student/:id", studentValidator, (req, res) =>
+  UpdateStudentController.update(req, res)
 );
-routes.delete("/students/:id", (req, res) =>
-  deleteStudentController.delete(req, res)
+routes.delete("/student/:id", (req, res) =>
+  DeleteStudentController.delete(req, res)
 );
 
-routes.get("/mentor", (req, res) => listMentorController.list(req, res));
-routes.get("/mentor/:id", (req, res) => showMentorController.show(req, res));
-routes.post("/mentor", mentorValidator, (req, res) =>
-  createMentorController.create(req, res)
+routes.get("/mentor", (req, res) => ListMentorController.list(req, res));
+routes.get("/mentor/:id", (req, res) => ShowMentorController.show(req, res));
+routes.post("/mentor/:user", mentorValidator, (req, res) =>
+  CreateMentorController.create(req, res)
 );
 routes.put("/mentor/:id", mentorValidator, (req, res) =>
-  updateMentorController.update(req, res)
+  UpdateMentorController.update(req, res)
 );
 routes.delete("/mentor/:id", (req, res) =>
-  deleteMentorController.delete(req, res)
+  DeleteMentorController.delete(req, res)
 );
 
 export default routes;

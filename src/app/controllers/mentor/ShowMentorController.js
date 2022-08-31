@@ -1,12 +1,14 @@
-import showMentorService from "../../services/mentor/ShowMentorService";
+import Mentor from "../../models/MentorModel";
 
-export default class ShowMentorController {
-  constructor() {}
-  show(req, res) {
-    const { id } = req.params;
-
-    const mentor = new showMentorService().showMentorData(id);
-
+class ShowMentorController {
+  async show(req, res) {
+    const id = req.params.id;
+    const mentor = await Mentor.findByPk(id);
+    if (!mentor) {
+      return res.status(404).json({ Error: "Mentor não encontrado" });
+    }
     return res.status(200).json(mentor);
   }
 }
+
+export default new ShowMentorController();

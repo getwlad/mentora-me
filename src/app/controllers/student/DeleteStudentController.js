@@ -1,12 +1,15 @@
-import DeleteStudentService from "../../services/student/DeleteStudentService";
+import Student from "../../models/StudentModel";
+class DeleteStudentController {
+  async delete(req, res) {
+    const id = req.params.id;
 
-export default class DeleteStudentController {
-  constructor() {}
-  delete(req, res) {
-    const { id } = req.params;
-
-    const resultado = new DeleteStudentService().delete(id);
-
-    res.send(resultado);
+    const student = await Student.findByPk(id);
+    if (!student) {
+      return res.status(404).json({ Error: "Estudante não encontrado" });
+    }
+    await student.destroy();
+    return res.status(200).json({ msg: "sucesso" });
   }
 }
+
+export default new DeleteStudentController();

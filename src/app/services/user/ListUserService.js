@@ -1,11 +1,8 @@
 import { Op } from "sequelize";
-import Student from "../../models/StudentModel";
-class ListStudentService {
+import User from "../../models/UserModel";
+class ListUserService {
   async list(
-    name,
-    phone,
-    cpf,
-    points,
+    email,
     createdBefore,
     createdAfter,
     updatedBefore,
@@ -16,35 +13,11 @@ class ListStudentService {
     where,
     order
   ) {
-    if (name) {
+    if (email) {
       where = {
         ...where,
-        name: {
-          [Op.like]: name,
-        },
-      };
-    }
-    if (phone) {
-      where = {
-        ...where,
-        phone: {
-          [Op.like]: phone,
-        },
-      };
-    }
-    if (cpf) {
-      where = {
-        ...where,
-        cpf: {
-          [Op.like]: cpf,
-        },
-      };
-    }
-    if (points) {
-      where = {
-        ...where,
-        points: {
-          [Op.like]: points,
+        email: {
+          [Op.like]: email,
         },
       };
     }
@@ -88,16 +61,20 @@ class ListStudentService {
     if (sort) {
       order = sort.split(",").map((item) => item.split(":"));
     }
+    try {
+      const data = await User.findAll({
+        attributes: { exclude: ["password_hash"] },
+        where,
+        order,
+        limit,
+        offset: limit * page - limit,
+      });
 
-    const data = await Student.findAll({
-      where,
-      order,
-      limit,
-      offset: limit * page - limit,
-    });
-
-    return data;
+      return data;
+    } catch (err) {
+      return { erro: error.message };
+    }
   }
 }
 
-export default new ListStudentService();
+export default new ListUserService();

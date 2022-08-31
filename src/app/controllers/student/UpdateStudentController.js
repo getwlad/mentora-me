@@ -1,23 +1,29 @@
-import UpdateStudentService from "../../services/student/UpdateStudentService";
-import CheckStudentEmailCpf from "../../services/student/CheckStudentEmailCpf";
+import Student from "../../models/StudentModel";
 
-export default class UpdateStudentController {
-  constructor() {}
-  update(req, res) {
-    const { id } = req.params;
-    const { name, email, password, cpf, phone } = req.body;
+class UpdateStudentController {
+  async update(req, res) {
+    const id = req.params.id;
+    const { name, phone, cpf } = req.body;
 
-    const cpfCadastrado = CheckStudentEmailCpf.checkCPF(cpf);
-    const emailCadastrado = CheckStudentEmailCpf.checkEmail(email);
-    if (cpfCadastrado) {
-      return res.status(400).json(cpfCadastrado);
-    }
-    if (emailCadastrado) {
-      return res.status(400).json(emailCadastrado);
+    const student = await Student.findByPk(id);
+    if (!student) {
+      return res.status(404).json({ Error: "Estudante não encontrado" });
     }
 
-    const updatedStudent = new UpdateStudentService().update(id, name, email, password, cpf, phone);
+    if (cpf) {
+      if (student.cpf != cpf) {
+        const studentcpf = await Student.findOne({
+          where: { cpf: cpf },
+        });
+        if (studentcpf) {
+          return res.status(400).json({ erro: "cpf já cadastrado" });
+        }
+      }
+    }
 
-    res.status(200).json(updatedStudent);
+    await student.update({ name, phone, cpf });
+    return res.status(200).json(student);
   }
 }
+
+export default new UpdateStudentController();
