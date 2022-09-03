@@ -2,6 +2,7 @@ import { Router } from "express";
 
 import studentValidator from "./middlewares/studentValidator.js";
 import mentorValidator from "./middlewares/mentorValidator.js";
+import userValidator from "./middlewares/userValidator.js";
 
 import CreateUserController from "./app/controllers/user/CreateUserController.js";
 import DeleteUserController from "./app/controllers/user/DeleteUserController.js";
@@ -23,15 +24,15 @@ import DeleteStudentController from "./app/controllers/student/DeleteStudentCont
 
 const routes = new Router();
 
-routes.post("/cadastro/", (req, res) => {
-  res.json({ msg: "funcionando" });
-});
-
-routes.get("/user/", ListUserController.list);
-routes.get("/user/:id", ShowUserController.show);
-routes.post("/user/", CreateUserController.create);
-routes.put("/user/:id", UpdateUserController.update);
-routes.delete("/user/:id", DeleteUserController.delete);
+routes.get("/user/", (req, res) => ListUserController.list(req, res));
+routes.get("/user/:id", (req, res) => ShowUserController.show(req, res));
+routes.post("/user/", userValidator, (req, res) =>
+  CreateUserController.create(req, res)
+);
+routes.put("/user/:id", userValidator, (req, res) =>
+  UpdateUserController.update(req, res)
+);
+routes.delete("/user/:id", (req, res) => DeleteUserController.delete(req, res));
 
 routes.get("/student", (req, res) => ListStudentController.list(req, res));
 routes.get("/student/:id", (req, res) => ShowStudentController.show(req, res));
@@ -44,8 +45,7 @@ routes.put("/student/:id", studentValidator, (req, res) =>
 routes.delete("/student/:id", (req, res) =>
   DeleteStudentController.delete(req, res)
 );
-
-routes.get("/mentor", (req, res) => ListMentorController.list(req, res));
+outes.get("/mentor", (req, res) => ListMentorController.list(req, res));
 routes.get("/mentor/:id", (req, res) => ShowMentorController.show(req, res));
 routes.post("/mentor/:user", mentorValidator, (req, res) =>
   CreateMentorController.create(req, res)
