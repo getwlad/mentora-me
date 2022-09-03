@@ -1,6 +1,5 @@
 import Sequelize, { Model } from "sequelize";
 import databaseConfig from "../../config/database";
-import User from "./UserModel";
 const sequelize = new Sequelize(databaseConfig);
 
 class Mentor extends Model {}
