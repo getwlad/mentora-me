@@ -23,6 +23,4 @@ Student.init(
   }
 );
 
-// Student.belongsTo(User, { foreignKey: "user_id", targetKey: "id" });
-
 export default Student;
