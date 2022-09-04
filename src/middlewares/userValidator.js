@@ -16,10 +16,7 @@ async function userValidator(request, response, next) {
       ),
     passwordConfirmation: yup
       .string()
-      .required.oneOf(
-        [yup.ref("password"), null],
-        "As senhas devem ser iguais"
-      ),
+      .oneOf([yup.ref("password"), null], "As senhas devem ser iguais"),
   });
 
   await schema
