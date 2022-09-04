@@ -14,6 +14,12 @@ async function userValidator(request, response, next) {
         regex.password,
         "Sua senha deve ter um mínimo de 8 caracteres com letras e números."
       ),
+    passwordConfirmation: yup
+      .string()
+      .required.oneOf(
+        [yup.ref("password"), null],
+        "As senhas devem ser iguais"
+      ),
   });
 
   await schema
