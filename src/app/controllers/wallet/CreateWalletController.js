@@ -2,8 +2,12 @@ import Wallet from "../../models/WalletModel";
 class CreateWalletController {
   constructor() {}
   async create(id) {
-    await Wallet.create({ user_id: id });
-    return;
+    try {
+      await Wallet.create({ user_id: id });
+      return;
+    } catch (error) {
+      return error.message;
+    }
   }
 }
 
