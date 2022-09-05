@@ -1,5 +1,6 @@
 import { Op } from "sequelize";
 import Student from "../../models/StudentModel";
+import InterestArea from "../../models/InterestAreaModel";
 class ListStudentService {
   async list(
     name,
@@ -91,6 +92,16 @@ class ListStudentService {
 
     const data = await Student.findAll({
       where,
+      include: [
+        {
+          model: InterestArea,
+          as: "interests",
+          through: {
+            attributes: [],
+          },
+          attributes: ["mentoring_area"],
+        },
+      ],
       order,
       limit,
       offset: limit * page - limit,

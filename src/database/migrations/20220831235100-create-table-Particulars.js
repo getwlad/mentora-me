@@ -37,6 +37,30 @@ module.exports = {
         type: Sequelize.ENUM("1", "2", "3"),
         allowNull: false,
       },
+      mentor_id: {
+        type: Sequelize.UUID,
+        references: { model: "mentor", key: "id" },
+        onUpdate: "CASCADE",
+        onDelete: "CASCADE",
+        allowNull: false,
+        unique: true,
+      },
+      student_id: {
+        type: Sequelize.UUID,
+        references: { model: "student", key: "id" },
+        onUpdate: "CASCADE",
+        onDelete: "CASCADE",
+        allowNull: false,
+        unique: true,
+      },
+      created_at: {
+        type: Sequelize.DATE,
+        allowNull: false,
+      },
+      updated_at: {
+        type: Sequelize.DATE,
+        allowNull: false,
+      },
     });
   },
 

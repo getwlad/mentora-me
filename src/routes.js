@@ -21,6 +21,9 @@ import ListStudentController from "./app/controllers/student/ListStudentControll
 import ShowStudentController from "./app/controllers/student/ShowStudentController";
 import UpdateStudentController from "./app/controllers/student/UpdateStudentController";
 import DeleteStudentController from "./app/controllers/student/DeleteStudentController";
+import MatchController from "./app/controllers/match/MatchController.js";
+import SetInterestController from "./app/controllers/student/Interest/SetInterestController.js";
+import ShowInterestController from "./app/controllers/student/Interest/ShowInterestController.js";
 
 const routes = new Router();
 
@@ -45,7 +48,7 @@ routes.put("/student/:id", studentValidator, (req, res) =>
 routes.delete("/student/:id", (req, res) =>
   DeleteStudentController.delete(req, res)
 );
-outes.get("/mentor", (req, res) => ListMentorController.list(req, res));
+routes.get("/mentor", (req, res) => ListMentorController.list(req, res));
 routes.get("/mentor/:id", (req, res) => ShowMentorController.show(req, res));
 routes.post("/mentor/:user", mentorValidator, (req, res) =>
   CreateMentorController.create(req, res)
@@ -56,5 +59,16 @@ routes.put("/mentor/:id", mentorValidator, (req, res) =>
 routes.delete("/mentor/:id", (req, res) =>
   DeleteMentorController.delete(req, res)
 );
+
+routes.get("/student/match", (req, res) => {
+  MatchController.list(req, res);
+});
+
+routes.get("/student/:id/interest", (req, res) => {
+  ShowInterestController.show(req, res);
+});
+routes.post("/interest/", (req, res) => {
+  SetInterestController.set(req, res);
+});
 
 export default routes;
