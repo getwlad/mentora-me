@@ -1,24 +1,26 @@
 import Sequelize, { Model } from "sequelize";
 import databaseConfig from "../../config/database";
 const sequelize = new Sequelize(databaseConfig);
+import Student from "./StudentModel";
+import InterestArea from "./InterestAreaModel";
 
 class StudentHasInterestArea extends Model {}
 
 StudentHasInterestArea.init(
   {
-    studentId: {
-      type: sequelize.UUIDV4(),
+    student_id: {
+      type: Sequelize.UUIDV4,
       references: {
-        model: StudentModel,
-        key: id,
+        model: Student,
+        key: "id",
       },
     },
 
-    interestAreaId: {
-      type: sequelize.UUIDV4(),
+    interest_area_id: {
+      type: Sequelize.UUIDV4,
       references: {
-        model: InterestAreaModel,
-        key: id,
+        model: InterestArea,
+        key: "id",
       },
     },
   },
@@ -26,6 +28,7 @@ StudentHasInterestArea.init(
   {
     sequelize,
     modelName: "StudentHasInterestArea",
+    timestamps: false,
   }
 );
 

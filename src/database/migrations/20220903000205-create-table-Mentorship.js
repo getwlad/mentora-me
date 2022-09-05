@@ -25,6 +25,22 @@ module.exports = {
         ),
         allowNull: false,
       },
+      mentor_id: {
+        type: Sequelize.UUID,
+        references: { model: "mentor", key: "id" },
+        onUpdate: "CASCADE",
+        onDelete: "CASCADE",
+        allowNull: false,
+        unique: true,
+      },
+      created_at: {
+        type: Sequelize.DATE,
+        allowNull: false,
+      },
+      updated_at: {
+        type: Sequelize.DATE,
+        allowNull: false,
+      },
     });
   },
 

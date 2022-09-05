@@ -2,34 +2,26 @@
 
 module.exports = {
   async up(queryInterface, Sequelize) {
-    return await queryInterface.createTable("studentHasCourse", {
-      studentId: {
+    return await queryInterface.createTable("studentHasInterestArea", {
+      student_id: {
         type: Sequelize.UUID,
         defaultValue: Sequelize.UUIDV4,
         primaryKey: true,
         allowNull: false,
-        references: {
-          model: {
-            schema: "schema",
-            tableName: "StudentModel",
-          },
-          key: "id",
-        },
+        references: { model: "student", key: "id" },
+        onUpdate: "CASCADE",
+        onDelete: "CASCADE",
         allowNull: false,
       },
 
-      interestAreaId: {
+      interest_area_id: {
         type: Sequelize.UUID,
         defaultValue: Sequelize.UUIDV4,
         primaryKey: true,
         allowNull: false,
-        references: {
-          model: {
-            schema: "schema",
-            tableName: "InterestAreaModel",
-          },
-          key: "id",
-        },
+        references: { model: "Interest_Area", key: "id" },
+        onUpdate: "CASCADE",
+        onDelete: "CASCADE",
         allowNull: false,
       },
     });
