@@ -1,5 +1,6 @@
 import Sequelize, { Model } from "sequelize";
 import databaseConfig from "../../config/database";
+import Mentor from "./MentorModel";
 import StudentHasCourse from "./StudentHasCourseModel";
 import Student from "./StudentModel";
 const sequelize = new Sequelize(databaseConfig);
@@ -8,7 +9,7 @@ class Mentorship extends Model {}
 
 Mentorship.init(
   {
-    idCourse: {
+    id: {
       type: Sequelize.UUID,
       defaultValue: Sequelize.UUIDV4,
       primaryKey: true,
@@ -28,11 +29,6 @@ Mentorship.init(
     modelName: "Mentorship",
   }
 );
-
-Mentorship.belongsTo(Mentor, {
-  foreignKey: "mentor_id",
-  constraint: true,
-});
 
 Mentorship.belongsToMany(Student, {
   through: {

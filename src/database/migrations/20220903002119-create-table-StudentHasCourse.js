@@ -1,39 +1,25 @@
 "use strict";
 
-const {
-  default: StudentHasCourse,
-} = require("../../app/models/StudentHasCourseModel");
-
 module.exports = {
   async up(queryInterface, Sequelize) {
     return await queryInterface.createTable("studentHasCourse", {
-      studentId: {
+      student_id: {
         type: Sequelize.UUID,
         defaultValue: Sequelize.UUIDV4,
         primaryKey: true,
-        allowNull: false,
-        references: {
-          model: {
-            schema: "schema",
-            tableName: "StudentModel",
-          },
-          key: "id",
-        },
+        references: { model: "student", key: "id" },
+        onUpdate: "CASCADE",
+        onDelete: "CASCADE",
         allowNull: false,
       },
 
-      mentorshipId: {
+      mentorship_id: {
         type: Sequelize.UUID,
         defaultValue: Sequelize.UUIDV4,
         primaryKey: true,
-        allowNull: false,
-        references: {
-          model: {
-            schema: "schema",
-            tableName: "MentorshipModel",
-          },
-          key: "id",
-        },
+        references: { model: "mentorship", key: "id" },
+        onUpdate: "CASCADE",
+        onDelete: "CASCADE",
         allowNull: false,
       },
     });

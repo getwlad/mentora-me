@@ -6,26 +6,19 @@ class StudentHasCourse extends Model {}
 
 StudentHasCourse.init(
   {
-    studentId: {
-      type: sequelize.UUIDV4(),
-      references: {
-        model: StudentModel,
-        key: id,
-      },
+    student_id: {
+      type: Sequelize.UUIDV4,
     },
 
-    mentorshipId: {
-      type: sequelize.UUIDV4(),
-      references: {
-        model: MentorshipModel,
-        key: id,
-      },
+    mentorship_id: {
+      type: Sequelize.UUIDV4,
     },
   },
 
   {
     sequelize,
     modelName: "StudentHasCourse",
+    timestamps: false,
   }
 );
 

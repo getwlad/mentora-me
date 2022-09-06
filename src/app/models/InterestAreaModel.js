@@ -1,8 +1,8 @@
 import Sequelize, { Model } from "sequelize";
 import databaseConfig from "../../config/database";
-import StudentHasInterestArea from "./StudentHasInterestAreaModel";
-import Student from "./StudentModel";
 
+import Student from "./StudentModel";
+import StudentHasInterestArea from "./StudentHasInterestAreaModel";
 const sequelize = new Sequelize(databaseConfig);
 
 class InterestArea extends Model {}
@@ -14,13 +14,7 @@ InterestArea.init(
       defaultValue: Sequelize.UUIDV4,
       primaryKey: true,
     },
-    mentoring_area: Sequelize.ENUM(
-      "PROGRAMAÇÃO",
-      "BANCO DE DADOS",
-      "DESGINER UX",
-      "SEGURANÇA DA INFORMACÃO",
-      "QUALIDADE DE SOFTWARE"
-    ),
+    mentoring_area: Sequelize.STRING,
   },
   {
     sequelize,
@@ -29,18 +23,18 @@ InterestArea.init(
 );
 
 InterestArea.belongsToMany(Student, {
-  through: {
-    model: StudentHasInterestArea,
-  },
+  through: StudentHasInterestArea,
+  as: "students",
   foreignKey: "interest_area_id",
+  otherKey: "student_id",
   constraints: true,
 });
 
-Student.hasMany(InterestArea, {
-  through: {
-    model: StudentHasInterestArea,
-  },
+Student.belongsToMany(InterestArea, {
+  through: StudentHasInterestArea,
+  as: "interests",
   foreignKey: "student_id",
+  otherKey: "interest_area_id",
   constraints: true,
 });
 

@@ -10,13 +10,15 @@ module.exports = {
         allowNull: false,
       },
       mentoring_area: {
-        type: Sequelize.ENUM(
-          "PROGRAMAÇÃO",
-          "BANCO DE DADOS",
-          "DESGINER UX",
-          "SEGURANÇA DA INFORMACÃO",
-          "QUALIDADE DE SOFTWARE"
-        ),
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      created_at: {
+        type: Sequelize.DATE,
+        allowNull: false,
+      },
+      updated_at: {
+        type: Sequelize.DATE,
         allowNull: false,
       },
     });
