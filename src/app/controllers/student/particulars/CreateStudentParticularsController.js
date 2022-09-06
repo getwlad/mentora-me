@@ -17,10 +17,10 @@ class CreateStudentParticularsController {
         extrovert,
         theory,
         practice,
-        mentoringInGroup,
-        mentoringIndividual,
+        mentoring_in_group: mentoringInGroup,
+        mentoring_individual: mentoringIndividual,
         libras,
-        minorityGroups,
+        minority_groups: minorityGroups,
       });
       return res.status(200).json(particulars);
     } catch (error) {
