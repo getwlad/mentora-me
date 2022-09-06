@@ -42,7 +42,8 @@ module.exports = {
         references: { model: "mentor", key: "id" },
         onUpdate: "CASCADE",
         onDelete: "CASCADE",
-        allowNull: false,
+        defaultValue: null,
+        allowNull: true,
         unique: true,
       },
       student_id: {
@@ -50,7 +51,8 @@ module.exports = {
         references: { model: "student", key: "id" },
         onUpdate: "CASCADE",
         onDelete: "CASCADE",
-        allowNull: false,
+        defaultValue: null,
+        allowNull: true,
         unique: true,
       },
       created_at: {

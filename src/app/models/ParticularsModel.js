@@ -28,12 +28,4 @@ Particulars.init(
   }
 );
 
-Particulars.belongsTo(Student, {
-  foreignKey: "student_id",
-});
-
-Particulars.belongsTo(Mentor, {
-  foreignKey: "mentor_id",
-});
-
 export default Particulars;
