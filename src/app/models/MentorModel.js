@@ -1,5 +1,7 @@
 import Sequelize, { Model } from "sequelize";
 import databaseConfig from "../../config/database";
+import Mentorship from "./MentorshipModel";
+import Particulars from "./ParticularsModel";
 const sequelize = new Sequelize(databaseConfig);
 
 class Mentor extends Model {}
@@ -22,5 +24,19 @@ Mentor.init(
     modelName: "Mentor",
   }
 );
+Mentor.hasMany(Mentorship, {
+  sourceKey: "id",
+  foreignKey: "mentor_id",
+});
 
+Mentorship.belongsTo(Mentor, {
+  foreignKey: "mentor_id",
+});
+
+Mentor.hasOne(Particulars, {
+  foreignKey: "mentor_id",
+});
+Particulars.belongsTo(Mentor, {
+  foreignKey: "mentor_id",
+});
 export default Mentor;

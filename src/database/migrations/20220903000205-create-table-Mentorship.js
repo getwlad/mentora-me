@@ -16,14 +16,11 @@ module.exports = {
       },
 
       mentoring_area: {
-        type: Sequelize.ENUM(
-          "PROGRAMAÇÃO",
-          "BANCO DE DADOS",
-          "DESGINER UX",
-          "SEGURANÇA DA INFORMACÃO",
-          "QUALIDADE DE SOFTWARE"
-        ),
+        type: Sequelize.STRING,
         allowNull: false,
+      },
+      price: {
+        type: Sequelize.DECIMAL(10, 2),
       },
       mentor_id: {
         type: Sequelize.UUID,
@@ -31,7 +28,6 @@ module.exports = {
         onUpdate: "CASCADE",
         onDelete: "CASCADE",
         allowNull: false,
-        unique: true,
       },
       created_at: {
         type: Sequelize.DATE,

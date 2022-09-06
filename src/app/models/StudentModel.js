@@ -1,7 +1,7 @@
 import Sequelize, { Model } from "sequelize";
 import databaseConfig from "../../config/database";
 const sequelize = new Sequelize(databaseConfig);
-
+import Particulars from "./ParticularsModel";
 class Student extends Model {}
 
 Student.init(
@@ -21,5 +21,12 @@ Student.init(
     modelName: "Student",
   }
 );
+
+Student.hasOne(Particulars, {
+  foreignKey: "student_id",
+});
+Particulars.belongsTo(Student, {
+  foreignKey: "student_id",
+});
 
 export default Student;
