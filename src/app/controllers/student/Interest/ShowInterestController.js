@@ -1,23 +1,27 @@
 import InterestArea from "../../../models/InterestAreaModel";
+import StudentHasInterestArea from "../../../models/StudentHasInterestAreaModel";
 import Student from "../../../models/StudentModel";
+
 class ShowInterestController {
   async show(req, res) {
     try {
       const id = req.params.id;
-      const student = await InterestArea.findAll({
-        attributes: ["mentoring_area"],
+
+      const student = await Student.findOne({
+        where: {
+          id,
+        },
         include: [
           {
-            model: Student,
-            as: "students",
-            through: {
-              where: { student_id: id },
-              attributes: [],
-            },
-            attributes: [],
+            model: InterestArea,
+            as: "interests",
+            attributes: ["mentoring_area"],
           },
         ],
+
+        attributes: [],
       });
+
       return res.status(200).json(student);
     } catch (error) {
       return res.status(401).json({ error: error.message });
