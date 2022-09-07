@@ -3,6 +3,7 @@ import databaseConfig from "../../config/database";
 
 import Student from "./StudentModel";
 import StudentHasInterestArea from "./StudentHasInterestAreaModel";
+import Mentor from "./MentorModel";
 const sequelize = new Sequelize(databaseConfig);
 
 class InterestArea extends Model {}
@@ -18,7 +19,7 @@ InterestArea.init(
   },
   {
     sequelize,
-    modelName: "Interest_Area",
+    modelName: "InterestArea",
   }
 );
 

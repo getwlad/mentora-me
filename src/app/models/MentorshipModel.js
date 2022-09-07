@@ -15,13 +15,6 @@ Mentorship.init(
       primaryKey: true,
     },
     name: Sequelize.STRING,
-    mentoring_area: Sequelize.ENUM(
-      "PROGRAMAÇÃO",
-      "BANCO DE DADOS",
-      "DESIGNER UX",
-      "SEGURANÇA DA INFORMAÇÃO",
-      "QUALIDADE DE SOFTWARE"
-    ),
     price: Sequelize.DECIMAL(10, 2),
   },
   {

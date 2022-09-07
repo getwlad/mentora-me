@@ -19,7 +19,7 @@ module.exports = {
         defaultValue: Sequelize.UUIDV4,
         primaryKey: true,
         allowNull: false,
-        references: { model: "Interest_Area", key: "id" },
+        references: { model: "InterestArea", key: "id" },
         onUpdate: "CASCADE",
         onDelete: "CASCADE",
         allowNull: false,

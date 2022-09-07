@@ -1,5 +1,4 @@
 import InterestArea from "../../../models/InterestAreaModel";
-import StudentHasInterestArea from "../../../models/StudentHasInterestAreaModel";
 import Student from "../../../models/StudentModel";
 
 class ShowInterestController {
