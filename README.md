@@ -5,8 +5,8 @@ Esta api tem como objetivo atender a requisições para um sistema de mentoria c
 
 ## Integrantes
 
-- João Oliveira Lima Júnior
+
 - Thayná Rodrigues
 - Ludmila Chagas
-- Isabel Ferraz
 - Wladmir Rodrigues
+
