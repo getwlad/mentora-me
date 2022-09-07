@@ -42,6 +42,9 @@ import DeleteMentorshipController from "./app/controllers/mentor/mentorship/Dele
 import BuyMentorshipController from "./app/controllers/student/mentorship/BuyMentorshipController.js";
 import ListBuyedMentorshipController from "./app/controllers/student/mentorship/ListBuyedMentorshipController.js";
 import ListAllMentorshipController from "./app/controllers/mentorship/ListAllMentorshipController.js";
+import SessionsController from "./app/controllers/sessions/SessionsController.js";
+
+import authUser from "./middlewares/authUser.js";
 
 const routes = new Router();
 
@@ -51,30 +54,38 @@ routes.get("/user/:id", (req, res) => ShowUserController.show(req, res));
 routes.post("/user/", userValidator, (req, res) =>
   CreateUserController.create(req, res)
 );
-routes.put("/user/:id", userValidator, (req, res) =>
+routes.put("/user/:id", userValidator, authUser, (req, res) =>
   UpdateUserController.update(req, res)
 );
-routes.delete("/user/:id", (req, res) => DeleteUserController.delete(req, res));
+routes.delete("/user/:id", authUser, (req, res) =>
+  DeleteUserController.delete(req, res)
+);
+
+routes.post("/user/login/", (req, res) => {
+  SessionsController.create(req, res);
+});
 
 //Rotas Student
 routes.get("/student", (req, res) => ListStudentController.list(req, res));
-routes.get("/student/:id", (req, res) => ShowStudentController.show(req, res));
-routes.post("/student/:user", studentValidator, (req, res) =>
+routes.get("/student/:id", authUser, (req, res) =>
+  ShowStudentController.show(req, res)
+);
+routes.post("/student/", authUser, studentValidator, (req, res) =>
   CreateStudentController.create(req, res)
 );
-routes.put("/student/:id", studentValidator, (req, res) =>
+routes.put("/student/:id", authUser, studentValidator, (req, res) =>
   UpdateStudentController.update(req, res)
 );
-routes.delete("/student/:id", (req, res) =>
+routes.delete("/student/:id", authUser, (req, res) =>
   DeleteStudentController.delete(req, res)
 );
 routes.get("/student/:id/interest", (req, res) => {
   ShowInterestController.show(req, res);
 });
-routes.post("/student/:id/interest", (req, res) => {
+routes.post("/student/:id/interest", authUser, (req, res) => {
   AddInterestController.add(req, res);
 });
-routes.delete("/student/:id/interest", (req, res) => {
+routes.delete("/student/:id/interest", authUser, (req, res) => {
   DeleteInterestController.delete(req, res);
 });
 
@@ -82,31 +93,31 @@ routes.get("/student/:id/particulars", (req, res) => {
   ShowStudentParticularsController.show(req, res);
 });
 
-routes.post("/student/:id/particulars", (req, res) => {
+routes.post("/student/:id/particulars", authUser, (req, res) => {
   CreateStudentParticularsController.create(req, res);
 });
 
-routes.put("/student/:id/particulars", (req, res) => {
+routes.put("/student/:id/particulars", authUser, (req, res) => {
   UpdateStudentParticularsController.update(req, res);
 });
 
-routes.post("/student/:id/buymentorship", (req, res) => {
+routes.post("/student/:id/buymentorship", authUser, (req, res) => {
   BuyMentorshipController.buy(req, res);
 });
-routes.get("/student/:id/mentorship", (req, res) => {
+routes.get("/student/:id/mentorship", authUser, (req, res) => {
   ListBuyedMentorshipController.list(req, res);
 });
 
 //Rotas Mentor
 routes.get("/mentor", (req, res) => ListMentorController.list(req, res));
 routes.get("/mentor/:id", (req, res) => ShowMentorController.show(req, res));
-routes.post("/mentor/:user", mentorValidator, (req, res) =>
+routes.post("/mentor/", authUser, mentorValidator, (req, res) =>
   CreateMentorController.create(req, res)
 );
-routes.put("/mentor/:id", mentorValidator, (req, res) =>
+routes.put("/mentor/:id", authUser, mentorValidator, (req, res) =>
   UpdateMentorController.update(req, res)
 );
-routes.delete("/mentor/:id", (req, res) =>
+routes.delete("/mentor/:id", authUser, (req, res) =>
   DeleteMentorController.delete(req, res)
 );
 
@@ -116,13 +127,13 @@ routes.get("/mentor/:id/mentorship", (req, res) => {
 routes.get("/mentor/:id/mentorship/:mentorshipId", (req, res) => {
   ShowMentorshipController.show(req, res);
 });
-routes.post("/mentor/:id/mentorship", (req, res) => {
+routes.post("/mentor/:id/mentorship", authUser, (req, res) => {
   CreateMentorshipController.create(req, res);
 });
-routes.put("/mentor/:id/mentorship/:mentorshipId", (req, res) => {
+routes.put("/mentor/:id/mentorship/:mentorshipId", authUser, (req, res) => {
   UpdateMentorshipController.update(req, res);
 });
-routes.delete("/mentor/:id/mentorship/:mentorshipId", (req, res) => {
+routes.delete("/mentor/:id/mentorship/:mentorshipId", authUser, (req, res) => {
   DeleteMentorshipController.delete(req, res);
 });
 
@@ -130,11 +141,11 @@ routes.get("/mentor/:id/particulars", (req, res) => {
   ShowMentorParticularsController.show(req, res);
 });
 
-routes.post("/mentor/:id/particulars", (req, res) => {
+routes.post("/mentor/:id/particulars", authUser, (req, res) => {
   CreateMentorParticularsController.create(req, res);
 });
 
-routes.put("/mentor/:id/particulars", (req, res) => {
+routes.put("/mentor/:id/particulars", authUser, (req, res) => {
   UpdateMentorParticularsController.update(req, res);
 });
 
@@ -152,7 +163,7 @@ routes.get("/mentorships", (req, res) => {
 });
 
 //Rotas Match
-routes.get("/student/:id/match", (req, res) => {
+routes.get("/student/:id/match", authUser, (req, res) => {
   MatchController.match(req, res);
 });
 
