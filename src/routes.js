@@ -67,9 +67,7 @@ routes.post("/user/login/", (req, res) => {
 
 //Rotas Student
 routes.get("/student", (req, res) => ListStudentController.list(req, res));
-routes.get("/student/:id", authUser, (req, res) =>
-  ShowStudentController.show(req, res)
-);
+routes.get("/student/:id", (req, res) => ShowStudentController.show(req, res));
 routes.post("/student/", authUser, studentValidator, (req, res) =>
   CreateStudentController.create(req, res)
 );
