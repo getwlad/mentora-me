@@ -17,6 +17,11 @@ class MatchController {
           as: "interests",
         },
       });
+      if (!interests) {
+        return res.status(401).json({
+          error: "Para um match ideal, registre seus interesses",
+        });
+      }
       //pega só os ids do estudante
       const interestsIds = interests.map((interest) => {
         return interest.id;

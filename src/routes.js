@@ -26,12 +26,22 @@ import AddInterestController from "./app/controllers/student/Interest/AddInteres
 import ShowInterestController from "./app/controllers/student/Interest/ShowInterestController.js";
 import ListInterestAreaController from "./app/controllers/interest/ListInterestAreaController.js";
 import CreateInterestAreaController from "./app/controllers/interest/CreateInterestAreaController.js";
-import ShowMentorshipController from "./app/controllers/mentor/mentorship/ShowMentorshipController.js";
+
 import CreateMentorshipController from "./app/controllers/mentor/mentorship/CreateMentorshipController.js";
 import CreateStudentParticularsController from "./app/controllers/student/particulars/CreateStudentParticularsController.js";
 import ShowStudentParticularsController from "./app/controllers/student/particulars/ShowStudentParticularsController.js";
 import ShowMentorParticularsController from "./app/controllers/mentor/particulars/ShowMentorParticularsController.js";
 import CreateMentorParticularsController from "./app/controllers/mentor/particulars/CreateMentorParticularsController.js";
+import DeleteInterestController from "./app/controllers/student/Interest/DeleteInterestController.js";
+import UpdateStudentParticularsController from "./app/controllers/student/particulars/UpdateStudentParticularsController.js";
+import UpdateMentorParticularsController from "./app/controllers/mentor/particulars/UpdateMentorParticularsController.js";
+import UpdateMentorshipController from "./app/controllers/mentor/mentorship/UpdateMentorshipController.js";
+import ListMentorshipController from "./app/controllers/mentor/mentorship/ListMentorshipController.js";
+import ShowMentorshipController from "./app/controllers/mentor/mentorship/ShowMentorshipController.js";
+import DeleteMentorshipController from "./app/controllers/mentor/mentorship/DeleteMentorshipController.js";
+import BuyMentorshipController from "./app/controllers/student/mentorship/BuyMentorshipController.js";
+import ListBuyedMentorshipController from "./app/controllers/student/mentorship/ListBuyedMentorshipController.js";
+import ListAllMentorshipController from "./app/controllers/mentorship/ListAllMentorshipController.js";
 
 const routes = new Router();
 
@@ -64,6 +74,9 @@ routes.get("/student/:id/interest", (req, res) => {
 routes.post("/student/:id/interest", (req, res) => {
   AddInterestController.add(req, res);
 });
+routes.delete("/student/:id/interest", (req, res) => {
+  DeleteInterestController.delete(req, res);
+});
 
 routes.get("/student/:id/particulars", (req, res) => {
   ShowStudentParticularsController.show(req, res);
@@ -71,6 +84,17 @@ routes.get("/student/:id/particulars", (req, res) => {
 
 routes.post("/student/:id/particulars", (req, res) => {
   CreateStudentParticularsController.create(req, res);
+});
+
+routes.put("/student/:id/particulars", (req, res) => {
+  UpdateStudentParticularsController.update(req, res);
+});
+
+routes.post("/student/:id/buymentorship", (req, res) => {
+  BuyMentorshipController.buy(req, res);
+});
+routes.get("/student/:id/mentorship", (req, res) => {
+  ListBuyedMentorshipController.list(req, res);
 });
 
 //Rotas Mentor
@@ -87,10 +111,19 @@ routes.delete("/mentor/:id", (req, res) =>
 );
 
 routes.get("/mentor/:id/mentorship", (req, res) => {
+  ListMentorshipController.list(req, res);
+});
+routes.get("/mentor/:id/mentorship/:mentorshipId", (req, res) => {
   ShowMentorshipController.show(req, res);
 });
 routes.post("/mentor/:id/mentorship", (req, res) => {
   CreateMentorshipController.create(req, res);
+});
+routes.put("/mentor/:id/mentorship/:mentorshipId", (req, res) => {
+  UpdateMentorshipController.update(req, res);
+});
+routes.delete("/mentor/:id/mentorship/:mentorshipId", (req, res) => {
+  DeleteMentorshipController.delete(req, res);
 });
 
 routes.get("/mentor/:id/particulars", (req, res) => {
@@ -101,12 +134,21 @@ routes.post("/mentor/:id/particulars", (req, res) => {
   CreateMentorParticularsController.create(req, res);
 });
 
+routes.put("/mentor/:id/particulars", (req, res) => {
+  UpdateMentorParticularsController.update(req, res);
+});
+
 //Rotas Interest
 routes.get("/interest", (req, res) => {
   ListInterestAreaController.list(req, res);
 });
 routes.post("/interest", (req, res) => {
   CreateInterestAreaController.create(req, res);
+});
+
+//Mentorships
+routes.get("/mentorships", (req, res) => {
+  ListAllMentorshipController.list(req, res);
 });
 
 //Rotas Match
