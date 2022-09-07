@@ -54,10 +54,10 @@ routes.get("/user/:id", (req, res) => ShowUserController.show(req, res));
 routes.post("/user/", userValidator, (req, res) =>
   CreateUserController.create(req, res)
 );
-routes.put("/user/:id", userValidator, authUser, (req, res) =>
+routes.put("/user/", authUser, userValidator, authUser, (req, res) =>
   UpdateUserController.update(req, res)
 );
-routes.delete("/user/:id", authUser, (req, res) =>
+routes.delete("/user/", authUser, (req, res) =>
   DeleteUserController.delete(req, res)
 );
 
