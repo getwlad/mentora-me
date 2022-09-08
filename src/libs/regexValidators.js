@@ -7,6 +7,9 @@ const regex = {
   validEVPPix: /[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/,
   emailRegex:
     /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/,
+  validPrice: /^[0-9]*.[0-9]{2}$/,
+  validString: /^[ A-Za-z0-9./#&+-]*$/,
+  validScale: /[1-3]/,
 };
 
 export default regex;
