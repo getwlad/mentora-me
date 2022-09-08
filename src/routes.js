@@ -183,4 +183,7 @@ routes.get("/student/match", authUser, (req, res) => {
   MatchController.match(req, res);
 });
 
+routes.get("*", (req, res) => {
+  res.status(404).send("Rota não encontrada");
+});
 export default routes;
