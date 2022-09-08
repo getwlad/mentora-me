@@ -3,6 +3,9 @@ import { Router } from "express";
 import studentValidator from "./middlewares/studentValidator.js";
 import mentorValidator from "./middlewares/mentorValidator.js";
 import userValidator from "./middlewares/userValidator.js";
+import interestAreaValidator from "./middlewares/interestAreaValidator.js";
+import mentorshipValidator from "./middlewares/mentorshipValidator.js";
+import particularsValidator from "./middlewares/particularsValidator.js";
 
 import CreateUserController from "./app/controllers/user/CreateUserController.js";
 import DeleteUserController from "./app/controllers/user/DeleteUserController.js";
@@ -94,9 +97,14 @@ routes.get("/student/:id/particulars", (req, res) => {
   ShowStudentParticularsController.show(req, res);
 });
 
-routes.post("/student/particulars", authUser, (req, res) => {
-  CreateStudentParticularsController.create(req, res);
-});
+routes.post(
+  "/student/particulars",
+  particularsValidator,
+  authUser,
+  (req, res) => {
+    CreateStudentParticularsController.create(req, res);
+  }
+);
 
 routes.put("/student/particulars", authUser, (req, res) => {
   UpdateStudentParticularsController.update(req, res);
@@ -130,7 +138,7 @@ routes.get("/mentor/mentorship", (req, res) => {
 routes.get("/mentor/mentorship/:mentorshipId", (req, res) => {
   ShowMentorshipController.show(req, res);
 });
-routes.post("/mentor/mentorship", authUser, (req, res) => {
+routes.post("/mentor/mentorship", mentorshipValidator, authUser, (req, res) => {
   CreateMentorshipController.create(req, res);
 });
 routes.put("/mentor/mentorship/:mentorshipId", authUser, (req, res) => {
@@ -144,9 +152,14 @@ routes.get("/mentor/particulars", (req, res) => {
   ShowMentorParticularsController.show(req, res);
 });
 
-routes.post("/mentor/particulars", authUser, (req, res) => {
-  CreateMentorParticularsController.create(req, res);
-});
+routes.post(
+  "/mentor/particulars",
+  particularsValidator,
+  authUser,
+  (req, res) => {
+    CreateMentorParticularsController.create(req, res);
+  }
+);
 
 routes.put("/mentor/particulars", authUser, (req, res) => {
   UpdateMentorParticularsController.update(req, res);
@@ -156,7 +169,7 @@ routes.put("/mentor/particulars", authUser, (req, res) => {
 routes.get("/interest", (req, res) => {
   ListInterestAreaController.list(req, res);
 });
-routes.post("/interest", (req, res) => {
+routes.post("/interest", interestAreaValidator, (req, res) => {
   CreateInterestAreaController.create(req, res);
 });
 
