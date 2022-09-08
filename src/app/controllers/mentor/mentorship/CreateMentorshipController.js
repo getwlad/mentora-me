@@ -1,3 +1,4 @@
+import Mentor from "../../../models/MentorModel";
 import Mentorship from "../../../models/MentorshipModel";
 import ListInterestService from "../../../services/interest/ListInterestService";
 class CreateMentorshipController {
@@ -9,6 +10,9 @@ class CreateMentorshipController {
           user_id: userId,
         },
       });
+      if (!mentor) {
+        return res.status(401).json({ error: "Mentor não cadastrado" });
+      }
       const { id } = mentor;
       const { name, price } = req.body;
 

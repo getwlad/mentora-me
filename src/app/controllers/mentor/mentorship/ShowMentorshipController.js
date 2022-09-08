@@ -11,6 +11,9 @@ class ShowMentorshipController {
           user_id: userId,
         },
       });
+      if (!mentor) {
+        return res.status(401).json({ error: "Mentor não cadastrado" });
+      }
       const { id } = mentor;
       const mentorship = await Mentorship.findOne({
         where: {

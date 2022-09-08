@@ -11,6 +11,9 @@ class UpdateMentorshipController {
           user_id: userId,
         },
       });
+      if (!mentor) {
+        return res.status(401).json({ error: "Mentor não cadastrado" });
+      }
       const { id } = mentor;
       const { name, price } = req.body;
       const mentorship = await Mentorship.findOne({

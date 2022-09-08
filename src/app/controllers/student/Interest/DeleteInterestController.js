@@ -11,6 +11,9 @@ class DeleteInterestController {
           user_id: userId,
         },
       });
+      if (!student) {
+        return res.status(401).json({ error: "Estudante não cadastrado" });
+      }
       const { mentoringArea } = req.body;
       const areas = await ListInterestService.list();
       let interestArea;

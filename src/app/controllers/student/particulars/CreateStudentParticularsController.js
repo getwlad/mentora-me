@@ -10,6 +10,9 @@ class CreateStudentParticularsController {
           user_id: userId,
         },
       });
+      if (!student) {
+        return res.status(401).json({ error: "Estudante não cadastrado" });
+      }
       const { id } = student;
       const {
         extrovert,
