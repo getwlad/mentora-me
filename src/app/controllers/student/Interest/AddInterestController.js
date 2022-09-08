@@ -3,8 +3,13 @@ import ListInterestService from "../../../services/interest/ListInterestService"
 class AddInterestController {
   async add(req, res) {
     try {
-      const { id } = req.params;
-      const student = await Student.findByPk(id);
+      const userId = req.user;
+
+      const student = await Student.findOne({
+        where: {
+          user_id: userId,
+        },
+      });
       const { mentoringArea } = req.body;
 
       const areas = await ListInterestService.list();

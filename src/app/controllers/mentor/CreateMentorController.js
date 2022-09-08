@@ -9,7 +9,7 @@ class CreateMentorController {
     try {
       const { name, phone, chavePix, publicEmail, cnpj, mentoringArea } =
         req.body;
-      const userId = req.params.user;
+      const userId = req.user;
       const cnpjCadastrado = await Mentor.findOne({ where: { cnpj: cnpj } });
       const userCadastrado = await Mentor.findOne({
         where: { user_id: userId },

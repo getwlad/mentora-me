@@ -1,8 +1,15 @@
+import Mentor from "../../../models/MentorModel";
 import Particulars from "../../../models/ParticularsModel";
 class ShowMentorParticularsController {
   async show(req, res) {
     try {
-      const { id } = req.params;
+      const userId = req.user;
+      const mentor = await Mentor.findOne({
+        where: {
+          user_id: userId,
+        },
+      });
+      const { id } = mentor;
       const particulars = await Particulars.findOne({
         where: { mentor_id: id },
       });

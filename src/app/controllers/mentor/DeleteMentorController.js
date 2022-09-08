@@ -2,9 +2,13 @@ import Mentor from "../../models/MentorModel";
 class DeleteMentorController {
   async delete(req, res) {
     try {
-      const id = req.params.id;
+      const userId = req.user;
+      const mentor = await Mentor.findOne({
+        where: {
+          user_id: userId,
+        },
+      });
 
-      const mentor = await Mentor.findByPk(id);
       if (!mentor) {
         return res.status(404).json({ Error: "Mentor não encontrado" });
       }

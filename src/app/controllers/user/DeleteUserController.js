@@ -2,7 +2,7 @@ import User from "../../models/UserModel";
 class DeleteUserController {
   async delete(req, res) {
     try {
-      const id = req.params.id;
+      const id = req.user;
 
       const user = await User.findByPk(id);
       if (!user) {
