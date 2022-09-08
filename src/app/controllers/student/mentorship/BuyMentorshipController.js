@@ -1,17 +1,16 @@
 import Mentor from "../../../models/MentorModel";
 import Mentorship from "../../../models/MentorshipModel";
-import Student from "../../../models/StudentModel";
 import Wallet from "../../../models/WalletModel";
 class BuyMentorshipController {
   async buy(req, res) {
     try {
-      const { id } = req.params;
-      const student = await Student.findByPk(id);
+      const userId = req.user;
+
       const { mentoringId } = req.body;
       const mentorship = await Mentorship.findByPk(mentoringId);
       const studentWallet = await Wallet.findOne({
         where: {
-          user_id: student.user_id,
+          user_id: userId,
         },
       });
 

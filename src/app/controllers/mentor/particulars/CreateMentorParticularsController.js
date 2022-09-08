@@ -1,8 +1,18 @@
+import Mentor from "../../../models/MentorModel";
 import Particulars from "../../../models/ParticularsModel";
 class CreateMentorParticularsController {
   async create(req, res) {
     try {
-      const { id } = req.params;
+      const userId = req.user;
+      const mentor = await Mentor.findOne({
+        where: {
+          user_id: userId,
+        },
+      });
+      if (!mentor) {
+        return res.status(401).json({ error: "Mentor não cadastrado" });
+      }
+      const { id } = mentor;
       const {
         extrovert,
         theory,

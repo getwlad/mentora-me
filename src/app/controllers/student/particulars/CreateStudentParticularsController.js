@@ -1,8 +1,19 @@
 import Particulars from "../../../models/ParticularsModel";
+import Student from "../../../models/StudentModel";
 class CreateStudentParticularsController {
   async create(req, res) {
     try {
-      const { id } = req.params;
+      const userId = req.user;
+
+      const student = await Student.findOne({
+        where: {
+          user_id: userId,
+        },
+      });
+      if (!student) {
+        return res.status(401).json({ error: "Estudante não cadastrado" });
+      }
+      const { id } = student;
       const {
         extrovert,
         theory,

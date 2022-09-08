@@ -4,8 +4,16 @@ import ListInterestService from "../../../services/interest/ListInterestService"
 class DeleteInterestController {
   async delete(req, res) {
     try {
-      const { id } = req.params;
-      const student = await Student.findByPk(id);
+      const userId = req.user;
+
+      const student = await Student.findOne({
+        where: {
+          user_id: userId,
+        },
+      });
+      if (!student) {
+        return res.status(401).json({ error: "Estudante não cadastrado" });
+      }
       const { mentoringArea } = req.body;
       const areas = await ListInterestService.list();
       let interestArea;

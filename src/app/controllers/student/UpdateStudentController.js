@@ -3,10 +3,14 @@ import Student from "../../models/StudentModel";
 class UpdateStudentController {
   async update(req, res) {
     try {
-      const id = req.params.id;
+      const userId = req.user;
       const { name, phone, cpf } = req.body;
 
-      const student = await Student.findByPk(id);
+      const student = await Student.findOne({
+        where: {
+          user_id: userId,
+        },
+      });
       if (!student) {
         return res.status(404).json({ Error: "Estudante não encontrado" });
       }

@@ -1,9 +1,20 @@
 import Mentorship from "../../../models/MentorshipModel";
 import { Op } from "sequelize";
+import Mentor from "../../../models/MentorModel";
 class ShowMentorshipController {
   async show(req, res) {
     try {
-      const { id, mentorshipId } = req.params;
+      const { mentorshipId } = req.params;
+      const userId = req.user;
+      const mentor = await Mentor.findOne({
+        where: {
+          user_id: userId,
+        },
+      });
+      if (!mentor) {
+        return res.status(401).json({ error: "Mentor não cadastrado" });
+      }
+      const { id } = mentor;
       const mentorship = await Mentorship.findOne({
         where: {
           [Op.and]: [{ id: mentorshipId }, { mentor_id: id }],

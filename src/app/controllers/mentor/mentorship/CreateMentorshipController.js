@@ -1,9 +1,19 @@
+import Mentor from "../../../models/MentorModel";
 import Mentorship from "../../../models/MentorshipModel";
 import ListInterestService from "../../../services/interest/ListInterestService";
 class CreateMentorshipController {
   async create(req, res) {
     try {
-      const { id } = req.params;
+      const userId = req.user;
+      const mentor = await Mentor.findOne({
+        where: {
+          user_id: userId,
+        },
+      });
+      if (!mentor) {
+        return res.status(401).json({ error: "Mentor não cadastrado" });
+      }
+      const { id } = mentor;
       const { name, price } = req.body;
 
       const mentorship = await Mentorship.create({
