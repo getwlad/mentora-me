@@ -1,4 +1,5 @@
 import { Op } from "sequelize";
+import InterestArea from "../../models/InterestAreaModel";
 import Mentor from "../../models/MentorModel";
 class ListMentorService {
   async list(
@@ -103,6 +104,13 @@ class ListMentorService {
       order,
       limit,
       offset: limit * page - limit,
+      attributes: {
+        exclude: ["interest_area_id"],
+      },
+      include: {
+        model: InterestArea,
+        attributes: ["mentoring_area"],
+      },
     });
 
     return data;

@@ -7,6 +7,7 @@ module.exports = {
         type: Sequelize.UUID,
         defaultValue: Sequelize.UUIDV4,
         primaryKey: true,
+        allowNull: false,
         references: { model: "student", key: "id" },
         onUpdate: "CASCADE",
         onDelete: "CASCADE",

@@ -2,7 +2,7 @@
 
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable("mentor", {
+    return await queryInterface.createTable("mentor", {
       id: {
         type: Sequelize.UUID,
         defaultValue: Sequelize.UUIDV4,
@@ -37,6 +37,7 @@ module.exports = {
         allowNull: false,
         unique: true,
       },
+
       created_at: {
         type: Sequelize.DATE,
         allowNull: false,
