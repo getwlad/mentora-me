@@ -15,13 +15,6 @@ Mentorship.init(
       primaryKey: true,
     },
     name: Sequelize.STRING,
-    mentoring_area: Sequelize.ENUM(
-      "PROGRAMAÇÃO",
-      "BANCO DE DADOS",
-      "DESIGNER UX",
-      "SEGURANÇA DA INFORMAÇÃO",
-      "QUALIDADE DE SOFTWARE"
-    ),
     price: Sequelize.DECIMAL(10, 2),
   },
   {
@@ -36,6 +29,22 @@ Mentorship.belongsToMany(Student, {
   },
   foreignKey: "student_id",
   constraint: true,
+});
+
+Mentorship.belongsToMany(Student, {
+  through: StudentHasCourse,
+  as: "students",
+  foreignKey: "mentorship_id",
+  otherKey: "student_id",
+  constraints: true,
+});
+
+Student.belongsToMany(Mentorship, {
+  through: StudentHasCourse,
+  as: "mentorships",
+  foreignKey: "student_id",
+  otherKey: "mentorship_id",
+  constraints: true,
 });
 
 export default Mentorship;

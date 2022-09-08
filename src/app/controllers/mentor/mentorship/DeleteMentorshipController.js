@@ -1,8 +1,8 @@
 import Mentorship from "../../../models/MentorshipModel";
 import { Op } from "sequelize";
 import Mentor from "../../../models/MentorModel";
-class ShowMentorshipController {
-  async show(req, res) {
+class DeleteMentorshipController {
+  async delete(req, res) {
     try {
       const { mentorshipId } = req.params;
       const userId = req.user;
@@ -23,11 +23,12 @@ class ShowMentorshipController {
       if (!mentorship) {
         return res.status(401).json({ error: "Mentoria não encontrada" });
       }
-      return res.status(200).json(mentorship);
+      await mentorship.destroy();
+      return res.status(200).json({ message: "sucesso" });
     } catch (error) {
       return res.status(401).json({ error: error.message });
     }
   }
 }
 
-export default new ShowMentorshipController();
+export default new DeleteMentorshipController();

@@ -2,7 +2,7 @@
 
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable("wallet", {
+    return await queryInterface.createTable("wallet", {
       id: {
         type: Sequelize.UUID,
         defaultValue: Sequelize.UUIDV4,

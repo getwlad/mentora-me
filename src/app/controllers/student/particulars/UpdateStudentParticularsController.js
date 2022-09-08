@@ -1,7 +1,7 @@
 import Particulars from "../../../models/ParticularsModel";
 import Student from "../../../models/StudentModel";
-class CreateStudentParticularsController {
-  async create(req, res) {
+class UpdateStudentParticularsController {
+  async update(req, res) {
     try {
       const userId = req.user;
 
@@ -23,8 +23,17 @@ class CreateStudentParticularsController {
         libras,
         minorityGroups,
       } = req.body;
-      const particulars = await Particulars.create({
-        student_id: id,
+      const particulars = await Particulars.findOne({
+        where: {
+          student_id: id,
+        },
+      });
+      if (!particulars) {
+        return res.status(401).json({
+          error: "caracteristicas não cadastradas",
+        });
+      }
+      await particulars.update({
         extrovert,
         theory,
         practice,
@@ -39,4 +48,4 @@ class CreateStudentParticularsController {
     }
   }
 }
-export default new CreateStudentParticularsController();
+export default new UpdateStudentParticularsController();

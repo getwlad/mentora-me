@@ -1,5 +1,6 @@
-import Sequelize, { Model } from "sequelize";
+import Sequelize, { INET, Model } from "sequelize";
 import databaseConfig from "../../config/database";
+import InterestArea from "./InterestAreaModel";
 import Mentorship from "./MentorshipModel";
 import Particulars from "./ParticularsModel";
 const sequelize = new Sequelize(databaseConfig);
@@ -39,4 +40,14 @@ Mentor.hasOne(Particulars, {
 Particulars.belongsTo(Mentor, {
   foreignKey: "mentor_id",
 });
+
+InterestArea.hasMany(Mentor, {
+  sourceKey: "id",
+  foreignKey: "interest_area_id",
+  as: "interests",
+});
+Mentor.belongsTo(InterestArea, {
+  foreignKey: "interest_area_id",
+});
+
 export default Mentor;

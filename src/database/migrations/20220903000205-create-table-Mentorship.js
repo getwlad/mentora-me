@@ -15,10 +15,6 @@ module.exports = {
         allowNull: false,
       },
 
-      mentoring_area: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
       price: {
         type: Sequelize.DECIMAL(10, 2),
       },

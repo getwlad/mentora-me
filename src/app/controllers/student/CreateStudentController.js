@@ -7,7 +7,7 @@ class CreateStudentController {
   async create(req, res) {
     try {
       const { name, cpf, phone } = req.body;
-      const userId = req.params.user;
+      const userId = req.user;
       const cpfCadastrado = await Student.findOne({ where: { cpf: cpf } });
       const userCadastrado = await Student.findOne({
         where: { user_id: userId },
@@ -16,6 +16,10 @@ class CreateStudentController {
 
       if (!userExist) {
         return res.status(400).json({ error: "usuário não existe" });
+      }
+
+      if (userExist.user_type !== "STUDENT") {
+        return res.status(400).json({ error: "Tipo de usuário incorreto" });
       }
 
       if (cpfCadastrado) {

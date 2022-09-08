@@ -1,24 +1,17 @@
-import InterestArea from "../../../models/InterestAreaModel";
+import Mentorship from "../../../models/MentorshipModel";
 import Student from "../../../models/StudentModel";
 
-class ShowInterestController {
-  async show(req, res) {
+class ListBuyedMentorshipController {
+  async list(req, res) {
     try {
-      const id = req.params.id;
+      const userId = req.user;
 
       const student = await Student.findOne({
         where: {
-          id,
+          user_id: userId,
         },
-        include: [
-          {
-            model: InterestArea,
-            as: "interests",
-            attributes: ["mentoring_area"],
-          },
-        ],
-
         attributes: [],
+        include: [{ model: Mentorship, as: "mentorships" }],
       });
       if (!student) {
         return res.status(401).json({ error: "Estudante não cadastrado" });
@@ -31,4 +24,4 @@ class ShowInterestController {
   }
 }
 
-export default new ShowInterestController();
+export default new ListBuyedMentorshipController();

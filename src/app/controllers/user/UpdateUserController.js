@@ -3,7 +3,7 @@ import User from "../../models/UserModel";
 class UpdateUserController {
   async update(req, res) {
     try {
-      const id = req.params.id;
+      const id = req.user;
       const { email } = req.body;
       const user = await User.findByPk(id, {
         attributes: { exclude: ["password_hash"] },

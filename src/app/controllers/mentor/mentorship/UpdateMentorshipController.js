@@ -1,8 +1,8 @@
 import Mentorship from "../../../models/MentorshipModel";
 import { Op } from "sequelize";
 import Mentor from "../../../models/MentorModel";
-class ShowMentorshipController {
-  async show(req, res) {
+class UpdateMentorshipController {
+  async update(req, res) {
     try {
       const { mentorshipId } = req.params;
       const userId = req.user;
@@ -15,6 +15,7 @@ class ShowMentorshipController {
         return res.status(401).json({ error: "Mentor não cadastrado" });
       }
       const { id } = mentor;
+      const { name, price } = req.body;
       const mentorship = await Mentorship.findOne({
         where: {
           [Op.and]: [{ id: mentorshipId }, { mentor_id: id }],
@@ -23,6 +24,11 @@ class ShowMentorshipController {
       if (!mentorship) {
         return res.status(401).json({ error: "Mentoria não encontrada" });
       }
+      mentorship.update({
+        name,
+        price,
+      });
+
       return res.status(200).json(mentorship);
     } catch (error) {
       return res.status(401).json({ error: error.message });
@@ -30,4 +36,4 @@ class ShowMentorshipController {
   }
 }
 
-export default new ShowMentorshipController();
+export default new UpdateMentorshipController();
