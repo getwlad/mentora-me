@@ -8,21 +8,25 @@ import Student from "../../models/StudentModel";
 class MatchController {
   async match(req, res) {
     try {
-      const { id } = req.params;
+      const userId = req.user;
       //Obtém todos interesses do estudante
       const { interests } = await Student.findOne({
-        where: { id: id },
+        where: {
+          user_id: userId,
+        },
         include: {
           model: InterestArea,
           as: "interests",
         },
       });
+      const { id } = student;
+
       if (!interests) {
         return res.status(401).json({
           error: "Para um match ideal, registre seus interesses",
         });
       }
-      //pega só os ids do estudante
+      //pega só os ids dos interesses do estudante
       const interestsIds = interests.map((interest) => {
         return interest.id;
       });

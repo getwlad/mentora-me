@@ -1,8 +1,16 @@
+import Mentor from "../../../models/MentorModel";
 import Mentorship from "../../../models/MentorshipModel";
 class ListMentorShipController {
   async list(req, res) {
     try {
-      const { id } = req.params;
+      const userId = req.user;
+      const mentor = await Mentor.findOne({
+        where: {
+          user_id: userId,
+        },
+      });
+      const { id } = mentor;
+
       const mentorships = await Mentorship.findAll({
         where: {
           mentor_id: id,

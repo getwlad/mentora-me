@@ -1,8 +1,16 @@
 import Particulars from "../../../models/ParticularsModel";
+import Student from "../../../models/StudentModel";
 class CreateStudentParticularsController {
   async create(req, res) {
     try {
-      const { id } = req.params;
+      const userId = req.user;
+
+      const student = await Student.findOne({
+        where: {
+          user_id: userId,
+        },
+      });
+      const { id } = student;
       const {
         extrovert,
         theory,

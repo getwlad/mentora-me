@@ -1,9 +1,17 @@
 import Mentorship from "../../../models/MentorshipModel";
 import { Op } from "sequelize";
+import Mentor from "../../../models/MentorModel";
 class UpdateMentorshipController {
   async update(req, res) {
     try {
-      const { id, mentorshipId } = req.params;
+      const { mentorshipId } = req.params;
+      const userId = req.user;
+      const mentor = await Mentor.findOne({
+        where: {
+          user_id: userId,
+        },
+      });
+      const { id } = mentor;
       const { name, price } = req.body;
       const mentorship = await Mentorship.findOne({
         where: {

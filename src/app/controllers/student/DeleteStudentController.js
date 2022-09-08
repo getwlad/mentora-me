@@ -2,9 +2,13 @@ import Student from "../../models/StudentModel";
 class DeleteStudentController {
   async delete(req, res) {
     try {
-      const id = req.params.id;
+      const userId = req.user;
 
-      const student = await Student.findByPk(id);
+      const student = await Student.findOne({
+        where: {
+          user_id: userId,
+        },
+      });
       if (!student) {
         return res.status(404).json({ Error: "Estudante não encontrado" });
       }

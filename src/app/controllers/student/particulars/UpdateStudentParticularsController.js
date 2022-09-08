@@ -2,7 +2,14 @@ import Particulars from "../../../models/ParticularsModel";
 class UpdateStudentParticularsController {
   async update(req, res) {
     try {
-      const { id } = req.params;
+      const userId = req.user;
+
+      const student = await Student.findOne({
+        where: {
+          user_id: userId,
+        },
+      });
+      const { id } = student;
       const {
         extrovert,
         theory,
