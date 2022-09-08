@@ -184,6 +184,6 @@ routes.get("/student/match", authUser, (req, res) => {
 });
 
 routes.get("*", (req, res) => {
-  res.status(404).send("Rota não encontrada");
+  res.status(404).send("Rota não encontrada, verifique a url");
 });
 export default routes;
