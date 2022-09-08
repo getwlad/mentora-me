@@ -10,7 +10,7 @@ class MatchController {
     try {
       const userId = req.user;
       //Obtém todos interesses do estudante
-      const { interests } = await Student.findOne({
+      const student = await Student.findOne({
         where: {
           user_id: userId,
         },
@@ -19,7 +19,7 @@ class MatchController {
           as: "interests",
         },
       });
-      const { id } = student;
+      const { id, interests } = student;
 
       if (!interests) {
         return res.status(401).json({
