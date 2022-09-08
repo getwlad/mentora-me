@@ -9,6 +9,9 @@ class CreateMentorParticularsController {
           user_id: userId,
         },
       });
+      if (!mentor) {
+        return res.status(401).json({ error: "Mentor não cadastrado" });
+      }
       const { id } = mentor;
       const {
         extrovert,

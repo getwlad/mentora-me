@@ -13,6 +13,9 @@ class ListBuyedMentorshipController {
         attributes: [],
         include: [{ model: Mentorship, as: "mentorships" }],
       });
+      if (!student) {
+        return res.status(401).json({ error: "Estudante não cadastrado" });
+      }
 
       return res.status(200).json(student);
     } catch (error) {

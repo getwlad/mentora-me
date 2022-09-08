@@ -19,6 +19,9 @@ class CreateMentorController {
       if (!userExist) {
         return res.status(400).json({ error: "usuário não existe" });
       }
+      if (userExist.user_type !== "MENTOR") {
+        return res.status(400).json({ error: "Tipo de usuário incorreto" });
+      }
 
       if (cnpjCadastrado) {
         return res.status(400).json({ error: "cnpj já cadastrado" });

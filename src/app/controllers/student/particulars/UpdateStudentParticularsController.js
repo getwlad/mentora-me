@@ -1,4 +1,5 @@
 import Particulars from "../../../models/ParticularsModel";
+import Student from "../../../models/StudentModel";
 class UpdateStudentParticularsController {
   async update(req, res) {
     try {
@@ -9,6 +10,9 @@ class UpdateStudentParticularsController {
           user_id: userId,
         },
       });
+      if (!student) {
+        return res.status(401).json({ error: "Estudante não cadastrado" });
+      }
       const { id } = student;
       const {
         extrovert,

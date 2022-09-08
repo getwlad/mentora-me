@@ -9,6 +9,9 @@ class ShowMentorParticularsController {
           user_id: userId,
         },
       });
+      if (!mentor) {
+        return res.status(401).json({ error: "Mentor não cadastrado" });
+      }
       const { id } = mentor;
       const particulars = await Particulars.findOne({
         where: { mentor_id: id },
