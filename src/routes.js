@@ -46,11 +46,12 @@ import BuyMentorshipController from "./app/controllers/student/mentorship/BuyMen
 import ListBuyedMentorshipController from "./app/controllers/student/mentorship/ListBuyedMentorshipController.js";
 import ListAllMentorshipController from "./app/controllers/mentorship/ListAllMentorshipController.js";
 import SessionsController from "./app/controllers/sessions/SessionsController.js";
+import AddBalanceController from "./app/controllers/wallet/balance/AddBalanceController";
+import ListBalanceController from "./app/controllers/wallet/balance/ListBalanceController";
 
 import authUser from "./middlewares/authUser.js";
 import DeleteInterestAreaController from "./app/controllers/interest/DeleteInterestAreaController.js";
-import addBalanceController from "./app/controllers/wallet/balance/addBalanceController.js";
-import ListBalanceController from "./app/controllers/wallet/balance/ListBalanceController.js";
+
 import balanceValidator from "./middlewares/balanceValidator.js";
 
 const routes = new Router();
@@ -191,7 +192,7 @@ routes.delete("/interest/:id", (req, res) => {
 
 //Wallet
 routes.post("/balance", balanceValidator, (req, res) => {
-  addBalanceController.add(req, res);
+  AddBalanceController.add(req, res);
 });
 routes.get("/balance", (req, res) => {
   ListBalanceController.list(req, res);
