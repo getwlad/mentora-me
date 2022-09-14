@@ -6,7 +6,7 @@ async function interestAreaValidator(request, response, next) {
     mentoringArea: yup
       .string()
       .required("Nome obrigatório.")
-      .matches(regex.validString, "Área de mentoria inválida."),
+
   });
 
   await schema

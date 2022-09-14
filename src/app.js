@@ -1,12 +1,15 @@
 import express from "express";
 import routes from "./routes.js";
 import db from "./database/index";
+import swaggerUi from "swagger-ui-express";
+import swaggerDocument from "../swagger.json";
 
 class App {
   constructor() {
     this.server = express();
     this.initializeDB();
     this.middlewares();
+    this.document();
     this.routes();
   }
   middlewares() {
@@ -27,6 +30,13 @@ class App {
   }
   routes() {
     this.server.use(routes);
+  }
+  document() {
+    this.server.use(
+      "/documentation",
+      swaggerUi.serve,
+      swaggerUi.setup(swaggerDocument)
+    );
   }
   async initializeDB() {
     try {
