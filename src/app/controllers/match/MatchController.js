@@ -40,7 +40,7 @@ class MatchController {
         include: [
           {
             model: Mentorship,
-            attributes: ["name", "price"],
+            attributes: ["id", "name", "price"],
           },
         ],
       });
