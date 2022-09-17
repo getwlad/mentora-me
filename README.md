@@ -1,10 +1,10 @@
 # mentora-me
 
-## Conteúdo
+## Índice
 
 - [Sobre o Projeto](#sobre-o-projeto)
-- [Documentação](#documentacao)
-- [Instalação](#instalacao)
+- [Documentação](#documentação)
+- [Instalação](#instalação)
 - [Uso da API](#uso-da-api)
 - [Tecnologias e Recursos](#tecnologias-e-recursos-utilizados)
 - [Equipe](#equipe)
@@ -25,7 +25,7 @@ Dessa maneira, a _Mentora-me_ é uma plataforma desenvolvida para auxiliar indiv
 
 Utilize o _mentora-me_ localmente com o npm.
 
-```
+```bash
   git clone git@github.com:getwlad/mentora-me.git
   cd mentora-me
   npm i
@@ -119,4 +119,4 @@ Retorna o mentor com mais compatibilidade.
 
 ![BuiltWith](https://ForTheBadge.com/images/badges/built-with-love.svg)
 
-**[⬆ voltar ao início](#conteudo)**
+**[⬆ voltar ao início](#índice)**
