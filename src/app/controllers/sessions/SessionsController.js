@@ -6,7 +6,7 @@ class SessionsController {
   async create(req, res) {
     const { email, password } = req.body;
     if (!email || !password) {
-      return res.status(400).json("Insira um email e senha");
+      return res.status(400).json({ error: "Insira um email e senha" });
     }
     const user = await User.findOne({
       where: {
@@ -14,10 +14,10 @@ class SessionsController {
       },
     });
     if (!user) {
-      return res.status(404).json("Usuário não encontrado");
+      return res.status(404).json({ error: "Usuário não encontrado" });
     }
     if (!(await user.checkPassword(password))) {
-      return res.status(400).json("Usuário não autorizado");
+      return res.status(400).json({ error: "Usuário não autorizado" });
     }
     const { id } = user;
     return res.json({
