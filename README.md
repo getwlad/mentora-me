@@ -100,23 +100,24 @@ Retorna o mentor com mais compatibilidade.
 ![Express](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
 ![MySQL](https://img.shields.io/badge/MySQL-00000F?style=for-the-badge&logo=mysql&logoColor=white)
 ![Sequelize](https://img.shields.io/badge/Sequelize-52B0E7?style=for-the-badge&logo=Sequelize&logoColor=white)
+![JWT](https://img.shields.io/badge/JWT-black?style=for-the-badge&logo=JSON%20web%20tokens)
 ![Heroku](https://img.shields.io/badge/Heroku-430098?style=for-the-badge&logo=heroku&logoColor=white)
 ![Git](https://img.shields.io/badge/GIT-E44C30?style=for-the-badge&logo=git&logoColor=white)
 ![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)
 
 ## Equipe
 
-- Ludmila
-  - [Email](mailto:ghansth@gmail.com) | [Github](https://github.com/ludmila-chagas) | [LinkedIn](https://www.linkedin.com/in/thayna-rdg/)
-- Thayná
-  - [Email](mailto:thna.rdg@gmail.com) | [Github](https://github.com/thnardg) | [LinkedIn](https://www.linkedin.com/in/ludmila-chagas-273548187/)
-- Wladmir
+- **Ludmila**
+  - [Email](mailto:ghansth@gmail.com) | [Github](https://github.com/ludmila-chagas) | [LinkedIn](https://www.linkedin.com/in/ludmila-chagas-273548187/)
+- **Thayná**
+  - [Email](mailto:thna.rdg@gmail.com) | [Github](https://github.com/thnardg) | [LinkedIn](https://www.linkedin.com/in/thayna-rdg/)
+- **Wladmir**
   - [Email](mailto:wladmcd@gmail.com) | [Github](https://github.com/getwlad) | [LinkedIn](https://www.linkedin.com/in/wladmir-rodrigues/)
 
 ## Agradecimentos
 
-[iFood](https://institucional.ifood.com.br/?utm_source=site_ifood) | [Digital House](https://www.digitalhouse.com/br) | [Potência Tech](https://potenciatech.com.br/)
+[**iFood**](https://institucional.ifood.com.br/?utm_source=site_ifood) | [**Digital House**](https://www.digitalhouse.com/br) | [**Potência Tech**](https://potenciatech.com.br/)
 
 ![BuiltWith](https://ForTheBadge.com/images/badges/built-with-love.svg)
 
-**[⬆ voltar ao início](#índice)**
+**[⬆ voltar ao início](#mentora-me)**
