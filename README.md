@@ -1,27 +1,27 @@
 # mentora-me
 
-## [Conteúdo](#Conteudo)
+## Conteúdo
 
-- [Sobre o Projeto](#Sobre)
-- [Documentação](#Documentacao)
-- [Instalação](#Instalacao)
-- [Uso da API](#Uso)
-- [Tecnologias e Recursos](#Tecnologias)
-- [Equipe](#Equipe)
-- [Agradecimentos](#Agradecimentos)
+- [Sobre o Projeto](#sobre-o-projeto)
+- [Documentação](#documentacao)
+- [Instalação](#instalacao)
+- [Uso da API](#uso-da-api)
+- [Tecnologias e Recursos](#tecnologias-e-recursos-utilizados)
+- [Equipe](#equipe)
+- [Agradecimentos](#agradecimentos)
 
-## [Sobre o projeto](#Sobre)
+## Sobre o projeto
 
 **Projeto Integrador** do curso de back-end da [Digital House](https://www.digitalhouse.com/br) em parceria com o iFood através do Potência Tech.
 
 Esta API tem como objetivo atender a requisições em um sistema que fará a conexão entre alunos e mentores através de um _match_ (combinação) que leva em consideração os interesses do cliente/aluno e retorna as informações do profissional/mentor mais adequado para seu perfil.
 Dessa maneira, a _Mentora-me_ é uma plataforma desenvolvida para auxiliar indivíduos que buscam praticidade e a melhor solução para o crescimento em suas carreiras.
 
-## [Documentação](#Documentacao)
+## Documentação
 
 - [Mentora-me](https://mentora-me.herokuapp.com/documentation/)
 
-## [Instalação](#Instalacao)
+## Instalação
 
 Utilize o _mentora-me_ localmente com o npm.
 
@@ -35,7 +35,7 @@ Utilize o _mentora-me_ localmente com o npm.
   npm start
 ```
 
-## [Uso da API](#Uso)
+## Uso da API
 
 #### Criar um novo usuário (ex.: Student):
 
@@ -93,7 +93,7 @@ Valores de 1 a 3 para determinar o quanto cada característica deve ser prioriza
 
 Retorna o mentor com mais compatibilidade.
 
-## [Tecnologias e Recursos Utilizados](#Tecnologias)
+## Tecnologias e Recursos Utilizados
 
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 ![Nodejs](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)
@@ -104,7 +104,7 @@ Retorna o mentor com mais compatibilidade.
 ![Git](https://img.shields.io/badge/GIT-E44C30?style=for-the-badge&logo=git&logoColor=white)
 ![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)
 
-## [Equipe](#Equipe)
+## Equipe
 
 - Ludmila
   - [Email](mailto:ghansth@gmail.com) | [Github](https://github.com/ludmila-chagas) | [LinkedIn](https://www.linkedin.com/in/thayna-rdg/)
@@ -113,10 +113,10 @@ Retorna o mentor com mais compatibilidade.
 - Wladmir
   - [Email](mailto:wladmcd@gmail.com) | [Github](https://github.com/getwlad) | [LinkedIn](https://www.linkedin.com/in/wladmir-rodrigues/)
 
-## [Agradecimentos](#Agradecimentos)
+## Agradecimentos
 
 [iFood](https://institucional.ifood.com.br/?utm_source=site_ifood) | [Digital House](https://www.digitalhouse.com/br) | [Potência Tech](https://potenciatech.com.br/)
 
 ![BuiltWith](https://ForTheBadge.com/images/badges/built-with-love.svg)
 
-**[⬆ voltar ao início](#Conteudo)**
+**[⬆ voltar ao início](#conteudo)**
