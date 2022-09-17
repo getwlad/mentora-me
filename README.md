@@ -27,7 +27,7 @@ Utilize o _mentora-me_ localmente com o npm.
 #### Criar um novo usuário (ex.: Student):
 
 ```
-  POST /user/
+  /user/
 ```
 
 | Parametro   | Tipo     | Descrição                                        |
