@@ -15,7 +15,7 @@ Dessa maneira, a _Mentora-me_ é uma plataforma desenvolvida para auxiliar indiv
 
 Utilize o _mentora-me_ localmente com o npm.
 
-```bash
+```
   git clone git@github.com:getwlad/mentora-me.git
   npm i
   cd mentora-me
@@ -26,7 +26,7 @@ Utilize o _mentora-me_ localmente com o npm.
 
 #### Criar um novo usuário (ex.: Student):
 
-```http
+```
   POST /user/
 ```
 
@@ -38,7 +38,7 @@ Utilize o _mentora-me_ localmente com o npm.
 
 #### Cadastro do aluno:
 
-```http
+```
   POST /student/
 ```
 
@@ -50,7 +50,7 @@ Utilize o _mentora-me_ localmente com o npm.
 
 #### Cadastro da Área de Interesse:
 
-```http
+```
   POST /student/interest
 ```
 
@@ -60,7 +60,7 @@ Utilize o _mentora-me_ localmente com o npm.
 
 #### Cadastro das caracteristicas do aluno:
 
-```http
+```
   POST /student/particulars
 ```
 
@@ -74,7 +74,7 @@ Valores de 1 a 3 para determinar o quanto cada característica deve ser prioriza
 
 #### Match:
 
-```http
+```
   GET student/match/
 ```
 
