@@ -1,6 +1,7 @@
 import { Op } from "sequelize";
 import Student from "../../models/StudentModel";
 import InterestArea from "../../models/InterestAreaModel";
+import { parseISO } from "date-fns";
 class ListStudentService {
   async list(
     name,
@@ -53,7 +54,7 @@ class ListStudentService {
     if (createdBefore) {
       where = {
         ...where,
-        createdBefore: {
+        created_at: {
           [Op.gte]: parseISO(createdBefore),
         },
       };
@@ -62,7 +63,7 @@ class ListStudentService {
     if (createdAfter) {
       where = {
         ...where,
-        createdAfter: {
+        created_at: {
           [Op.lte]: parseISO(createdAfter),
         },
       };
@@ -71,7 +72,7 @@ class ListStudentService {
     if (updatedBefore) {
       where = {
         ...where,
-        updatedBefore: {
+        updated_at: {
           [Op.gte]: parseISO(updatedBefore),
         },
       };
@@ -80,7 +81,7 @@ class ListStudentService {
     if (updatedAfter) {
       where = {
         ...where,
-        updatedAfter: {
+        updated_at: {
           [Op.lte]: parseISO(updatedAfter),
         },
       };

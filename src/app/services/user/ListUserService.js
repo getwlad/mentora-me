@@ -1,4 +1,5 @@
 import { Op } from "sequelize";
+import { parseISO } from "date-fns";
 import User from "../../models/UserModel";
 class ListUserService {
   async list(
@@ -25,7 +26,7 @@ class ListUserService {
     if (createdBefore) {
       where = {
         ...where,
-        createdBefore: {
+        created_at: {
           [Op.gte]: parseISO(createdBefore),
         },
       };
@@ -34,7 +35,7 @@ class ListUserService {
     if (createdAfter) {
       where = {
         ...where,
-        createdAfter: {
+        created_at: {
           [Op.lte]: parseISO(createdAfter),
         },
       };
@@ -43,7 +44,7 @@ class ListUserService {
     if (updatedBefore) {
       where = {
         ...where,
-        updatedBefore: {
+        updated_at: {
           [Op.gte]: parseISO(updatedBefore),
         },
       };
@@ -52,7 +53,7 @@ class ListUserService {
     if (updatedAfter) {
       where = {
         ...where,
-        updatedAfter: {
+        updated_at: {
           [Op.lte]: parseISO(updatedAfter),
         },
       };
@@ -72,7 +73,7 @@ class ListUserService {
 
       return data;
     } catch (err) {
-      return { erro: error.message };
+      return { erro: err.message };
     }
   }
 }

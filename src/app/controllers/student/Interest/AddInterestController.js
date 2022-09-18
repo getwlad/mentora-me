@@ -14,20 +14,25 @@ class AddInterestController {
         return res.status(401).json({ error: "Estudante não cadastrado" });
       }
       const { mentoringArea } = req.body;
+      if (mentoringArea === null) {
+        return res.status(400).json({ error: "Área de interesse inválida." });
+      }
 
       const areas = await ListInterestService.list();
+
       let interestArea;
 
       //Percorre o array de areas de mentoria e se encontrar uma igual a adicionada ele adiciona ao estudante
-      areas.map((area) => {
+      for (let area of areas) {
         if (area.mentoring_area === mentoringArea) {
-          student.addInterest(area.id);
+          await student.addInterest(area.id);
           interestArea = area.mentoring_area;
         }
-      });
+      }
+
       if (!interestArea) {
         return res
-          .status(401)
+          .status(400)
           .json({ error: "Area de Mentoria não encontrada" });
       }
 

@@ -16,13 +16,9 @@ class UpdateUserController {
           });
 
           if (userEmail) {
-            return res.status(400).json({ erro: "email já cadastrado" });
+            return res.status(400).json({ error: "email já cadastrado" });
           }
         }
-      }
-
-      if (!user) {
-        return res.status(404).json({ Error: "Usuário não encontrado" });
       }
 
       const { user_type, createdAt, updatedAt } = await user.update(req.body);

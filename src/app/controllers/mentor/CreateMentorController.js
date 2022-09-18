@@ -32,7 +32,7 @@ class CreateMentorController {
       }
       const areas = await ListInterestService.list();
       let interestAreaId;
-      //Percorre o array de areas de mentoria e se encontrar uma igual a adicionada ele adiciona ao estudante
+      //Percorre o array de areas de mentoria e se encontrar uma igual a adicionada ele adiciona ao mentor
       areas.map((area) => {
         if (area.mentoring_area === mentoringArea) {
           interestAreaId = area.id;

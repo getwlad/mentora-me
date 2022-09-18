@@ -130,10 +130,10 @@ routes.delete("/student/", (req, res) =>
   DeleteStudentController.delete(req, res)
 );
 
-routes.post("/student/interest", (req, res) => {
+routes.post("/student/interest", interestAreaValidator, (req, res) => {
   AddInterestController.add(req, res);
 });
-routes.delete("/student/interest", (req, res) => {
+routes.delete("/student/interest", interestAreaValidator, (req, res) => {
   DeleteInterestController.delete(req, res);
 });
 
