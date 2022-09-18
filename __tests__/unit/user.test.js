@@ -17,8 +17,16 @@ describe("User", () => {
     await destroyModelData();
   });
 
-  it("should create user", async () => {
+  it("should create user with student type", async () => {
     const response = await server.post("/user").send(data);
+    const { body } = response;
+    expect(body).toHaveProperty("id");
+    expect(body.email).toBe(data.email);
+  });
+  it("should create user with mentor type", async () => {
+    const response = await server
+      .post("/user")
+      .send({ ...data, user_type: "MENTOR" });
     const { body } = response;
     expect(body).toHaveProperty("id");
     expect(body.email).toBe(data.email);

@@ -141,7 +141,7 @@ routes.post("/student/particulars", particularsValidator, (req, res) => {
   CreateStudentParticularsController.create(req, res);
 });
 
-routes.put("/student/particulars", (req, res) => {
+routes.put("/student/particulars", particularsValidator, (req, res) => {
   UpdateStudentParticularsController.update(req, res);
 });
 
