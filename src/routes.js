@@ -62,10 +62,7 @@ routes.get("/user/", (req, res) => {
   ListUserController.list(req, res);
   //#swagger.tags = ["User"]
 });
-routes.get("/user/:id/show", (req, res) => {
-  ShowUserController.show(req, res);
-  //#swagger.tags = ["User"]
-});
+
 routes.post("/user/login/", (req, res) => {
   SessionsController.create(req, res);
   //#swagger.tags = ["User"]
@@ -78,25 +75,12 @@ routes.post(
 );
 //Student
 routes.get("/student", (req, res) => ListStudentController.list(req, res));
-routes.get("/student/:id/interest", (req, res) => {
-  ShowInterestController.show(req, res);
-});
-routes.get("/student/:id/show", (req, res) =>
-  ShowStudentController.show(req, res)
-);
-routes.get("/student/:id/particulars", (req, res) => {
-  ShowStudentParticularsController.show(req, res);
-});
+
 //Mentor
 routes.get("/mentor", (req, res) => ListMentorController.list(req, res));
-routes.get("/mentor/:id/show", (req, res) =>
-  ShowMentorController.show(req, res)
-);
+
 routes.get("/mentor/mentorship", (req, res) => {
   ListMentorshipController.list(req, res);
-});
-routes.get("/mentor/mentorship/:mentorshipId", (req, res) => {
-  ShowMentorshipController.show(req, res);
 });
 routes.get("/mentor/particulars", (req, res) => {
   ShowMentorParticularsController.show(req, res);
@@ -108,7 +92,12 @@ routes.get("/mentorships", (req, res) => {
 routes.get("/interest", (req, res) => {
   ListInterestAreaController.list(req, res);
 });
-
+routes.get("/mentor/mentorship/:mentorshipId", (req, res) => {
+  ShowMentorshipController.show(req, res);
+});
+routes.get("/mentor/:id/show", (req, res) =>
+  ShowMentorController.show(req, res)
+);
 //Autenticacao
 routes.use(authUser);
 
@@ -117,6 +106,10 @@ routes.put("/user/", userValidator, (req, res) =>
   UpdateUserController.update(req, res)
 );
 routes.delete("/user/", (req, res) => DeleteUserController.delete(req, res));
+routes.get("/user/show/", (req, res) => {
+  ShowUserController.show(req, res);
+  //#swagger.tags = ["User"]
+});
 
 //Rotas Student
 
@@ -129,6 +122,13 @@ routes.put("/student/", studentValidator, (req, res) =>
 routes.delete("/student/", (req, res) =>
   DeleteStudentController.delete(req, res)
 );
+routes.get("/student/interest", (req, res) => {
+  ShowInterestController.show(req, res);
+});
+routes.get("/student/show", (req, res) => ShowStudentController.show(req, res));
+routes.get("/student/particulars", (req, res) => {
+  ShowStudentParticularsController.show(req, res);
+});
 
 routes.post("/student/interest", interestAreaValidator, (req, res) => {
   AddInterestController.add(req, res);

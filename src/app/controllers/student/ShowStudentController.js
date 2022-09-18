@@ -4,10 +4,11 @@ import Student from "../../models/StudentModel";
 class ShowStudentController {
   async show(req, res) {
     try {
-      const id = req.params.id;
+      const userId = req.user;
+
       const student = await Student.findOne({
         where: {
-          id,
+          user_id: userId,
         },
 
         include: {

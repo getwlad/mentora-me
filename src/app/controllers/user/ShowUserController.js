@@ -2,7 +2,7 @@ import User from "../../models/UserModel";
 class ShowUserController {
   async show(req, res) {
     try {
-      const id = req.params.id;
+      const id = req.user;
       const user = await User.findByPk(id, {
         attributes: { exclude: ["password_hash"] },
       });

@@ -4,18 +4,14 @@ class AddInterestController {
   async add(req, res) {
     try {
       const userId = req.user;
-
+      const { mentoringArea } = req.body;
       const student = await Student.findOne({
         where: {
           user_id: userId,
         },
       });
       if (!student) {
-        return res.status(401).json({ error: "Estudante não cadastrado" });
-      }
-      const { mentoringArea } = req.body;
-      if (mentoringArea === null) {
-        return res.status(400).json({ error: "Área de interesse inválida." });
+        return res.status(404).json({ error: "Estudante não cadastrado" });
       }
 
       const areas = await ListInterestService.list();
@@ -32,7 +28,7 @@ class AddInterestController {
 
       if (!interestArea) {
         return res
-          .status(400)
+          .status(404)
           .json({ error: "Area de Mentoria não encontrada" });
       }
 

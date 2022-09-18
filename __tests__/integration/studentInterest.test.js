@@ -36,7 +36,7 @@ describe("Student Interest", () => {
       .set("Authorization", "bearer " + token)
       .send(interest);
   });
-  it("should create a student intrest with valid data", async () => {
+  it("should create a student interest with valid data", async () => {
     const res = await server
       .post("/student/interest")
       .set("Authorization", "bearer " + token)
@@ -46,13 +46,115 @@ describe("Student Interest", () => {
     expect(res._body).toHaveProperty("mentoringArea");
     expect(res._body.mentoringArea).toBe(interest.mentoringArea);
   });
-  it("should not create a student intrest with invalid interest area", async () => {
+  it("should not create a student interest with invalid data", async () => {
     const res = await server
       .post("/student/interest")
       .set("Authorization", "bearer " + token)
-      .send({ mentoringArea: "null" })
+      .send({ mentoringArea: null })
       .expect(400);
 
+    expect(res._body).toHaveProperty("error");
+  });
+  it("should not create a student interest with interest area not registered", async () => {
+    const res = await server
+      .post("/student/interest")
+      .set("Authorization", "bearer " + token)
+      .send({ mentoringArea: "teste" })
+      .expect(404);
+
+    expect(res._body).toHaveProperty("error");
+  });
+  it("should not create a student interest with student  not registered", async () => {
+    await server
+      .post("/user")
+      .send({ ...data, email: "teste2@gmail.com" })
+      .expect(200);
+    const loginRes = await server
+      .post("/user/login")
+      .send({ ...data, email: "teste2@gmail.com" })
+      .expect(200);
+    const iToken = loginRes._body.token;
+    const res = await server
+      .post("/student/interest")
+      .set("Authorization", "bearer " + iToken)
+      .send(interest)
+      .expect(404);
+
+    expect(res._body).toHaveProperty("error");
+  });
+  it("should not delete a student interest with student  not registered", async () => {
+    await server
+      .post("/user")
+      .send({ ...data, email: "teste2@gmail.com" })
+      .expect(200);
+    const loginRes = await server
+      .post("/user/login")
+      .send({ ...data, email: "teste2@gmail.com" })
+      .expect(200);
+    const iToken = loginRes._body.token;
+    const res = await server
+      .delete("/student/interest")
+      .set("Authorization", "bearer " + iToken)
+      .send(interest)
+      .expect(404);
+
+    expect(res._body).toHaveProperty("error");
+  });
+  it("should delete a student interest with valid data", async () => {
+    await server
+      .post("/student/interest")
+      .set("Authorization", "bearer " + token)
+      .send(interest)
+      .expect(200);
+    const res = await server
+      .delete("/student/interest")
+      .set("Authorization", "bearer " + token)
+      .send(interest)
+      .expect(200);
+    expect(res._body).toHaveProperty("message");
+  });
+  it("should not delete a student interest with student  interest not registered", async () => {
+    const res = await server
+      .delete("/student/interest")
+      .set("Authorization", "bearer " + token)
+      .send({ mentoringArea: "not exist" })
+      .expect(404);
+
+    expect(res._body).toHaveProperty("error");
+  });
+  it("should show student interest", async () => {
+    await server
+      .post("/student/interest")
+      .set("Authorization", "bearer " + token)
+      .send(interest)
+      .expect(200);
+    const res = await server
+      .get("/student/interest")
+      .set("Authorization", "bearer " + token)
+      .expect(200);
+    expect(res._body).toHaveProperty("interests");
+  });
+  it("should get erro when try to show interest not registered", async () => {
+    const res = await server
+      .get("/student/interest")
+      .set("Authorization", "bearer " + token)
+      .expect(404);
+    expect(res._body).toHaveProperty("error");
+  });
+  it("should get erro when try to show student not registered", async () => {
+    await server
+      .post("/user")
+      .send({ ...data, email: "teste2@gmail.com" })
+      .expect(200);
+    const loginRes = await server
+      .post("/user/login")
+      .send({ ...data, email: "teste2@gmail.com" })
+      .expect(200);
+    const iToken = loginRes._body.token;
+    const res = await server
+      .get("/student/interest")
+      .set("Authorization", "bearer " + iToken)
+      .expect(404);
     expect(res._body).toHaveProperty("error");
   });
 });

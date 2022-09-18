@@ -124,9 +124,13 @@ describe("User", () => {
     expect(result).toBe(true);
   });
   it("should  able to get one  user", async () => {
-    const res = await server.post("/user").send(data).expect(200);
-    const newRoute = `/user/${res._body.id}/show`;
-    const resUser = await server.get(newRoute).expect(200);
+    await server.post("/user").send(data).expect(200);
+    const loginRes = await server.post("/user/login/").send(data).expect(200);
+    const token = loginRes._body.token;
+    const resUser = await server
+      .get("/user/show/")
+      .set("Authorization", "bearer " + token)
+      .expect(200);
     expect(resUser._body).toHaveProperty("id");
   });
   it("should  able to  update a  user", async () => {

@@ -150,13 +150,18 @@ describe("Student", () => {
       .set("Authorization", "bearer " + token)
       .send(studentData)
       .expect(200);
-    const newRoute = `/student/${res._body.id}/show`;
-    const resUser = await server.get(newRoute).expect(200);
+
+    const resUser = await server
+      .get("/student/show")
+      .set("Authorization", "bearer " + token)
+      .expect(200);
     expect(resUser._body).toHaveProperty("id");
   });
   it("should  get error when show a student that not exist ", async () => {
-    const newRoute = `/student/1}/show`;
-    const resUser = await server.get(newRoute).expect(404);
+    const resUser = await server
+      .get("/student/show")
+      .set("Authorization", "bearer " + token)
+      .expect(404);
     expect(resUser._body).toHaveProperty("error");
   });
   it("should update a student details", async () => {
