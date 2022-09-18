@@ -1,0 +1,1706 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Mentora",
+    "contact": {},
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "https://mentora-me.herokuapp.com",
+      "variables": {}
+    },
+    {
+      "url": "http://localhost:3001",
+      "variables": {}
+    }
+  ],
+  "paths": {
+    "/balance": {
+      "get": {
+        "tags": ["UserBalance"],
+        "summary": "ShowBalance",
+        "operationId": "ShowBalance",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": ["UserBalance"],
+        "summary": "AddBalance",
+        "operationId": "AddBalance",
+        "parameters": [],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/AddBalanceRequest"
+                  },
+                  {
+                    "example": {
+                      "holderName": "Example Example",
+                      "amount": 1200,
+                      "number": 4000000000000010,
+                      "expMonth": 12,
+                      "expYear": 25,
+                      "cvv": 234
+                    }
+                  }
+                ]
+              },
+              "example": {
+                "holderName": "Example Example",
+                "amount": 1200,
+                "number": 4000000000000010,
+                "expMonth": 12,
+                "expYear": 25,
+                "cvv": 234
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/user/login": {
+      "post": {
+        "tags": ["User"],
+        "summary": "Login",
+        "operationId": "Login",
+        "parameters": [],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/LoginRequest"
+                  },
+                  {
+                    "example": {
+                      "email": "example@gmail.com",
+                      "password": "1234567A"
+                    }
+                  }
+                ]
+              },
+              "example": {
+                "email": "example@gmail.com",
+                "password": "1234567A"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/user": {
+      "get": {
+        "tags": ["User"],
+        "summary": "List",
+        "operationId": "List",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      },
+      "post": {
+        "tags": ["User"],
+        "summary": "Create",
+        "operationId": "Create",
+        "parameters": [],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CreateRequest"
+                  },
+                  {
+                    "example": {
+                      "email": "example@example.com",
+                      "password": "1234567A",
+                      "user_type": "STUDENT"
+                    }
+                  }
+                ]
+              },
+              "example": {
+                "email": "example@example.com",
+                "password": "1234567A",
+                "user_type": "STUDENT"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      },
+      "put": {
+        "tags": ["User"],
+        "summary": "Update",
+        "operationId": "Update",
+        "parameters": [],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/UpdateRequest"
+                  },
+                  {
+                    "example": {
+                      "email": "wladmirr@gmail.com",
+                      "password": "1234567A"
+                    }
+                  }
+                ]
+              },
+              "example": {
+                "email": "wladmirr@gmail.com",
+                "password": "1234567A"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": ["User"],
+        "summary": "Delete",
+        "operationId": "Delete",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/user/{id}/show": {
+      "get": {
+        "tags": ["User"],
+        "summary": "Show",
+        "operationId": "Show",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/student/match": {
+      "get": {
+        "tags": ["Match"],
+        "summary": "Match",
+        "operationId": "Match",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/student/particulars": {
+      "post": {
+        "tags": ["StudentParticulars"],
+        "summary": "CreateStudentParticulars",
+        "operationId": "CreateStudentParticulars",
+        "parameters": [],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CreateStudentParticularsRequest"
+                  },
+                  {
+                    "example": {
+                      "extrovert": "2",
+                      "theory": "2",
+                      "practice": "3",
+                      "mentoringInGroup": "2",
+                      "mentoringIndividual": "2",
+                      "libras": "1",
+                      "minorityGroups": "1"
+                    }
+                  }
+                ]
+              },
+              "example": {
+                "extrovert": "2",
+                "theory": "2",
+                "practice": "3",
+                "mentoringInGroup": "2",
+                "mentoringIndividual": "2",
+                "libras": "1",
+                "minorityGroups": "1"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "put": {
+        "tags": ["StudentParticulars"],
+        "summary": "UpdateStudentParticulars",
+        "operationId": "UpdateStudentParticulars",
+        "parameters": [],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/UpdateStudentParticularsRequest"
+                  },
+                  {
+                    "example": {
+                      "extrovert": "2",
+                      "theory": "3",
+                      "practice": "2",
+                      "mentoringInGroup": "1",
+                      "mentoringIndividual": "2",
+                      "libras": "2",
+                      "minorityGroups": "2"
+                    }
+                  }
+                ]
+              },
+              "example": {
+                "extrovert": "2",
+                "theory": "3",
+                "practice": "2",
+                "mentoringInGroup": "1",
+                "mentoringIndividual": "2",
+                "libras": "2",
+                "minorityGroups": "2"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/student/{id}/particulars": {
+      "get": {
+        "tags": ["StudentParticulars"],
+        "summary": "ShowStudentParticulars",
+        "operationId": "ShowStudentParticulars",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/student/interest": {
+      "post": {
+        "tags": ["StudentInterest"],
+        "summary": "AddStudentInterest",
+        "operationId": "AddStudentInterest",
+        "parameters": [],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/AddStudentInterestRequest"
+                  },
+                  {
+                    "example": {
+                      "mentoringArea": "BANCO DE DADOS"
+                    }
+                  }
+                ]
+              },
+              "example": {
+                "mentoringArea": "BANCO DE DADOS"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": ["StudentInterest"],
+        "summary": "DeleteStudentInterest",
+        "operationId": "DeleteStudentInterest",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/student/{id}/interest": {
+      "get": {
+        "tags": ["StudentInterest"],
+        "summary": "ShowStudentInterest",
+        "operationId": "ShowStudentInterest",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/student/mentorship": {
+      "get": {
+        "tags": ["StudentMentorships"],
+        "summary": "ListMentorship",
+        "operationId": "ListMentorship",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/student/buymentorship": {
+      "post": {
+        "tags": ["StudentMentorships"],
+        "summary": "BuyMentorship",
+        "operationId": "BuyMentorship",
+        "parameters": [],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/BuyMentorshipRequest"
+                  },
+                  {
+                    "example": {
+                      "mentoringId": "80f84e42-13fd-46a2-bb8a-ad7fb22358f8"
+                    }
+                  }
+                ]
+              },
+              "example": {
+                "mentoringId": "80f84e42-13fd-46a2-bb8a-ad7fb22358f8"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/student": {
+      "get": {
+        "tags": ["Student"],
+        "summary": "ListStudent",
+        "operationId": "ListStudent",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      },
+      "post": {
+        "tags": ["Student"],
+        "summary": "CreateStudent",
+        "operationId": "CreateStudent",
+        "parameters": [],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CreateStudentRequest"
+                  },
+                  {
+                    "example": {
+                      "name": "Example Example",
+                      "cpf": "12354759513",
+                      "phone": "+5562999626269"
+                    }
+                  }
+                ]
+              },
+              "example": {
+                "name": "Example Example",
+                "cpf": "12354759513",
+                "phone": "+5562999626269"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "put": {
+        "tags": ["Student"],
+        "summary": "UpdateStudent",
+        "operationId": "UpdateStudent",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": ["Student"],
+        "summary": "DeleteStudent",
+        "operationId": "DeleteStudent",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/student/{id}/show": {
+      "get": {
+        "tags": ["Student"],
+        "summary": "ShowStudent",
+        "operationId": "ShowStudent",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/mentor/particulars": {
+      "post": {
+        "tags": ["MentorParticulars"],
+        "summary": "CreateMentorParticulars",
+        "operationId": "CreateMentorParticulars",
+        "parameters": [],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CreateMentorParticularsRequest"
+                  },
+                  {
+                    "example": {
+                      "extrovert": "2",
+                      "theory": "2",
+                      "practice": "3",
+                      "mentoringInGroup": "2",
+                      "mentoringIndividual": "2",
+                      "libras": "1",
+                      "minorityGroups": "1"
+                    }
+                  }
+                ]
+              },
+              "example": {
+                "extrovert": "2",
+                "theory": "2",
+                "practice": "3",
+                "mentoringInGroup": "2",
+                "mentoringIndividual": "2",
+                "libras": "1",
+                "minorityGroups": "1"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "put": {
+        "tags": ["MentorParticulars"],
+        "summary": "UpdateMentorParticulars",
+        "operationId": "UpdateMentorParticulars",
+        "parameters": [],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/UpdateMentorParticularsRequest"
+                  },
+                  {
+                    "example": {
+                      "extrovert": "2",
+                      "theory": "3",
+                      "practice": "2",
+                      "mentoringInGroup": "1",
+                      "mentoringIndividual": "2",
+                      "libras": "2",
+                      "minorityGroups": "2"
+                    }
+                  }
+                ]
+              },
+              "example": {
+                "extrovert": "2",
+                "theory": "3",
+                "practice": "2",
+                "mentoringInGroup": "1",
+                "mentoringIndividual": "2",
+                "libras": "2",
+                "minorityGroups": "2"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "get": {
+        "tags": ["MentorParticulars"],
+        "summary": "ShowMentorParticulars",
+        "operationId": "ShowMentorParticulars",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/mentor/mentorship": {
+      "get": {
+        "tags": ["MentorMentorships"],
+        "summary": "ListMentorship",
+        "operationId": "GetListMentorship",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      },
+      "post": {
+        "tags": ["MentorMentorships"],
+        "summary": "CreateMentorship",
+        "operationId": "CreateMentorship",
+        "parameters": [],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CreateMentorshipRequest"
+                  },
+                  {
+                    "example": {
+                      "name": "JavaScript - Melhorando o seu código",
+                      "price": 49.99
+                    }
+                  }
+                ]
+              },
+              "example": {
+                "name": "JavaScript - Melhorando o seu código",
+                "price": 49.99
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/mentor/mentorship/{id}": {
+      "get": {
+        "tags": ["MentorMentorships"],
+        "summary": "ShowMentorship",
+        "operationId": "ShowMentorship",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "put": {
+        "tags": ["MentorMentorships"],
+        "summary": "UpdateMentorship",
+        "operationId": "UpdateMentorship",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": ["MentorMentorships"],
+        "summary": "DeleteMentorship",
+        "operationId": "DeleteMentorship",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/mentor": {
+      "get": {
+        "tags": ["Mentor"],
+        "summary": "ListMentor",
+        "operationId": "ListMentor",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      },
+      "post": {
+        "tags": ["Mentor"],
+        "summary": "CreateMentor",
+        "operationId": "CreateMentor",
+        "parameters": [],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CreateMentorRequest"
+                  },
+                  {
+                    "example": {
+                      "name": "Joao",
+                      "chavePix": "24535112333",
+                      "phone": "+5562889646868",
+                      "publicEmail": "joao@gmail.com",
+                      "cnpj": "12111668910",
+                      "mentoringArea": "PROGRAMAÇÃO"
+                    }
+                  }
+                ]
+              },
+              "example": {
+                "name": "Joao",
+                "chavePix": "24535112333",
+                "phone": "+5562889646868",
+                "publicEmail": "joao@gmail.com",
+                "cnpj": "12111668910",
+                "mentoringArea": "PROGRAMAÇÃO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "put": {
+        "tags": ["Mentor"],
+        "summary": "UpdateMentor",
+        "operationId": "UpdateMentor",
+        "parameters": [],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/UpdateMentorRequest"
+                  },
+                  {
+                    "example": {
+                      "name": "Joao das Neves",
+                      "chavePix": "24535112333",
+                      "phone": "+5562889646868",
+                      "publicEmail": "joao@gmail.com",
+                      "cnpj": "12111668910",
+                      "mentoringArea": "PROGRAMAÇÃO"
+                    }
+                  }
+                ]
+              },
+              "example": {
+                "name": "Joao das Neves",
+                "chavePix": "24535112333",
+                "phone": "+5562889646868",
+                "publicEmail": "joao@gmail.com",
+                "cnpj": "12111668910",
+                "mentoringArea": "PROGRAMAÇÃO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": ["Mentor"],
+        "summary": "DeleteMentor",
+        "operationId": "DeleteMentor",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/mentor/{id}/show": {
+      "get": {
+        "tags": ["Mentor"],
+        "summary": "ShowMentor",
+        "operationId": "ShowMentor",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/interest": {
+      "post": {
+        "tags": ["InterestArea"],
+        "summary": "CreateInterestArea",
+        "operationId": "CreateInterestArea",
+        "parameters": [],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CreateInterestAreaRequest"
+                  },
+                  {
+                    "example": {
+                      "mentoringArea": "ANALISTA DE TESTES"
+                    }
+                  }
+                ]
+              },
+              "example": {
+                "mentoringArea": "ANALISTA DE TESTES"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      },
+      "get": {
+        "tags": ["InterestArea"],
+        "summary": "ListInterestArea",
+        "operationId": "ListInterestArea",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/interest/{id}": {
+      "delete": {
+        "tags": ["InterestArea"],
+        "summary": "DeleteInterestArea",
+        "operationId": "DeleteInterestArea",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AddBalanceRequest": {
+        "title": "AddBalanceRequest",
+        "required": [
+          "holderName",
+          "amount",
+          "number",
+          "expMonth",
+          "expYear",
+          "cvv"
+        ],
+        "type": "object",
+        "properties": {
+          "holderName": {
+            "type": "string"
+          },
+          "amount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "number": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "expMonth": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "expYear": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "cvv": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "example": {
+          "holderName": "Example Example",
+          "amount": 1200,
+          "number": 4000000000000010,
+          "expMonth": 12,
+          "expYear": 25,
+          "cvv": 234
+        }
+      },
+      "LoginRequest": {
+        "title": "LoginRequest",
+        "required": ["email", "password"],
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "email": "example@gmail.com",
+          "password": "1234567A"
+        }
+      },
+      "CreateRequest": {
+        "title": "CreateRequest",
+        "required": ["email", "password", "user_type"],
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "user_type": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "email": "example@example.com",
+          "password": "1234567A",
+          "user_type": "STUDENT"
+        }
+      },
+      "UpdateRequest": {
+        "title": "UpdateRequest",
+        "required": ["email", "password"],
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "email": "wladmirr@gmail.com",
+          "password": "1234567A"
+        }
+      },
+      "CreateStudentParticularsRequest": {
+        "title": "CreateStudentParticularsRequest",
+        "required": [
+          "extrovert",
+          "theory",
+          "practice",
+          "mentoringInGroup",
+          "mentoringIndividual",
+          "libras",
+          "minorityGroups"
+        ],
+        "type": "object",
+        "properties": {
+          "extrovert": {
+            "type": "string"
+          },
+          "theory": {
+            "type": "string"
+          },
+          "practice": {
+            "type": "string"
+          },
+          "mentoringInGroup": {
+            "type": "string"
+          },
+          "mentoringIndividual": {
+            "type": "string"
+          },
+          "libras": {
+            "type": "string"
+          },
+          "minorityGroups": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "extrovert": "2",
+          "theory": "2",
+          "practice": "3",
+          "mentoringInGroup": "2",
+          "mentoringIndividual": "2",
+          "libras": "1",
+          "minorityGroups": "1"
+        }
+      },
+      "UpdateStudentParticularsRequest": {
+        "title": "UpdateStudentParticularsRequest",
+        "required": [
+          "extrovert",
+          "theory",
+          "practice",
+          "mentoringInGroup",
+          "mentoringIndividual",
+          "libras",
+          "minorityGroups"
+        ],
+        "type": "object",
+        "properties": {
+          "extrovert": {
+            "type": "string"
+          },
+          "theory": {
+            "type": "string"
+          },
+          "practice": {
+            "type": "string"
+          },
+          "mentoringInGroup": {
+            "type": "string"
+          },
+          "mentoringIndividual": {
+            "type": "string"
+          },
+          "libras": {
+            "type": "string"
+          },
+          "minorityGroups": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "extrovert": "2",
+          "theory": "3",
+          "practice": "2",
+          "mentoringInGroup": "1",
+          "mentoringIndividual": "2",
+          "libras": "2",
+          "minorityGroups": "2"
+        }
+      },
+      "AddStudentInterestRequest": {
+        "title": "AddStudentInterestRequest",
+        "required": ["mentoringArea"],
+        "type": "object",
+        "properties": {
+          "mentoringArea": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "mentoringArea": "BANCO DE DADOS"
+        }
+      },
+      "DeleteStudentInterestRequest": {
+        "title": "DeleteStudentInterestRequest",
+        "required": ["mentoringArea"],
+        "type": "object",
+        "properties": {
+          "mentoringArea": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "mentoringArea": "SEGURANÇA DA INFORMACÃO"
+        }
+      },
+      "BuyMentorshipRequest": {
+        "title": "BuyMentorshipRequest",
+        "required": ["mentoringId"],
+        "type": "object",
+        "properties": {
+          "mentoringId": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "mentoringId": "80f84e42-13fd-46a2-bb8a-ad7fb22358f8"
+        }
+      },
+      "CreateStudentRequest": {
+        "title": "CreateStudentRequest",
+        "required": ["name", "cpf", "phone"],
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "cpf": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "name": "Example Example",
+          "cpf": "12354759513",
+          "phone": "+5562999626269"
+        }
+      },
+      "CreateMentorParticularsRequest": {
+        "title": "CreateMentorParticularsRequest",
+        "required": [
+          "extrovert",
+          "theory",
+          "practice",
+          "mentoringInGroup",
+          "mentoringIndividual",
+          "libras",
+          "minorityGroups"
+        ],
+        "type": "object",
+        "properties": {
+          "extrovert": {
+            "type": "string"
+          },
+          "theory": {
+            "type": "string"
+          },
+          "practice": {
+            "type": "string"
+          },
+          "mentoringInGroup": {
+            "type": "string"
+          },
+          "mentoringIndividual": {
+            "type": "string"
+          },
+          "libras": {
+            "type": "string"
+          },
+          "minorityGroups": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "extrovert": "2",
+          "theory": "2",
+          "practice": "3",
+          "mentoringInGroup": "2",
+          "mentoringIndividual": "2",
+          "libras": "1",
+          "minorityGroups": "1"
+        }
+      },
+      "UpdateMentorParticularsRequest": {
+        "title": "UpdateMentorParticularsRequest",
+        "required": [
+          "extrovert",
+          "theory",
+          "practice",
+          "mentoringInGroup",
+          "mentoringIndividual",
+          "libras",
+          "minorityGroups"
+        ],
+        "type": "object",
+        "properties": {
+          "extrovert": {
+            "type": "string"
+          },
+          "theory": {
+            "type": "string"
+          },
+          "practice": {
+            "type": "string"
+          },
+          "mentoringInGroup": {
+            "type": "string"
+          },
+          "mentoringIndividual": {
+            "type": "string"
+          },
+          "libras": {
+            "type": "string"
+          },
+          "minorityGroups": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "extrovert": "2",
+          "theory": "3",
+          "practice": "2",
+          "mentoringInGroup": "1",
+          "mentoringIndividual": "2",
+          "libras": "2",
+          "minorityGroups": "2"
+        }
+      },
+      "CreateMentorshipRequest": {
+        "title": "CreateMentorshipRequest",
+        "required": ["name", "price"],
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "price": {
+            "type": "number"
+          }
+        },
+        "example": {
+          "name": "JavaScript - Melhorando o seu código",
+          "price": 49.99
+        }
+      },
+      "CreateMentorRequest": {
+        "title": "CreateMentorRequest",
+        "required": [
+          "name",
+          "chavePix",
+          "phone",
+          "publicEmail",
+          "cnpj",
+          "mentoringArea"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "chavePix": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          },
+          "publicEmail": {
+            "type": "string"
+          },
+          "cnpj": {
+            "type": "string"
+          },
+          "mentoringArea": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "name": "Joao",
+          "chavePix": "24535112333",
+          "phone": "+5562889646868",
+          "publicEmail": "joao@gmail.com",
+          "cnpj": "12111668910",
+          "mentoringArea": "PROGRAMAÇÃO"
+        }
+      },
+      "UpdateMentorRequest": {
+        "title": "UpdateMentorRequest",
+        "required": [
+          "name",
+          "chavePix",
+          "phone",
+          "publicEmail",
+          "cnpj",
+          "mentoringArea"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "chavePix": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          },
+          "publicEmail": {
+            "type": "string"
+          },
+          "cnpj": {
+            "type": "string"
+          },
+          "mentoringArea": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "name": "Joao das Neves",
+          "chavePix": "24535112333",
+          "phone": "+5562889646868",
+          "publicEmail": "joao@gmail.com",
+          "cnpj": "12111668910",
+          "mentoringArea": "PROGRAMAÇÃO"
+        }
+      },
+      "CreateInterestAreaRequest": {
+        "title": "CreateInterestAreaRequest",
+        "required": ["mentoringArea"],
+        "type": "object",
+        "properties": {
+          "mentoringArea": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "mentoringArea": "ANALISTA DE TESTES"
+        }
+      }
+    },
+    "securitySchemes": {
+      "bearer": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }
+  },
+  "security": [],
+  "tags": [
+    {
+      "name": "UserBalance"
+    },
+    {
+      "name": "User"
+    },
+    {
+      "name": "Match"
+    },
+    {
+      "name": "StudentParticulars"
+    },
+    {
+      "name": "StudentInterest"
+    },
+    {
+      "name": "StudentMentorships"
+    },
+    {
+      "name": "Student"
+    },
+    {
+      "name": "MentorParticulars"
+    },
+    {
+      "name": "MentorMentorships"
+    },
+    {
+      "name": "Mentor"
+    },
+    {
+      "name": "InterestArea"
+    }
+  ]
+}
