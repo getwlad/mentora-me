@@ -2,7 +2,7 @@ import bcrypt from "bcryptjs";
 import destroyModelData from "../../utils/destroyModelData";
 import app from "./../../src/app";
 import User from "../../src/app/models/UserModel";
-import { describe, expect, test, it, beforeEach } from "vitest";
+import { describe, expect, it, beforeEach } from "vitest";
 import supertest from "supertest";
 
 describe("User", () => {
@@ -14,7 +14,7 @@ describe("User", () => {
     user_type: "STUDENT",
   };
   beforeEach(async () => {
-    await destroyModelData();
+    await destroyModelData(["User"]);
   });
 
   it("should create user with student type", async () => {

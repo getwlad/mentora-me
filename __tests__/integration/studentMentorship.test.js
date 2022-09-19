@@ -1,6 +1,6 @@
 import destroyModelData from "../../utils/destroyModelData";
 import app from "./../../src/app";
-import { describe, expect, test, it, beforeEach } from "vitest";
+import { describe, expect, it, beforeEach } from "vitest";
 import supertest from "supertest";
 
 describe("Student mentorship", () => {
@@ -38,7 +38,7 @@ describe("Student mentorship", () => {
   let tokenMentor;
   let idMentorship;
   beforeEach(async () => {
-    await destroyModelData();
+    await destroyModelData(["User", "InterestArea"]);
 
     await server.post("/user").send(studentUser).expect(200);
     await server.post("/user").send(mentorUser).expect(200);

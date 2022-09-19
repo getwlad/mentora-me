@@ -1,6 +1,6 @@
 import destroyModelData from "../../utils/destroyModelData";
 import app from "./../../src/app";
-import { describe, expect, test, it, beforeEach } from "vitest";
+import { describe, expect, it, beforeEach } from "vitest";
 import supertest from "supertest";
 
 describe("Wallet", () => {
@@ -13,7 +13,7 @@ describe("Wallet", () => {
   };
   let token;
   beforeEach(async () => {
-    await destroyModelData();
+    await destroyModelData(["User"]);
     await server.post("/user").send(data).expect(200);
     const loginRes = await server.post("/user/login").send(data).expect(200);
     token = loginRes._body.token;

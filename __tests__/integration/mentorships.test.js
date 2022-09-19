@@ -1,6 +1,5 @@
-import destroyModelData from "../../utils/destroyModelData";
 import app from "./../../src/app";
-import { describe, expect, test, it, beforeEach } from "vitest";
+import { describe, expect, it } from "vitest";
 import supertest from "supertest";
 
 describe("Mentorships", () => {

@@ -2,7 +2,7 @@ import supertest from "supertest";
 import destroyModelData from "../../utils/destroyModelData";
 import app from "../../src/app";
 
-import { describe, expect, test, it, beforeEach, afterEach } from "vitest";
+import { describe, expect, it, beforeEach } from "vitest";
 describe("Session", () => {
   const server = supertest(app);
   const data = {
@@ -12,7 +12,7 @@ describe("Session", () => {
     user_type: "STUDENT",
   };
   beforeEach(async () => {
-    await destroyModelData();
+    await destroyModelData(["User"]);
   });
 
   it("should receive jwt token when authenticated with valid credentials", async () => {
