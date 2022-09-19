@@ -11,7 +11,7 @@ class AddInterestController {
         },
       });
       if (!student) {
-        return res.status(404).json({ error: "Estudante não cadastrado" });
+        return res.status(404).json({ error: "Estudante não cadastrado(a)." });
       }
 
       const areas = await ListInterestService.list();
@@ -29,12 +29,14 @@ class AddInterestController {
       if (!interestArea) {
         return res
           .status(404)
-          .json({ error: "Area de Mentoria não encontrada" });
+          .json({ error: "Área de mentoria não encontrada." });
       }
 
       return res.status(200).json({ mentoringArea: interestArea });
     } catch (error) {
-      return res.status(401).json({ error: error.message });
+      return res
+        .status(401)
+        .json({ error: "Acesso não autorizado: login necessário." });
     }
   }
 }

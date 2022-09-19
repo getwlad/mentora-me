@@ -10,7 +10,7 @@ class CreateMentorParticularsController {
         },
       });
       if (!mentor) {
-        return res.status(404).json({ error: "Mentor não cadastrado" });
+        return res.status(404).json({ error: "Mentor(a) não cadastrado(a)." });
       }
       const { id } = mentor;
       const {
@@ -34,7 +34,9 @@ class CreateMentorParticularsController {
       });
       return res.status(200).json(particulars);
     } catch (error) {
-      return res.status(401).json({ error: error.message });
+      return res
+        .status(401)
+        .json({ error: "Acesso não autorizado: login necessário." });
     }
   }
 }

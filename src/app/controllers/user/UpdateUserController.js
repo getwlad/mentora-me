@@ -16,7 +16,7 @@ class UpdateUserController {
           });
 
           if (userEmail) {
-            return res.status(400).json({ error: "email já cadastrado" });
+            return res.status(400).json({ error: "Email já cadastrado." });
           }
         }
       }
@@ -26,7 +26,9 @@ class UpdateUserController {
         .status(200)
         .json({ id, email, user_type, createdAt, updatedAt });
     } catch (error) {
-      return res.status(401).json({ error: error.message });
+      return res
+        .status(401)
+        .json({ error: "Acesso não autorizado: login necessário." });
     }
   }
 }

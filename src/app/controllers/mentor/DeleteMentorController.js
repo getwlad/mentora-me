@@ -10,10 +10,12 @@ class DeleteMentorController {
       });
 
       if (!mentor) {
-        return res.status(404).json({ error: "Mentor não encontrado" });
+        return res.status(404).json({ error: "Mentor(a) não encontrado(a)." });
       }
       await mentor.destroy();
-      return res.status(200).json({ msg: "sucesso" });
+      return res
+        .status(200)
+        .json({ msg: "Mentor(a) deletado(a) com sucesso!" });
     } catch (error) {
       return res.status(401).json({ error: error.message });
     }

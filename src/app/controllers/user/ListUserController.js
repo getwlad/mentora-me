@@ -29,7 +29,9 @@ class ListUserController {
 
       return res.json(data);
     } catch (error) {
-      return res.status(401).json({ error: error.message });
+      return res
+        .status(401)
+        .json({ error: "Acesso não autorizado: login necessário." });
     }
   }
 }

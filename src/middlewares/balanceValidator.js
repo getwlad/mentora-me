@@ -8,10 +8,13 @@ async function balanceValidator(request, response, next) {
     number: yup
       .string()
       .required()
-      .matches(regex.validCreditCard, "Número do cartão de crédito inválido"),
-    expMonth: yup.string().required().matches(regex.validMonth, "Mês inválido"),
+      .matches(regex.validCreditCard, "Número do cartão de crédito inválido."),
+    expMonth: yup
+      .string()
+      .required()
+      .matches(regex.validMonth, "Mês inválido."),
     expYear: yup.string().required(),
-    cvv: yup.string().required().matches(regex.validCvv, "CVV inválido"),
+    cvv: yup.string().required().matches(regex.validCvv, "CVV inválido."),
   });
 
   await schema

@@ -15,14 +15,14 @@ class CreateStudentController {
       const userExist = await User.findByPk(userId);
 
       if (userExist.user_type !== "STUDENT") {
-        return res.status(401).json({ error: "Tipo de usuário incorreto" });
+        return res.status(401).json({ error: "Tipo de usuário incorreto." });
       }
 
       if (cpfCadastrado) {
-        return res.status(400).json({ error: "cpf já cadastrado" });
+        return res.status(400).json({ error: "CPF já cadastrado." });
       }
       if (userCadastrado) {
-        return res.status(400).json({ error: "usuário já cadastrado" });
+        return res.status(400).json({ error: "Usuário já cadastrado." });
       }
 
       const student = await CreateStudentService.createStudent(
@@ -34,7 +34,9 @@ class CreateStudentController {
 
       return res.status(200).json(student);
     } catch (error) {
-      return res.status(401).json({ error: error.message });
+      return res
+        .status(401)
+        .json({ error: "Acesso não autorizado: login necessário." });
     }
   }
 }

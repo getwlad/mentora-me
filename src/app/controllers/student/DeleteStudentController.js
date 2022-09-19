@@ -10,12 +10,16 @@ class DeleteStudentController {
         },
       });
       if (!student) {
-        return res.status(404).json({ error: "Estudante não encontrado" });
+        return res.status(404).json({ error: "Estudante não encontrado(a)." });
       }
       await student.destroy();
-      return res.status(200).json({ msg: "sucesso" });
+      return res
+        .status(200)
+        .json({ msg: "Estudante deletado(a) com sucesso!" });
     } catch (error) {
-      return res.status(401).json({ error: error.message });
+      return res
+        .status(401)
+        .json({ error: "Acesso não autorizado: login necessário." });
     }
   }
 }

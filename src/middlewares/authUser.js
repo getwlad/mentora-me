@@ -21,10 +21,12 @@ export default async (req, res, next) => {
     });
 
     if (!user) {
-      return res.status(404).json({ error: "Usuário não encontrado" });
+      return res.status(404).json({ error: "Usuário não encontrado." });
     }
     return next();
   } catch (error) {
-    return res.status(401).json({ error: error.message });
+    return res
+      .status(401)
+      .json({ error: "Acesso não autorizado: login necessário." });
   }
 };

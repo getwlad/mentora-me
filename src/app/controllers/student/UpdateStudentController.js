@@ -12,7 +12,7 @@ class UpdateStudentController {
         },
       });
       if (!student) {
-        return res.status(404).json({ error: "Estudante não encontrado" });
+        return res.status(404).json({ error: "Estudante não encontrado(a)." });
       }
 
       if (cpf) {
@@ -21,7 +21,7 @@ class UpdateStudentController {
             where: { cpf: cpf },
           });
           if (studentcpf) {
-            return res.status(400).json({ error: "cpf já cadastrado" });
+            return res.status(400).json({ error: "CPF já cadastrado." });
           }
         }
       }
@@ -29,7 +29,9 @@ class UpdateStudentController {
       await student.update({ name, phone, cpf });
       return res.status(200).json(student);
     } catch (error) {
-      return res.status(401).json({ error: error.message });
+      return res
+        .status(401)
+        .json({ error: "Acesso não autorizado: login necessário." });
     }
   }
 }

@@ -9,19 +9,19 @@ async function mentorValidator(request, response, next) {
       .matches(regex.name, "Nome inválido"),
     cnpj: yup
       .string()
-      .required("Seu CNPJ é obrigatório")
-      .matches(regex.validCPF, "CNPJ inválido"),
+      .required("Seu CNPJ é obrigatório.")
+      .matches(regex.validCPF, "CNPJ inválido."),
     publicEmail: yup
       .string()
       .email("Email inválido.")
       .required("Um email público é obrigatório."),
     phone: yup
       .string()
-      .required("Seu telefone é obrigatório")
-      .matches(regex.phoneNumber, "Telefone inválido"),
+      .required("Seu telefone é obrigatório.")
+      .matches(regex.phoneNumber, "Telefone inválido."),
     chavePix: yup
       .string()
-      .required("Uma chave Pix é obrigatória")
+      .required("Uma chave Pix é obrigatória.")
       .test(
         "test-chave-pix",
         "Entre uma chave Pix válida: Telefone, Email, CPF, CNPJ ou EVP",

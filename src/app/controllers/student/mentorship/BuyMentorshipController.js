@@ -21,7 +21,7 @@ class BuyMentorshipController {
       });
 
       if (!mentorship) {
-        return res.status(404).json({ error: "mentoria não encontrada" });
+        return res.status(404).json({ error: "Mentoria não encontrada." });
       }
 
       const mentor = await Mentor.findByPk(mentorship.mentor_id);
@@ -37,9 +37,10 @@ class BuyMentorshipController {
       let mentorBalance = parseFloat(mentorWallet.balance);
 
       if (studentBalance < mentorshipPrice) {
-        return res
-          .status(401)
-          .json({ error: "você não tem dinheiro suficiente para esta compra" });
+        return res.status(401).json({
+          error:
+            "Saldo insuficiente para esta compra, recarregue sua carteira.",
+        });
       }
 
       studentBalance -= mentorshipPrice;
@@ -52,7 +53,9 @@ class BuyMentorshipController {
 
       return res.status(200).json(mentorship);
     } catch (error) {
-      return res.status(401).json({ error: error.message });
+      return res
+        .status(401)
+        .json({ error: "Acesso não autorizado: login necessário." });
     }
   }
 }

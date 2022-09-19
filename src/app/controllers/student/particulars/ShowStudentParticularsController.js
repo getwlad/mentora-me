@@ -10,7 +10,7 @@ class ShowStudentParticularsController {
         },
       });
       if (!student) {
-        return res.status(404).json({ error: "Estudante não cadastrado" });
+        return res.status(404).json({ error: "Estudante não cadastrado(a)." });
       }
       const { id } = student;
       const particulars = await Particulars.findOne({
@@ -19,11 +19,13 @@ class ShowStudentParticularsController {
       if (!particulars) {
         return res
           .status(404)
-          .json({ error: "caracteristicas não cadastradas" });
+          .json({ error: "Características não cadastradas." });
       }
       return res.status(200).json(particulars);
     } catch (error) {
-      return res.status(401).json({ error: error.message });
+      return res
+        .status(401)
+        .json({ error: "Acesso não autorizado: login necessário." });
     }
   }
 }
