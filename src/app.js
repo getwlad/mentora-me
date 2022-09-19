@@ -35,11 +35,7 @@ class App {
     this.server.use(routes);
   }
   document() {
-    this.server.use(
-      "/documentation",
-      swaggerUi.serve,
-      swaggerUi.setup(swaggerDocument)
-    );
+    this.server.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
   }
   async initializeDB() {
     try {

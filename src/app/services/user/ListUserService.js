@@ -27,7 +27,7 @@ class ListUserService {
       where = {
         ...where,
         created_at: {
-          [Op.gte]: parseISO(createdBefore),
+          [Op.lte]: parseISO(createdBefore),
         },
       };
     }
@@ -36,7 +36,7 @@ class ListUserService {
       where = {
         ...where,
         created_at: {
-          [Op.lte]: parseISO(createdAfter),
+          [Op.gte]: parseISO(createdAfter),
         },
       };
     }
@@ -45,7 +45,7 @@ class ListUserService {
       where = {
         ...where,
         updated_at: {
-          [Op.gte]: parseISO(updatedBefore),
+          [Op.lte]: parseISO(updatedBefore),
         },
       };
     }
@@ -54,7 +54,7 @@ class ListUserService {
       where = {
         ...where,
         updated_at: {
-          [Op.lte]: parseISO(updatedAfter),
+          [Op.gte]: parseISO(updatedAfter),
         },
       };
     }

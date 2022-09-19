@@ -55,7 +55,7 @@ class ListStudentService {
       where = {
         ...where,
         created_at: {
-          [Op.gte]: parseISO(createdBefore),
+          [Op.lte]: parseISO(createdBefore),
         },
       };
     }
@@ -64,7 +64,7 @@ class ListStudentService {
       where = {
         ...where,
         created_at: {
-          [Op.lte]: parseISO(createdAfter),
+          [Op.gte]: parseISO(createdAfter),
         },
       };
     }
@@ -73,7 +73,7 @@ class ListStudentService {
       where = {
         ...where,
         updated_at: {
-          [Op.gte]: parseISO(updatedBefore),
+          [Op.lte]: parseISO(updatedBefore),
         },
       };
     }
@@ -82,7 +82,7 @@ class ListStudentService {
       where = {
         ...where,
         updated_at: {
-          [Op.lte]: parseISO(updatedAfter),
+          [Op.gte]: parseISO(updatedAfter),
         },
       };
     }
@@ -90,7 +90,7 @@ class ListStudentService {
     if (sort) {
       order = sort.split(",").map((item) => item.split(":"));
     }
-
+    console.log(where);
     const data = await Student.findAll({
       where,
       include: [

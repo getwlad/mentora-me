@@ -64,7 +64,7 @@ class ListMentorService {
       where = {
         ...where,
         created_at: {
-          [Op.gte]: parseISO(createdBefore),
+          [Op.lte]: parseISO(createdBefore),
         },
       };
     }
@@ -73,7 +73,7 @@ class ListMentorService {
       where = {
         ...where,
         created_at: {
-          [Op.lte]: parseISO(createdAfter),
+          [Op.gte]: parseISO(createdAfter),
         },
       };
     }
@@ -82,7 +82,7 @@ class ListMentorService {
       where = {
         ...where,
         updated_at: {
-          [Op.gte]: parseISO(updatedBefore),
+          [Op.lte]: parseISO(updatedBefore),
         },
       };
     }
@@ -91,7 +91,7 @@ class ListMentorService {
       where = {
         ...where,
         updated_at: {
-          [Op.lte]: parseISO(updatedAfter),
+          [Op.gte]: parseISO(updatedAfter),
         },
       };
     }
