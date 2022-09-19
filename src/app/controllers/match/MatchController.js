@@ -21,8 +21,8 @@ class MatchController {
       });
       const { id, interests } = student;
 
-      if (!interests) {
-        return res.status(401).json({
+      if (!interests.length > 0) {
+        return res.status(400).json({
           error: "Para um match ideal, registre seus interesses",
         });
       }
@@ -40,7 +40,7 @@ class MatchController {
         include: [
           {
             model: Mentorship,
-            attributes: ["name", "price"],
+            attributes: ["id", "name", "price"],
           },
         ],
       });
@@ -54,7 +54,7 @@ class MatchController {
         where: { student_id: id },
       });
       if (!particulars) {
-        return res.status(401).json({
+        return res.status(400).json({
           error: "Para um match ideal, registre suas preferências",
         });
       }
@@ -111,6 +111,7 @@ class MatchController {
   async setScoreMatch(mentorsParticulars, particulars) {
     return mentorsParticulars.map((mentorParticulars) => {
       let score = 0;
+
       if (mentorParticulars.extrovert === particulars.extrovert) {
         score += 3;
       }
@@ -139,29 +140,35 @@ class MatchController {
         score += 1;
       }
       if (
-        mentorParticulars.mentoring_in_group === particulars.mentoringInGroup
+        mentorParticulars.mentoring_in_group === particulars.mentoring_in_group
       ) {
         score += 3;
       }
-      if (mentorParticulars.mentoring_in_group < particulars.mentoringInGroup) {
+      if (
+        mentorParticulars.mentoring_in_group < particulars.mentoring_in_group
+      ) {
         score += 2;
       }
-      if (mentorParticulars.mentoring_in_group > particulars.mentoringInGroup) {
+      if (
+        mentorParticulars.mentoring_in_group > particulars.mentoring_in_group
+      ) {
         score += 1;
       }
       if (
         mentorParticulars.mentoring_individual ===
-        particulars.mentoringIndividual
+        particulars.mentoring_individual
       ) {
         score += 3;
       }
       if (
-        mentorParticulars.mentoring_individual < particulars.mentoringIndividual
+        mentorParticulars.mentoring_individual <
+        particulars.mentoring_individual
       ) {
         score += 2;
       }
       if (
-        mentorParticulars.mentoring_individual > particulars.mentoringIndividual
+        mentorParticulars.mentoring_individual >
+        particulars.mentoring_individual
       ) {
         score += 1;
       }
@@ -174,13 +181,13 @@ class MatchController {
       if (mentorParticulars.libras > particulars.libras) {
         score += 1;
       }
-      if (mentorParticulars.minority_groups === particulars.minorityGroups) {
+      if (mentorParticulars.minority_groups === particulars.minority_groups) {
         score += 3;
       }
-      if (mentorParticulars.minority_groups < particulars.minorityGroups) {
+      if (mentorParticulars.minority_groups < particulars.minority_groups) {
         score += 2;
       }
-      if (mentorParticulars.minority_groups > particulars.minorityGroups) {
+      if (mentorParticulars.minority_groups > particulars.minority_groups) {
         score += 1;
       }
       mentorParticulars.score = score;

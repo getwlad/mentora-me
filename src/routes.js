@@ -46,141 +46,168 @@ import BuyMentorshipController from "./app/controllers/student/mentorship/BuyMen
 import ListBuyedMentorshipController from "./app/controllers/student/mentorship/ListBuyedMentorshipController.js";
 import ListAllMentorshipController from "./app/controllers/mentorship/ListAllMentorshipController.js";
 import SessionsController from "./app/controllers/sessions/SessionsController.js";
+import AddBalanceController from "./app/controllers/wallet/balance/AddBalanceController";
+import ListBalanceController from "./app/controllers/wallet/balance/ListBalanceController";
 
 import authUser from "./middlewares/authUser.js";
+import DeleteInterestAreaController from "./app/controllers/interest/DeleteInterestAreaController.js";
+
+import balanceValidator from "./middlewares/balanceValidator.js";
 
 const routes = new Router();
 
-//Rotas User
-routes.get("/user/", (req, res) => ListUserController.list(req, res));
-routes.get("/user/:id/show", (req, res) => ShowUserController.show(req, res));
-routes.post("/user/", userValidator, (req, res) =>
-  CreateUserController.create(req, res)
-);
-routes.put("/user/", authUser, userValidator, authUser, (req, res) =>
-  UpdateUserController.update(req, res)
-);
-routes.delete("/user/", authUser, (req, res) =>
-  DeleteUserController.delete(req, res)
-);
+//Rotas get
+//User
+routes.get("/user/", (req, res) => {
+  ListUserController.list(req, res);
+  //#swagger.tags = ["User"]
+});
 
 routes.post("/user/login/", (req, res) => {
   SessionsController.create(req, res);
+  //#swagger.tags = ["User"]
+});
+routes.post(
+  "/user/",
+  userValidator,
+  (req, res) => CreateUserController.create(req, res)
+  //#swagger.tags = ["User"]
+);
+//Student
+routes.get("/student", (req, res) => ListStudentController.list(req, res));
+
+//Mentor
+routes.get("/mentor", (req, res) => ListMentorController.list(req, res));
+
+routes.get("/mentorships", (req, res) => {
+  ListAllMentorshipController.list(req, res);
+});
+//interest
+routes.get("/interest", (req, res) => {
+  ListInterestAreaController.list(req, res);
+});
+routes.get("/mentor/:id/show", (req, res) =>
+  ShowMentorController.show(req, res)
+);
+//Autenticacao
+routes.use(authUser);
+
+//Rotas User
+routes.put("/user/", userValidator, (req, res) =>
+  UpdateUserController.update(req, res)
+);
+routes.delete("/user/", (req, res) => DeleteUserController.delete(req, res));
+routes.get("/user/show/", (req, res) => {
+  ShowUserController.show(req, res);
+  //#swagger.tags = ["User"]
 });
 
 //Rotas Student
-routes.get("/student", (req, res) => ListStudentController.list(req, res));
 
-routes.get("/student/:id/show", (req, res) =>
-  ShowStudentController.show(req, res)
-);
-routes.post("/student/", authUser, studentValidator, (req, res) =>
+routes.post("/student/", studentValidator, (req, res) =>
   CreateStudentController.create(req, res)
 );
-routes.put("/student/", authUser, studentValidator, (req, res) =>
+routes.put("/student/", studentValidator, (req, res) =>
   UpdateStudentController.update(req, res)
 );
-routes.delete("/student/", authUser, (req, res) =>
+routes.delete("/student/", (req, res) =>
   DeleteStudentController.delete(req, res)
 );
-routes.get("/student/:id/interest", (req, res) => {
+routes.get("/student/interest", (req, res) => {
   ShowInterestController.show(req, res);
 });
-routes.post("/student/interest", authUser, (req, res) => {
-  AddInterestController.add(req, res);
-});
-routes.delete("/student/interest", authUser, (req, res) => {
-  DeleteInterestController.delete(req, res);
-});
-
-routes.get("/student/:id/particulars", (req, res) => {
+routes.get("/student/show", (req, res) => ShowStudentController.show(req, res));
+routes.get("/student/particulars", (req, res) => {
   ShowStudentParticularsController.show(req, res);
 });
 
-routes.post(
-  "/student/particulars",
-  particularsValidator,
-  authUser,
-  (req, res) => {
-    CreateStudentParticularsController.create(req, res);
-  }
-);
+routes.post("/student/interest", interestAreaValidator, (req, res) => {
+  AddInterestController.add(req, res);
+});
+routes.delete("/student/interest", interestAreaValidator, (req, res) => {
+  DeleteInterestController.delete(req, res);
+});
 
-routes.put("/student/particulars", authUser, (req, res) => {
+routes.post("/student/particulars", particularsValidator, (req, res) => {
+  CreateStudentParticularsController.create(req, res);
+});
+
+routes.put("/student/particulars", particularsValidator, (req, res) => {
   UpdateStudentParticularsController.update(req, res);
 });
 
-routes.post("/student/buymentorship", authUser, (req, res) => {
+routes.post("/student/buymentorship", (req, res) => {
   BuyMentorshipController.buy(req, res);
 });
-routes.get("/student/mentorship", authUser, (req, res) => {
+routes.get("/student/mentorship", (req, res) => {
   ListBuyedMentorshipController.list(req, res);
 });
 
 //Rotas Mentor
-routes.get("/mentor", (req, res) => ListMentorController.list(req, res));
-routes.get("/mentor/:id/show", (req, res) =>
-  ShowMentorController.show(req, res)
-);
-routes.post("/mentor/", authUser, mentorValidator, (req, res) =>
+
+routes.post("/mentor/", mentorValidator, (req, res) =>
   CreateMentorController.create(req, res)
 );
-routes.put("/mentor/", authUser, mentorValidator, (req, res) =>
+routes.put("/mentor/", mentorValidator, (req, res) =>
   UpdateMentorController.update(req, res)
 );
-routes.delete("/mentor/", authUser, (req, res) =>
+routes.delete("/mentor/", (req, res) =>
   DeleteMentorController.delete(req, res)
 );
-
 routes.get("/mentor/mentorship", (req, res) => {
   ListMentorshipController.list(req, res);
+});
+routes.get("/mentor/particulars", (req, res) => {
+  ShowMentorParticularsController.show(req, res);
+});
+routes.post("/mentor/mentorship", mentorshipValidator, (req, res) => {
+  CreateMentorshipController.create(req, res);
 });
 routes.get("/mentor/mentorship/:mentorshipId", (req, res) => {
   ShowMentorshipController.show(req, res);
 });
-routes.post("/mentor/mentorship", mentorshipValidator, authUser, (req, res) => {
-  CreateMentorshipController.create(req, res);
-});
-routes.put("/mentor/mentorship/:mentorshipId", authUser, (req, res) => {
-  UpdateMentorshipController.update(req, res);
-});
-routes.delete("/mentor/mentorship/:mentorshipId", authUser, (req, res) => {
+routes.put(
+  "/mentor/mentorship/:mentorshipId",
+  mentorshipValidator,
+  (req, res) => {
+    UpdateMentorshipController.update(req, res);
+  }
+);
+routes.delete("/mentor/mentorship/:mentorshipId", (req, res) => {
   DeleteMentorshipController.delete(req, res);
 });
 
-routes.get("/mentor/particulars", (req, res) => {
-  ShowMentorParticularsController.show(req, res);
+routes.post("/mentor/particulars", particularsValidator, (req, res) => {
+  CreateMentorParticularsController.create(req, res);
 });
 
-routes.post(
-  "/mentor/particulars",
-  particularsValidator,
-  authUser,
-  (req, res) => {
-    CreateMentorParticularsController.create(req, res);
-  }
-);
-
-routes.put("/mentor/particulars", authUser, (req, res) => {
+routes.put("/mentor/particulars", particularsValidator, (req, res) => {
   UpdateMentorParticularsController.update(req, res);
 });
 
 //Rotas Interest
-routes.get("/interest", (req, res) => {
-  ListInterestAreaController.list(req, res);
-});
 routes.post("/interest", interestAreaValidator, (req, res) => {
   CreateInterestAreaController.create(req, res);
 });
-
-//Mentorships
-routes.get("/mentorships", (req, res) => {
-  ListAllMentorshipController.list(req, res);
+routes.delete("/interest/:id", (req, res) => {
+  DeleteInterestAreaController.delete(req, res);
 });
 
+//Wallet
+routes.post("/balance", balanceValidator, (req, res) => {
+  AddBalanceController.add(req, res);
+});
+routes.get("/balance", (req, res) => {
+  ListBalanceController.list(req, res);
+});
+//Mentorships
+
 //Rotas Match
-routes.get("/student/match", authUser, (req, res) => {
+routes.get("/student/match", (req, res) => {
   MatchController.match(req, res);
 });
 
+routes.get("*", (req, res) => {
+  res.status(404).send("Rota não encontrada, verifique a url");
+});
 export default routes;

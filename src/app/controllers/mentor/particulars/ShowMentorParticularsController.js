@@ -10,7 +10,7 @@ class ShowMentorParticularsController {
         },
       });
       if (!mentor) {
-        return res.status(401).json({ error: "Mentor não cadastrado" });
+        return res.status(404).json({ error: "Mentor não cadastrado" });
       }
       const { id } = mentor;
       const particulars = await Particulars.findOne({
@@ -18,7 +18,7 @@ class ShowMentorParticularsController {
       });
       if (!particulars) {
         return res
-          .status(401)
+          .status(404)
           .json({ error: "caracteristicas não cadastradas" });
       }
       return res.status(200).json(particulars);

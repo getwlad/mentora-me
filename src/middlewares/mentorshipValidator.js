@@ -3,10 +3,7 @@ import regex from "../libs/regexValidators";
 
 async function mentorshipValidator(request, response, next) {
   const schema = yup.object().shape({
-    name: yup
-      .string()
-      .required("Nome obrigatório.")
-      .matches(regex.validString, "Nome inválido."),
+    name: yup.string().required("Nome obrigatório."),
 
     price: yup
       .string()

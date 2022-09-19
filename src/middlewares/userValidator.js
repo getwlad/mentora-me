@@ -16,7 +16,14 @@ async function userValidator(request, response, next) {
       ),
     passwordConfirmation: yup
       .string()
+      .required("Necessário confirmar a senha")
       .oneOf([yup.ref("password"), null], "As senhas devem ser iguais"),
+    user_type: yup
+      .string()
+      .required("Campo obrigatório")
+      .test("test-user-type", "Entre um tipo de usuário correto", (value) => {
+        return value !== "STUDENT" && value !== "MENTOR" ? false : true;
+      }),
   });
 
   await schema

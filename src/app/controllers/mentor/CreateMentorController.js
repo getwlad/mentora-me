@@ -16,9 +16,6 @@ class CreateMentorController {
       });
       const userExist = await User.findByPk(userId);
 
-      if (!userExist) {
-        return res.status(400).json({ error: "usuário não existe" });
-      }
       if (userExist.user_type !== "MENTOR") {
         return res.status(400).json({ error: "Tipo de usuário incorreto" });
       }
@@ -32,7 +29,7 @@ class CreateMentorController {
       }
       const areas = await ListInterestService.list();
       let interestAreaId;
-      //Percorre o array de areas de mentoria e se encontrar uma igual a adicionada ele adiciona ao estudante
+      //Percorre o array de areas de mentoria e se encontrar uma igual a adicionada ele adiciona ao mentor
       areas.map((area) => {
         if (area.mentoring_area === mentoringArea) {
           interestAreaId = area.id;
@@ -40,7 +37,7 @@ class CreateMentorController {
       });
       if (!interestAreaId) {
         return res
-          .status(401)
+          .status(404)
           .json({ error: "Area de Mentoria não encontrada" });
       }
 

@@ -5,31 +5,31 @@ async function particularsValidator(request, response, next) {
   const schema = yup.object().shape({
     extrovert: yup
       .string()
-      .required("Característica obrigatória.")
+      .required("Característica  extrovert obrigatória.")
       .matches(regex.validScale, "Preencha numa escala de 1 a 3."),
     theory: yup
       .string()
-      .required("Característica obrigatória.")
+      .required("Característica theory obrigatória.")
       .matches(regex.validScale, "Preencha numa escala de 1 a 3."),
     practice: yup
       .string()
-      .required("Característica obrigatória.")
+      .required("Característica practice obrigatória.")
       .matches(regex.validScale, "Preencha numa escala de 1 a 3."),
-    mentoring_in_group: yup
+    mentoringInGroup: yup
       .string()
-      .required("Característica obrigatória.")
+      .required("Característica mentoring in group obrigatória.")
       .matches(regex.validScale, "Preencha numa escala de 1 a 3."),
-    mentoring_individual: yup
+    mentoringIndividual: yup
       .string()
-      .required("Característica obrigatória.")
+      .required("Característica mentoring individual obrigatória.")
       .matches(regex.validScale, "Preencha numa escala de 1 a 3."),
     libras: yup
       .string()
-      .required("Característica obrigatória.")
+      .required("Característica livras obrigatória.")
       .matches(regex.validScale, "Preencha numa escala de 1 a 3."),
-    minority_groups: yup
+    minorityGroups: yup
       .string()
-      .required("Característica obrigatória.")
+      .required("Característica minority groups obrigatória.")
       .matches(regex.validScale, "Preencha numa escala de 1 a 3."),
   });
 

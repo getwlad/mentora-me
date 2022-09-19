@@ -1,5 +1,6 @@
 import Mentor from "../../../models/MentorModel";
 import Mentorship from "../../../models/MentorshipModel";
+import Student from "../../../models/StudentModel";
 import Wallet from "../../../models/WalletModel";
 class BuyMentorshipController {
   async buy(req, res) {
@@ -7,6 +8,11 @@ class BuyMentorshipController {
       const userId = req.user;
 
       const { mentoringId } = req.body;
+      const student = await Student.findOne({
+        where: {
+          user_id: userId,
+        },
+      });
       const mentorship = await Mentorship.findByPk(mentoringId);
       const studentWallet = await Wallet.findOne({
         where: {
@@ -15,7 +21,7 @@ class BuyMentorshipController {
       });
 
       if (!mentorship) {
-        return res.status(401).json({ error: "mentoria não encontrada" });
+        return res.status(404).json({ error: "mentoria não encontrada" });
       }
 
       const mentor = await Mentor.findByPk(mentorship.mentor_id);
@@ -25,6 +31,7 @@ class BuyMentorshipController {
           user_id: mentor.user_id,
         },
       });
+
       let mentorshipPrice = parseFloat(mentorship.price);
       let studentBalance = parseFloat(studentWallet.balance);
       let mentorBalance = parseFloat(mentorWallet.balance);
