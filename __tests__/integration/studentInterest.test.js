@@ -46,6 +46,15 @@ describe("Student Interest", () => {
     expect(res._body).toHaveProperty("mentoringArea");
     expect(res._body.mentoringArea).toBe(interest.mentoringArea);
   });
+  it("should create a student interest without auth", async () => {
+    const res = await server
+      .post("/student/interest")
+      .set("Authorization", "bearer " + "token")
+      .send(interest)
+      .expect(401);
+
+    expect(res._body).toHaveProperty("error");
+  });
   it("should not create a student interest with invalid data", async () => {
     const res = await server
       .post("/student/interest")
@@ -113,6 +122,19 @@ describe("Student Interest", () => {
       .expect(200);
     expect(res._body).toHaveProperty("message");
   });
+  it("should not delete a student interest without auth", async () => {
+    await server
+      .post("/student/interest")
+      .set("Authorization", "bearer " + token)
+      .send(interest)
+      .expect(200);
+    const res = await server
+      .delete("/student/interest")
+      .set("Authorization", "bearer " + "token")
+      .send(interest)
+      .expect(401);
+    expect(res._body).toHaveProperty("error");
+  });
   it("should not delete a student interest with student  interest not registered", async () => {
     const res = await server
       .delete("/student/interest")
@@ -133,6 +155,18 @@ describe("Student Interest", () => {
       .set("Authorization", "bearer " + token)
       .expect(200);
     expect(res._body).toHaveProperty("interests");
+  });
+  it("should not show student interest without auth", async () => {
+    await server
+      .post("/student/interest")
+      .set("Authorization", "bearer " + token)
+      .send(interest)
+      .expect(200);
+    const res = await server
+      .get("/student/interest")
+      .set("Authorization", "bearer " + "token")
+      .expect(401);
+    expect(res._body).toHaveProperty("error");
   });
   it("should get erro when try to show interest not registered", async () => {
     const res = await server

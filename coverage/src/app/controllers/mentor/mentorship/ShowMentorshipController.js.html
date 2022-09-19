@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">21.21% </span>
+                <span class="strong">93.93% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>7/33</span>
+                <span class='fraction'>31/33</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">80% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>4/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
-                <span class="quiet">Branches</span>
-                <span class='fraction'>0/0</span>
-            </div>
-        
-            
-            <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/1</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">21.21% </span>
+                <span class="strong">93.93% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>7/33</span>
+                <span class='fraction'>31/33</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -101,65 +101,65 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import Mentorship from "../../../models/MentorshipModel";
 import { Op } from "sequelize";
 import Mentor from "../../../models/MentorModel";
 class ShowMentorshipController {
-  a<span class="fstat-no" title="function not covered" >sync show(req, res) {</span>
-<span class="cstat-no" title="statement not covered" >    try {</span>
-<span class="cstat-no" title="statement not covered" >      const { mentorshipId } = req.params;</span>
-<span class="cstat-no" title="statement not covered" >      const userId = req.user;</span>
-<span class="cstat-no" title="statement not covered" >      const mentor = await Mentor.findOne({</span>
-<span class="cstat-no" title="statement not covered" >        where: {</span>
-<span class="cstat-no" title="statement not covered" >          user_id: userId,</span>
-<span class="cstat-no" title="statement not covered" >        },</span>
-<span class="cstat-no" title="statement not covered" >      });</span>
-<span class="cstat-no" title="statement not covered" >      if (!mentor) {</span>
-<span class="cstat-no" title="statement not covered" >        return res.status(401).json({ error: "Mentor não cadastrado" });</span>
-<span class="cstat-no" title="statement not covered" >      }</span>
-<span class="cstat-no" title="statement not covered" >      const { id } = mentor;</span>
-<span class="cstat-no" title="statement not covered" >      const mentorship = await Mentorship.findOne({</span>
-<span class="cstat-no" title="statement not covered" >        where: {</span>
-<span class="cstat-no" title="statement not covered" >          [Op.and]: [{ id: mentorshipId }, { mentor_id: id }],</span>
-<span class="cstat-no" title="statement not covered" >        },</span>
-<span class="cstat-no" title="statement not covered" >      });</span>
-<span class="cstat-no" title="statement not covered" >      if (!mentorship) {</span>
-<span class="cstat-no" title="statement not covered" >        return res.status(401).json({ error: "Mentoria não encontrada" });</span>
-<span class="cstat-no" title="statement not covered" >      }</span>
-<span class="cstat-no" title="statement not covered" >      return res.status(200).json(mentorship);</span>
-<span class="cstat-no" title="statement not covered" >    } catch (error) {</span>
+  async show(req, res) {
+    try {
+      const { mentorshipId } = req.params;
+      const userId = req.user;
+      const mentor = await Mentor.findOne({
+        where: {
+          user_id: userId,
+        },
+      });
+      if (!mentor) {
+        return res.status(404).json({ error: "Mentor não cadastrado" });
+      }
+      const { id } = mentor;
+      const mentorship = await Mentorship.findOne({
+        where: {
+          [Op.and]: [{ id: mentorshipId }, { mentor_id: id }],
+        },
+      });
+      if (!mentorship) {
+        return res.status(404).json({ error: "Mentoria não encontrada" });
+      }
+      return res.status(200).json(mentorship);
+    } c<span class="branch-0 cbranch-no" title="branch not covered" >atch (error) {</span>
 <span class="cstat-no" title="statement not covered" >      return res.status(401).json({ error: error.message });</span>
 <span class="cstat-no" title="statement not covered" >    }</span>
-<span class="cstat-no" title="statement not covered" >  }</span>
-<span class="cstat-no" title="statement not covered" >}</span>
+  }
+}
 &nbsp;
 export default new ShowMentorshipController();
 &nbsp;</pre></td></tr></table></pre>
@@ -169,7 +169,7 @@ export default new ShowMentorshipController();
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2022-09-18T22:42:12.113Z
+                at 2022-09-19T01:01:48.307Z
             </div>
         <script src="../../../../../prettify.js"></script>
         <script>

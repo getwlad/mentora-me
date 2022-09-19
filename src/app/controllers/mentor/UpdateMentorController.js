@@ -12,7 +12,7 @@ class UpdateMentorController {
       });
 
       if (!mentor) {
-        return res.status(404).json({ Error: "Mentor não encontrado" });
+        return res.status(404).json({ error: "Mentor não encontrado" });
       }
 
       if (cnpj) {
@@ -21,7 +21,7 @@ class UpdateMentorController {
             where: { cnpj: cnpj },
           });
           if (mentorCnpj) {
-            return res.status(400).json({ erro: "Cnpj já cadastrado" });
+            return res.status(400).json({ error: "Cnpj já cadastrado" });
           }
         }
       }

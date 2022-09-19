@@ -79,21 +79,12 @@ routes.get("/student", (req, res) => ListStudentController.list(req, res));
 //Mentor
 routes.get("/mentor", (req, res) => ListMentorController.list(req, res));
 
-routes.get("/mentor/mentorship", (req, res) => {
-  ListMentorshipController.list(req, res);
-});
-routes.get("/mentor/particulars", (req, res) => {
-  ShowMentorParticularsController.show(req, res);
-});
 routes.get("/mentorships", (req, res) => {
   ListAllMentorshipController.list(req, res);
 });
 //interest
 routes.get("/interest", (req, res) => {
   ListInterestAreaController.list(req, res);
-});
-routes.get("/mentor/mentorship/:mentorshipId", (req, res) => {
-  ShowMentorshipController.show(req, res);
 });
 routes.get("/mentor/:id/show", (req, res) =>
   ShowMentorController.show(req, res)
@@ -163,13 +154,25 @@ routes.put("/mentor/", mentorValidator, (req, res) =>
 routes.delete("/mentor/", (req, res) =>
   DeleteMentorController.delete(req, res)
 );
-
+routes.get("/mentor/mentorship", (req, res) => {
+  ListMentorshipController.list(req, res);
+});
+routes.get("/mentor/particulars", (req, res) => {
+  ShowMentorParticularsController.show(req, res);
+});
 routes.post("/mentor/mentorship", mentorshipValidator, (req, res) => {
   CreateMentorshipController.create(req, res);
 });
-routes.put("/mentor/mentorship/:mentorshipId", (req, res) => {
-  UpdateMentorshipController.update(req, res);
+routes.get("/mentor/mentorship/:mentorshipId", (req, res) => {
+  ShowMentorshipController.show(req, res);
 });
+routes.put(
+  "/mentor/mentorship/:mentorshipId",
+  mentorshipValidator,
+  (req, res) => {
+    UpdateMentorshipController.update(req, res);
+  }
+);
 routes.delete("/mentor/mentorship/:mentorshipId", (req, res) => {
   DeleteMentorshipController.delete(req, res);
 });
@@ -178,7 +181,7 @@ routes.post("/mentor/particulars", particularsValidator, (req, res) => {
   CreateMentorParticularsController.create(req, res);
 });
 
-routes.put("/mentor/particulars", (req, res) => {
+routes.put("/mentor/particulars", particularsValidator, (req, res) => {
   UpdateMentorParticularsController.update(req, res);
 });
 

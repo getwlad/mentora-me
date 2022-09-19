@@ -33,6 +33,21 @@ describe("Wallet", () => {
       .expect(200);
     expect(res._body).toHaveProperty("sucess");
   });
+  it("should not add balance to wallet withou auth", async () => {
+    const res = await server
+      .post("/balance")
+      .set("Authorization", "bearer " + "token")
+      .send({
+        holderName: "Teste Test",
+        amount: 1200,
+        number: 4000000000000010,
+        expMonth: 12,
+        expYear: 25,
+        cvv: 234,
+      })
+      .expect(401);
+    expect(res._body).toHaveProperty("error");
+  });
   it("should not add balance to wallet with invalid credit card", async () => {
     const res = await server
       .post("/balance")
@@ -54,5 +69,12 @@ describe("Wallet", () => {
       .set("Authorization", "bearer " + token)
       .expect(200);
     expect(res._body).toHaveProperty("saldo");
+  });
+  it("should not get balance of wallet without auth", async () => {
+    const res = await server
+      .get("/balance")
+      .set("Authorization", "bearer " + "token")
+      .expect(401);
+    expect(res._body).toHaveProperty("error");
   });
 });

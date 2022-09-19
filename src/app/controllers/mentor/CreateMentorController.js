@@ -16,9 +16,6 @@ class CreateMentorController {
       });
       const userExist = await User.findByPk(userId);
 
-      if (!userExist) {
-        return res.status(400).json({ error: "usuário não existe" });
-      }
       if (userExist.user_type !== "MENTOR") {
         return res.status(400).json({ error: "Tipo de usuário incorreto" });
       }
@@ -40,7 +37,7 @@ class CreateMentorController {
       });
       if (!interestAreaId) {
         return res
-          .status(401)
+          .status(404)
           .json({ error: "Area de Mentoria não encontrada" });
       }
 
