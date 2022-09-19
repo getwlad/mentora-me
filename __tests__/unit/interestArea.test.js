@@ -2,6 +2,8 @@ import destroyModelData from "../../utils/destroyModelData";
 import app from "./../../src/app";
 import { describe, expect, test, it, beforeEach } from "vitest";
 import supertest from "supertest";
+import User from "../../src/app/models/UserModel";
+import InterestArea from "../../src/app/models/InterestAreaModel";
 
 describe("Interest", () => {
   const server = supertest(app);
@@ -29,6 +31,7 @@ describe("Interest", () => {
     expect(res._body).toHaveProperty("id");
     expect(res._body.mentoringArea).toBe(data.mentoringArea);
   });
+
   it("should not create an interest area that already exists", async () => {
     await server
       .post("/interest")
