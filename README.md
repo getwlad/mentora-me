@@ -19,7 +19,7 @@ Dessa maneira, a _Mentora-me_ é uma plataforma desenvolvida para auxiliar indiv
 
 ## Documentação
 
-- [Mentora-me](https://mentora-me.herokuapp.com/documentation/)
+- [Mentora-me](https://mentora-me.herokuapp.com/docs)
 
 ## Instalação
 
