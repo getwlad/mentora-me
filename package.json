@@ -4,8 +4,13 @@
   "description": "api para sistema de match entre aluno e mentor",
   "main": "src/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon"
+    "start": "nodemon  --ignore __tests__ ",
+    "pretest": "set NODE_ENV=test&&sequelize db:migrate",
+    "test": "set NODE_ENV=test&&vitest --no-threads",
+    "posttest": "set NODE_ENV=test&& sequelize db:migrate:undo:all",
+    "precoverage": "set NODE_ENV=test&&sequelize db:migrate",
+    "coverage": "set NODE_ENV=test&&vitest --no-threads run --coverage",
+    "postcoverage": "set NODE_ENV=test&&sequelize db:migrate"
   },
   "repository": {
     "type": "git",
@@ -21,19 +26,24 @@
     "axios": "^0.27.2",
     "bcrypt": "^5.0.1",
     "bcryptjs": "^2.4.3",
+    "date-fns": "^2.29.3",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "jsonwebtoken": "^8.5.1",
     "multer": "^1.4.5-lts.1",
     "mysql2": "^2.3.3",
-    "sequelize": "^6.21.4",
+    "sequelize": "^6.23.0",
     "swagger-ui-express": "^4.5.0",
     "uuid": "^8.3.2",
     "yup": "^0.32.11"
   },
   "devDependencies": {
+    "@vitest/coverage-c8": "^0.23.4",
     "nodemon": "^2.0.19",
-    "sucrase": "^3.23.0"
+    "sqlite3": "^5.1.0",
+    "sucrase": "^3.23.0",
+    "supertest": "^6.2.4",
+    "vitest": "^0.23.2"
   },
   "keywords": []
 }

@@ -14,12 +14,8 @@ class CreateStudentController {
       });
       const userExist = await User.findByPk(userId);
 
-      if (!userExist) {
-        return res.status(400).json({ error: "usuário não existe" });
-      }
-
       if (userExist.user_type !== "STUDENT") {
-        return res.status(400).json({ error: "Tipo de usuário incorreto" });
+        return res.status(401).json({ error: "Tipo de usuário incorreto" });
       }
 
       if (cpfCadastrado) {

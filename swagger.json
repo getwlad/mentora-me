@@ -18,7 +18,9 @@
   "paths": {
     "/balance": {
       "get": {
-        "tags": ["UserBalance"],
+        "tags": [
+          "UserBalance"
+        ],
         "summary": "ShowBalance",
         "operationId": "ShowBalance",
         "parameters": [],
@@ -33,10 +35,18 @@
           {
             "bearer": []
           }
+        ],
+        "servers": [
+          {
+            "url": "https://mentora-me.herokuapp.com",
+            "variables": {}
+          }
         ]
       },
       "post": {
-        "tags": ["UserBalance"],
+        "tags": [
+          "UserBalance"
+        ],
         "summary": "AddBalance",
         "operationId": "AddBalance",
         "parameters": [],
@@ -84,12 +94,20 @@
           {
             "bearer": []
           }
+        ],
+        "servers": [
+          {
+            "url": "https://mentora-me.herokuapp.com",
+            "variables": {}
+          }
         ]
       }
     },
     "/user/login": {
       "post": {
-        "tags": ["User"],
+        "tags": [
+          "User"
+        ],
         "summary": "Login",
         "operationId": "Login",
         "parameters": [],
@@ -104,14 +122,14 @@
                   },
                   {
                     "example": {
-                      "email": "example@gmail.com",
+                      "email": "example@example.com",
                       "password": "1234567A"
                     }
                   }
                 ]
               },
               "example": {
-                "email": "example@gmail.com",
+                "email": "example@example.com",
                 "password": "1234567A"
               }
             }
@@ -124,12 +142,20 @@
             "headers": {}
           }
         },
-        "deprecated": false
+        "deprecated": false,
+        "servers": [
+          {
+            "url": "http://localhost:3001",
+            "variables": {}
+          }
+        ]
       }
     },
     "/user": {
       "get": {
-        "tags": ["User"],
+        "tags": [
+          "User"
+        ],
         "summary": "List",
         "operationId": "List",
         "parameters": [],
@@ -139,10 +165,18 @@
             "headers": {}
           }
         },
-        "deprecated": false
+        "deprecated": false,
+        "servers": [
+          {
+            "url": "https://mentora-me.herokuapp.com",
+            "variables": {}
+          }
+        ]
       },
       "post": {
-        "tags": ["User"],
+        "tags": [
+          "User"
+        ],
         "summary": "Create",
         "operationId": "Create",
         "parameters": [],
@@ -179,10 +213,18 @@
             "headers": {}
           }
         },
-        "deprecated": false
+        "deprecated": false,
+        "servers": [
+          {
+            "url": "https://mentora-me.herokuapp.com",
+            "variables": {}
+          }
+        ]
       },
       "put": {
-        "tags": ["User"],
+        "tags": [
+          "User"
+        ],
         "summary": "Update",
         "operationId": "Update",
         "parameters": [],
@@ -222,10 +264,18 @@
           {
             "bearer": []
           }
+        ],
+        "servers": [
+          {
+            "url": "https://mentora-me.herokuapp.com",
+            "variables": {}
+          }
         ]
       },
       "delete": {
-        "tags": ["User"],
+        "tags": [
+          "User"
+        ],
         "summary": "Delete",
         "operationId": "Delete",
         "parameters": [],
@@ -240,12 +290,20 @@
           {
             "bearer": []
           }
+        ],
+        "servers": [
+          {
+            "url": "https://mentora-me.herokuapp.com",
+            "variables": {}
+          }
         ]
       }
     },
     "/user/{id}/show": {
       "get": {
-        "tags": ["User"],
+        "tags": [
+          "User"
+        ],
         "summary": "Show",
         "operationId": "Show",
         "parameters": [
@@ -266,12 +324,20 @@
             "headers": {}
           }
         },
-        "deprecated": false
+        "deprecated": false,
+        "servers": [
+          {
+            "url": "https://mentora-me.herokuapp.com",
+            "variables": {}
+          }
+        ]
       }
     },
     "/student/match": {
       "get": {
-        "tags": ["Match"],
+        "tags": [
+          "Match"
+        ],
         "summary": "Match",
         "operationId": "Match",
         "parameters": [],
@@ -286,12 +352,20 @@
           {
             "bearer": []
           }
+        ],
+        "servers": [
+          {
+            "url": "http://localhost:3001",
+            "variables": {}
+          }
         ]
       }
     },
     "/student/particulars": {
       "post": {
-        "tags": ["StudentParticulars"],
+        "tags": [
+          "StudentParticulars"
+        ],
         "summary": "CreateStudentParticulars",
         "operationId": "CreateStudentParticulars",
         "parameters": [],
@@ -341,10 +415,18 @@
           {
             "bearer": []
           }
+        ],
+        "servers": [
+          {
+            "url": "https://mentora-me.herokuapp.com",
+            "variables": {}
+          }
         ]
       },
       "put": {
-        "tags": ["StudentParticulars"],
+        "tags": [
+          "StudentParticulars"
+        ],
         "summary": "UpdateStudentParticulars",
         "operationId": "UpdateStudentParticulars",
         "parameters": [],
@@ -394,38 +476,46 @@
           {
             "bearer": []
           }
+        ],
+        "servers": [
+          {
+            "url": "https://mentora-me.herokuapp.com",
+            "variables": {}
+          }
         ]
-      }
-    },
-    "/student/{id}/particulars": {
+      },
       "get": {
-        "tags": ["StudentParticulars"],
+        "tags": [
+          "StudentParticulars"
+        ],
         "summary": "ShowStudentParticulars",
         "operationId": "ShowStudentParticulars",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "",
-            "required": true,
-            "style": "simple",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "",
             "headers": {}
           }
         },
-        "deprecated": false
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://mentora-me.herokuapp.com",
+            "variables": {}
+          }
+        ]
       }
     },
     "/student/interest": {
       "post": {
-        "tags": ["StudentInterest"],
+        "tags": [
+          "StudentInterest"
+        ],
         "summary": "AddStudentInterest",
         "operationId": "AddStudentInterest",
         "parameters": [],
@@ -463,10 +553,18 @@
           {
             "bearer": []
           }
+        ],
+        "servers": [
+          {
+            "url": "https://mentora-me.herokuapp.com",
+            "variables": {}
+          }
         ]
       },
       "delete": {
-        "tags": ["StudentInterest"],
+        "tags": [
+          "StudentInterest"
+        ],
         "summary": "DeleteStudentInterest",
         "operationId": "DeleteStudentInterest",
         "parameters": [],
@@ -481,38 +579,46 @@
           {
             "bearer": []
           }
+        ],
+        "servers": [
+          {
+            "url": "https://mentora-me.herokuapp.com",
+            "variables": {}
+          }
         ]
-      }
-    },
-    "/student/{id}/interest": {
+      },
       "get": {
-        "tags": ["StudentInterest"],
+        "tags": [
+          "StudentInterest"
+        ],
         "summary": "ShowStudentInterest",
         "operationId": "ShowStudentInterest",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "",
-            "required": true,
-            "style": "simple",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "",
             "headers": {}
           }
         },
-        "deprecated": false
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://mentora-me.herokuapp.com",
+            "variables": {}
+          }
+        ]
       }
     },
     "/student/mentorship": {
       "get": {
-        "tags": ["StudentMentorships"],
+        "tags": [
+          "StudentMentorships"
+        ],
         "summary": "ListMentorship",
         "operationId": "ListMentorship",
         "parameters": [],
@@ -527,12 +633,20 @@
           {
             "bearer": []
           }
+        ],
+        "servers": [
+          {
+            "url": "https://mentora-me.herokuapp.com",
+            "variables": {}
+          }
         ]
       }
     },
     "/student/buymentorship": {
       "post": {
-        "tags": ["StudentMentorships"],
+        "tags": [
+          "StudentMentorships"
+        ],
         "summary": "BuyMentorship",
         "operationId": "BuyMentorship",
         "parameters": [],
@@ -570,12 +684,20 @@
           {
             "bearer": []
           }
+        ],
+        "servers": [
+          {
+            "url": "https://mentora-me.herokuapp.com",
+            "variables": {}
+          }
         ]
       }
     },
     "/student": {
       "get": {
-        "tags": ["Student"],
+        "tags": [
+          "Student"
+        ],
         "summary": "ListStudent",
         "operationId": "ListStudent",
         "parameters": [],
@@ -585,10 +707,18 @@
             "headers": {}
           }
         },
-        "deprecated": false
+        "deprecated": false,
+        "servers": [
+          {
+            "url": "https://mentora-me.herokuapp.com",
+            "variables": {}
+          }
+        ]
       },
       "post": {
-        "tags": ["Student"],
+        "tags": [
+          "Student"
+        ],
         "summary": "CreateStudent",
         "operationId": "CreateStudent",
         "parameters": [],
@@ -603,7 +733,7 @@
                   },
                   {
                     "example": {
-                      "name": "Example Example",
+                      "name": "Wladmir Rodrigues",
                       "cpf": "12354759513",
                       "phone": "+5562999626269"
                     }
@@ -611,7 +741,7 @@
                 ]
               },
               "example": {
-                "name": "Example Example",
+                "name": "Wladmir Rodrigues",
                 "cpf": "12354759513",
                 "phone": "+5562999626269"
               }
@@ -630,10 +760,18 @@
           {
             "bearer": []
           }
+        ],
+        "servers": [
+          {
+            "url": "https://mentora-me.herokuapp.com",
+            "variables": {}
+          }
         ]
       },
       "put": {
-        "tags": ["Student"],
+        "tags": [
+          "Student"
+        ],
         "summary": "UpdateStudent",
         "operationId": "UpdateStudent",
         "parameters": [],
@@ -648,10 +786,18 @@
           {
             "bearer": []
           }
+        ],
+        "servers": [
+          {
+            "url": "https://mentora-me.herokuapp.com",
+            "variables": {}
+          }
         ]
       },
       "delete": {
-        "tags": ["Student"],
+        "tags": [
+          "Student"
+        ],
         "summary": "DeleteStudent",
         "operationId": "DeleteStudent",
         "parameters": [],
@@ -666,38 +812,48 @@
           {
             "bearer": []
           }
+        ],
+        "servers": [
+          {
+            "url": "https://mentora-me.herokuapp.com",
+            "variables": {}
+          }
         ]
       }
     },
-    "/student/{id}/show": {
+    "/student/show": {
       "get": {
-        "tags": ["Student"],
+        "tags": [
+          "Student"
+        ],
         "summary": "ShowStudent",
         "operationId": "ShowStudent",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "",
-            "required": true,
-            "style": "simple",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "",
             "headers": {}
           }
         },
-        "deprecated": false
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://mentora-me.herokuapp.com",
+            "variables": {}
+          }
+        ]
       }
     },
     "/mentor/particulars": {
       "post": {
-        "tags": ["MentorParticulars"],
+        "tags": [
+          "MentorParticulars"
+        ],
         "summary": "CreateMentorParticulars",
         "operationId": "CreateMentorParticulars",
         "parameters": [],
@@ -747,10 +903,18 @@
           {
             "bearer": []
           }
+        ],
+        "servers": [
+          {
+            "url": "https://mentora-me.herokuapp.com",
+            "variables": {}
+          }
         ]
       },
       "put": {
-        "tags": ["MentorParticulars"],
+        "tags": [
+          "MentorParticulars"
+        ],
         "summary": "UpdateMentorParticulars",
         "operationId": "UpdateMentorParticulars",
         "parameters": [],
@@ -800,10 +964,18 @@
           {
             "bearer": []
           }
+        ],
+        "servers": [
+          {
+            "url": "https://mentora-me.herokuapp.com",
+            "variables": {}
+          }
         ]
       },
       "get": {
-        "tags": ["MentorParticulars"],
+        "tags": [
+          "MentorParticulars"
+        ],
         "summary": "ShowMentorParticulars",
         "operationId": "ShowMentorParticulars",
         "parameters": [],
@@ -818,12 +990,20 @@
           {
             "bearer": []
           }
+        ],
+        "servers": [
+          {
+            "url": "https://mentora-me.herokuapp.com",
+            "variables": {}
+          }
         ]
       }
     },
     "/mentor/mentorship": {
       "get": {
-        "tags": ["MentorMentorships"],
+        "tags": [
+          "MentorMentorships"
+        ],
         "summary": "ListMentorship",
         "operationId": "GetListMentorship",
         "parameters": [],
@@ -833,10 +1013,18 @@
             "headers": {}
           }
         },
-        "deprecated": false
+        "deprecated": false,
+        "servers": [
+          {
+            "url": "https://mentora-me.herokuapp.com",
+            "variables": {}
+          }
+        ]
       },
       "post": {
-        "tags": ["MentorMentorships"],
+        "tags": [
+          "MentorMentorships"
+        ],
         "summary": "CreateMentorship",
         "operationId": "CreateMentorship",
         "parameters": [],
@@ -876,17 +1064,25 @@
           {
             "bearer": []
           }
+        ],
+        "servers": [
+          {
+            "url": "https://mentora-me.herokuapp.com",
+            "variables": {}
+          }
         ]
       }
     },
-    "/mentor/mentorship/{id}": {
+    "/mentor/mentorship/{mentorshipId}": {
       "get": {
-        "tags": ["MentorMentorships"],
+        "tags": [
+          "MentorMentorships"
+        ],
         "summary": "ShowMentorship",
         "operationId": "ShowMentorship",
         "parameters": [
           {
-            "name": "id",
+            "name": "mentorshipId",
             "in": "path",
             "description": "",
             "required": true,
@@ -906,16 +1102,24 @@
         "security": [
           {
             "bearer": []
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://mentora-me.herokuapp.com",
+            "variables": {}
           }
         ]
       },
       "put": {
-        "tags": ["MentorMentorships"],
+        "tags": [
+          "MentorMentorships"
+        ],
         "summary": "UpdateMentorship",
         "operationId": "UpdateMentorship",
         "parameters": [
           {
-            "name": "id",
+            "name": "mentorshipId",
             "in": "path",
             "description": "",
             "required": true,
@@ -935,16 +1139,24 @@
         "security": [
           {
             "bearer": []
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://mentora-me.herokuapp.com",
+            "variables": {}
           }
         ]
       },
       "delete": {
-        "tags": ["MentorMentorships"],
+        "tags": [
+          "MentorMentorships"
+        ],
         "summary": "DeleteMentorship",
         "operationId": "DeleteMentorship",
         "parameters": [
           {
-            "name": "id",
+            "name": "mentorshipId",
             "in": "path",
             "description": "",
             "required": true,
@@ -964,13 +1176,21 @@
         "security": [
           {
             "bearer": []
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://mentora-me.herokuapp.com",
+            "variables": {}
           }
         ]
       }
     },
     "/mentor": {
       "get": {
-        "tags": ["Mentor"],
+        "tags": [
+          "Mentor"
+        ],
         "summary": "ListMentor",
         "operationId": "ListMentor",
         "parameters": [],
@@ -980,10 +1200,18 @@
             "headers": {}
           }
         },
-        "deprecated": false
+        "deprecated": false,
+        "servers": [
+          {
+            "url": "https://mentora-me.herokuapp.com",
+            "variables": {}
+          }
+        ]
       },
       "post": {
-        "tags": ["Mentor"],
+        "tags": [
+          "Mentor"
+        ],
         "summary": "CreateMentor",
         "operationId": "CreateMentor",
         "parameters": [],
@@ -1031,10 +1259,18 @@
           {
             "bearer": []
           }
+        ],
+        "servers": [
+          {
+            "url": "https://mentora-me.herokuapp.com",
+            "variables": {}
+          }
         ]
       },
       "put": {
-        "tags": ["Mentor"],
+        "tags": [
+          "Mentor"
+        ],
         "summary": "UpdateMentor",
         "operationId": "UpdateMentor",
         "parameters": [],
@@ -1082,10 +1318,18 @@
           {
             "bearer": []
           }
+        ],
+        "servers": [
+          {
+            "url": "https://mentora-me.herokuapp.com",
+            "variables": {}
+          }
         ]
       },
       "delete": {
-        "tags": ["Mentor"],
+        "tags": [
+          "Mentor"
+        ],
         "summary": "DeleteMentor",
         "operationId": "DeleteMentor",
         "parameters": [],
@@ -1100,12 +1344,20 @@
           {
             "bearer": []
           }
+        ],
+        "servers": [
+          {
+            "url": "https://mentora-me.herokuapp.com",
+            "variables": {}
+          }
         ]
       }
     },
     "/mentor/{id}/show": {
       "get": {
-        "tags": ["Mentor"],
+        "tags": [
+          "Mentor"
+        ],
         "summary": "ShowMentor",
         "operationId": "ShowMentor",
         "parameters": [
@@ -1126,12 +1378,20 @@
             "headers": {}
           }
         },
-        "deprecated": false
+        "deprecated": false,
+        "servers": [
+          {
+            "url": "https://mentora-me.herokuapp.com",
+            "variables": {}
+          }
+        ]
       }
     },
     "/interest": {
       "post": {
-        "tags": ["InterestArea"],
+        "tags": [
+          "InterestArea"
+        ],
         "summary": "CreateInterestArea",
         "operationId": "CreateInterestArea",
         "parameters": [],
@@ -1164,10 +1424,23 @@
             "headers": {}
           }
         },
-        "deprecated": false
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://mentora-me.herokuapp.com",
+            "variables": {}
+          }
+        ]
       },
       "get": {
-        "tags": ["InterestArea"],
+        "tags": [
+          "InterestArea"
+        ],
         "summary": "ListInterestArea",
         "operationId": "ListInterestArea",
         "parameters": [],
@@ -1177,12 +1450,20 @@
             "headers": {}
           }
         },
-        "deprecated": false
+        "deprecated": false,
+        "servers": [
+          {
+            "url": "https://mentora-me.herokuapp.com",
+            "variables": {}
+          }
+        ]
       }
     },
     "/interest/{id}": {
       "delete": {
-        "tags": ["InterestArea"],
+        "tags": [
+          "InterestArea"
+        ],
         "summary": "DeleteInterestArea",
         "operationId": "DeleteInterestArea",
         "parameters": [
@@ -1203,7 +1484,18 @@
             "headers": {}
           }
         },
-        "deprecated": false
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://mentora-me.herokuapp.com",
+            "variables": {}
+          }
+        ]
       }
     }
   },
@@ -1256,7 +1548,10 @@
       },
       "LoginRequest": {
         "title": "LoginRequest",
-        "required": ["email", "password"],
+        "required": [
+          "email",
+          "password"
+        ],
         "type": "object",
         "properties": {
           "email": {
@@ -1267,13 +1562,17 @@
           }
         },
         "example": {
-          "email": "example@gmail.com",
+          "email": "example@example.com",
           "password": "1234567A"
         }
       },
       "CreateRequest": {
         "title": "CreateRequest",
-        "required": ["email", "password", "user_type"],
+        "required": [
+          "email",
+          "password",
+          "user_type"
+        ],
         "type": "object",
         "properties": {
           "email": {
@@ -1294,7 +1593,10 @@
       },
       "UpdateRequest": {
         "title": "UpdateRequest",
-        "required": ["email", "password"],
+        "required": [
+          "email",
+          "password"
+        ],
         "type": "object",
         "properties": {
           "email": {
@@ -1401,7 +1703,9 @@
       },
       "AddStudentInterestRequest": {
         "title": "AddStudentInterestRequest",
-        "required": ["mentoringArea"],
+        "required": [
+          "mentoringArea"
+        ],
         "type": "object",
         "properties": {
           "mentoringArea": {
@@ -1414,7 +1718,9 @@
       },
       "DeleteStudentInterestRequest": {
         "title": "DeleteStudentInterestRequest",
-        "required": ["mentoringArea"],
+        "required": [
+          "mentoringArea"
+        ],
         "type": "object",
         "properties": {
           "mentoringArea": {
@@ -1427,7 +1733,9 @@
       },
       "BuyMentorshipRequest": {
         "title": "BuyMentorshipRequest",
-        "required": ["mentoringId"],
+        "required": [
+          "mentoringId"
+        ],
         "type": "object",
         "properties": {
           "mentoringId": {
@@ -1440,7 +1748,11 @@
       },
       "CreateStudentRequest": {
         "title": "CreateStudentRequest",
-        "required": ["name", "cpf", "phone"],
+        "required": [
+          "name",
+          "cpf",
+          "phone"
+        ],
         "type": "object",
         "properties": {
           "name": {
@@ -1454,7 +1766,7 @@
           }
         },
         "example": {
-          "name": "Example Example",
+          "name": "Wladmir Rodrigues",
           "cpf": "12354759513",
           "phone": "+5562999626269"
         }
@@ -1551,7 +1863,10 @@
       },
       "CreateMentorshipRequest": {
         "title": "CreateMentorshipRequest",
-        "required": ["name", "price"],
+        "required": [
+          "name",
+          "price"
+        ],
         "type": "object",
         "properties": {
           "name": {
@@ -1648,7 +1963,9 @@
       },
       "CreateInterestAreaRequest": {
         "title": "CreateInterestAreaRequest",
-        "required": ["mentoringArea"],
+        "required": [
+          "mentoringArea"
+        ],
         "type": "object",
         "properties": {
           "mentoringArea": {

@@ -1,3 +1,6 @@
+require("dotenv").config({
+  path: process.env.NODE_ENV === "test" ? ".env.test" : ".env",
+});
 import express from "express";
 import routes from "./routes.js";
 import db from "./database/index";
@@ -32,11 +35,7 @@ class App {
     this.server.use(routes);
   }
   document() {
-    this.server.use(
-      "/documentation",
-      swaggerUi.serve,
-      swaggerUi.setup(swaggerDocument)
-    );
+    this.server.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
   }
   async initializeDB() {
     try {

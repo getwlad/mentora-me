@@ -21,7 +21,7 @@ class BuyMentorshipController {
       });
 
       if (!mentorship) {
-        return res.status(401).json({ error: "mentoria não encontrada" });
+        return res.status(404).json({ error: "mentoria não encontrada" });
       }
 
       const mentor = await Mentor.findByPk(mentorship.mentor_id);

@@ -10,7 +10,7 @@ class DeleteStudentController {
         },
       });
       if (!student) {
-        return res.status(404).json({ Error: "Estudante não encontrado" });
+        return res.status(404).json({ error: "Estudante não encontrado" });
       }
       await student.destroy();
       return res.status(200).json({ msg: "sucesso" });

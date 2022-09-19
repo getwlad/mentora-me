@@ -1,6 +1,7 @@
 import { Op } from "sequelize";
 import Student from "../../models/StudentModel";
 import InterestArea from "../../models/InterestAreaModel";
+import { parseISO } from "date-fns";
 class ListStudentService {
   async list(
     name,
@@ -53,8 +54,8 @@ class ListStudentService {
     if (createdBefore) {
       where = {
         ...where,
-        createdBefore: {
-          [Op.gte]: parseISO(createdBefore),
+        created_at: {
+          [Op.lte]: parseISO(createdBefore),
         },
       };
     }
@@ -62,8 +63,8 @@ class ListStudentService {
     if (createdAfter) {
       where = {
         ...where,
-        createdAfter: {
-          [Op.lte]: parseISO(createdAfter),
+        created_at: {
+          [Op.gte]: parseISO(createdAfter),
         },
       };
     }
@@ -71,8 +72,8 @@ class ListStudentService {
     if (updatedBefore) {
       where = {
         ...where,
-        updatedBefore: {
-          [Op.gte]: parseISO(updatedBefore),
+        updated_at: {
+          [Op.lte]: parseISO(updatedBefore),
         },
       };
     }
@@ -80,8 +81,8 @@ class ListStudentService {
     if (updatedAfter) {
       where = {
         ...where,
-        updatedAfter: {
-          [Op.lte]: parseISO(updatedAfter),
+        updated_at: {
+          [Op.gte]: parseISO(updatedAfter),
         },
       };
     }
@@ -89,7 +90,7 @@ class ListStudentService {
     if (sort) {
       order = sort.split(",").map((item) => item.split(":"));
     }
-
+    console.log(where);
     const data = await Student.findAll({
       where,
       include: [
