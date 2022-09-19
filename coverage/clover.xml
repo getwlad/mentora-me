@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1663549308398" clover="3.2.0">
-  <project timestamp="1663549308399" name="All files">
-    <metrics statements="2871" coveredstatements="2790" conditionals="335" coveredconditionals="292" methods="70" coveredmethods="70" elements="3276" coveredelements="3152" complexity="0" loc="2871" ncloc="2871" packages="25" files="71" classes="71"/>
+<coverage generated="1663551235310" clover="3.2.0">
+  <project timestamp="1663551235310" name="All files">
+    <metrics statements="2871" coveredstatements="2790" conditionals="336" coveredconditionals="293" methods="70" coveredmethods="70" elements="3277" coveredelements="3153" complexity="0" loc="2871" ncloc="2871" packages="25" files="71" classes="71"/>
     <package name="src">
       <metrics statements="267" coveredstatements="264" conditionals="47" coveredconditionals="45" methods="5" coveredmethods="5"/>
       <file name="app.js" path="C:\Users\wlad_\mentora-me\src\app.js">
@@ -354,9 +354,9 @@
       </file>
     </package>
     <package name="src.app.controllers.match">
-      <metrics statements="199" coveredstatements="197" conditionals="38" coveredconditionals="37" methods="4" coveredmethods="4"/>
+      <metrics statements="199" coveredstatements="197" conditionals="39" coveredconditionals="38" methods="4" coveredmethods="4"/>
       <file name="MatchController.js" path="C:\Users\wlad_\mentora-me\src\app\controllers\match\MatchController.js">
-        <metrics statements="199" coveredstatements="197" conditionals="38" coveredconditionals="37" methods="4" coveredmethods="4"/>
+        <metrics statements="199" coveredstatements="197" conditionals="39" coveredconditionals="38" methods="4" coveredmethods="4"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
@@ -462,8 +462,8 @@
         <line num="103" count="1" type="stmt"/>
         <line num="104" count="1" type="cond" truecount="1" falsecount="0"/>
         <line num="105" count="2" type="cond" truecount="1" falsecount="0"/>
-        <line num="106" count="2" type="stmt"/>
-        <line num="107" count="2" type="stmt"/>
+        <line num="106" count="4" type="stmt"/>
+        <line num="107" count="2" type="cond" truecount="1" falsecount="0"/>
         <line num="108" count="2" type="stmt"/>
         <line num="109" count="2" type="stmt"/>
         <line num="110" count="2" type="stmt"/>
