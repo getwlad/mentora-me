@@ -29,9 +29,7 @@ class UpdateStudentController {
       await student.update({ name, phone, cpf });
       return res.status(200).json(student);
     } catch (error) {
-      return res
-        .status(401)
-        .json({ error: "Acesso não autorizado: login necessário." });
+      return res.status(401).json({ error: error.message });
     }
   }
 }

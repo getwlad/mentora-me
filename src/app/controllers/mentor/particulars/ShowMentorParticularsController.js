@@ -23,9 +23,7 @@ class ShowMentorParticularsController {
       }
       return res.status(200).json(particulars);
     } catch (error) {
-      return res
-        .status(401)
-        .json({ error: "Acesso não autorizado: login necessário." });
+      return res.status(401).json({ error: error.message });
     }
   }
 }

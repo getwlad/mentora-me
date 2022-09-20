@@ -17,9 +17,7 @@ class DeleteStudentController {
         .status(200)
         .json({ msg: "Estudante deletado(a) com sucesso!" });
     } catch (error) {
-      return res
-        .status(401)
-        .json({ error: "Acesso não autorizado: login necessário." });
+      return res.status(401).json({ error: error.message });
     }
   }
 }

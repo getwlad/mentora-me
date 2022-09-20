@@ -21,9 +21,7 @@ class ListMentorShipController {
       });
       return res.status(200).json(mentorships);
     } catch (error) {
-      return res
-        .status(401)
-        .json({ error: "Acesso não autorizado: login necessário." });
+      return res.status(401).json({ error: error.message });
     }
   }
 }

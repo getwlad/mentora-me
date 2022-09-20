@@ -26,9 +26,7 @@ class UpdateUserController {
         .status(200)
         .json({ id, email, user_type, createdAt, updatedAt });
     } catch (error) {
-      return res
-        .status(401)
-        .json({ error: "Acesso não autorizado: login necessário." });
+      return res.status(401).json({ error: error.message });
     }
   }
 }

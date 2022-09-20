@@ -29,9 +29,7 @@ class UpdateMentorController {
       await mentor.update({ name, phone, chavePix, publicEmail, cnpj });
       return res.status(200).json(mentor);
     } catch (error) {
-      return res
-        .status(401)
-        .json({ error: "Acesso não autorizado: login necessário." });
+      return res.status(401).json({ error: error.message });
     }
   }
 }

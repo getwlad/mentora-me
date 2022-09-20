@@ -28,9 +28,7 @@ class DeleteMentorshipController {
         .status(200)
         .json({ message: "Mentoria deletada com sucesso!" });
     } catch (error) {
-      return res
-        .status(401)
-        .json({ error: "Acesso não autorizado: login necessário." });
+      return res.status(401).json({ error: error.message });
     }
   }
 }

@@ -17,9 +17,7 @@ class CreateInterestArea {
       const area = await InterestArea.create({ mentoring_area: mentoringArea });
       return res.status(200).json(area);
     } catch (error) {
-      return res
-        .status(401)
-        .json({ error: "Acesso não autorizado: login necessário." });
+      return res.status(401).json({ error: error.message });
     }
   }
 }
