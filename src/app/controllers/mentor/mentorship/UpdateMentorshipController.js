@@ -12,7 +12,7 @@ class UpdateMentorshipController {
         },
       });
       if (!mentor) {
-        return res.status(404).json({ error: "Mentor não cadastrado" });
+        return res.status(404).json({ error: "Mentor(a) não cadastrado(a)." });
       }
       const { id } = mentor;
       const { name, price } = req.body;
@@ -22,7 +22,7 @@ class UpdateMentorshipController {
         },
       });
       if (!mentorship) {
-        return res.status(404).json({ error: "Mentoria não encontrada" });
+        return res.status(404).json({ error: "Mentoria não encontrada." });
       }
       await mentorship.update({
         name,

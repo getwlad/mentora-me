@@ -12,7 +12,7 @@ class UpdateStudentController {
         },
       });
       if (!student) {
-        return res.status(404).json({ error: "Estudante não encontrado" });
+        return res.status(404).json({ error: "Estudante não encontrado(a)." });
       }
 
       if (cpf) {
@@ -21,7 +21,7 @@ class UpdateStudentController {
             where: { cpf: cpf },
           });
           if (studentcpf) {
-            return res.status(400).json({ error: "cpf já cadastrado" });
+            return res.status(400).json({ error: "CPF já cadastrado." });
           }
         }
       }

@@ -14,7 +14,9 @@ class DeleteInterestAreaController {
       }
 
       await interestArea.destroy();
-      return res.status(200).json({ sucess: "sucesso" });
+      return res
+        .status(200)
+        .json({ sucess: "Área de interesse deletada com sucesso!" });
     } catch (error) {
       return res.status(401).json({ error: error.message });
     }

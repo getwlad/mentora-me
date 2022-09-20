@@ -14,12 +14,13 @@ class ListBuyedMentorshipController {
         include: [{ model: Mentorship, as: "mentorships" }],
       });
       if (!student) {
-        return res.status(404).json({ error: "Estudante não cadastrado" });
+        return res.status(404).json({ error: "Estudante não cadastrado(a)." });
       }
       if (!student.mentorships.length > 0) {
-        return res
-          .status(404)
-          .json({ error: "Você não comprou nenhuma mentoria" });
+        return res.status(404).json({
+          error:
+            "Você ainda não comprou nenhuma mentoria, que tal buscar um match?",
+        });
       }
 
       return res.status(200).json(student);
