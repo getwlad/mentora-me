@@ -11,7 +11,7 @@ class CreateMentorshipController {
         },
       });
       if (!mentor) {
-        return res.status(404).json({ error: "Mentor não cadastrado" });
+        return res.status(404).json({ error: "Mentor(a) não cadastrado(a)." });
       }
       const { id } = mentor;
       const { name, price } = req.body;

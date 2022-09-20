@@ -5,7 +5,7 @@ async function particularsValidator(request, response, next) {
   const schema = yup.object().shape({
     extrovert: yup
       .string()
-      .required("Característica  extrovert obrigatória.")
+      .required("Característica extrovert obrigatória.")
       .matches(regex.validScale, "Preencha numa escala de 1 a 3."),
     theory: yup
       .string()

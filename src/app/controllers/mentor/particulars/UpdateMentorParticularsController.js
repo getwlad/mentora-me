@@ -10,7 +10,7 @@ class UpdateMentorParticularsController {
         },
       });
       if (!mentor) {
-        return res.status(404).json({ error: "Mentor não cadastrado" });
+        return res.status(404).json({ error: "Mentor(a) não cadastrado(a)." });
       }
 
       const { id } = mentor;
@@ -30,7 +30,7 @@ class UpdateMentorParticularsController {
       });
       if (!particulars) {
         return res.status(404).json({
-          error: "caracteristicas não cadastradas",
+          error: "Características não cadastradas.",
         });
       }
       await particulars.update({

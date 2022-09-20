@@ -59,11 +59,11 @@ class AddBalanceController {
           balance: walletBalance,
         });
         return res.status(200).json({
-          sucess: "Créditos adicionados com sucesso",
+          sucess: "Créditos adicionados com sucesso!",
           saldo: wallet.balance,
         });
       } else {
-        return res.status(400).json({ error: "Pagamento não autorizado" });
+        return res.status(400).json({ error: "Pagamento não autorizado." });
       }
     } catch (err) {
       return res.status(400).json({ error: err.response.data });

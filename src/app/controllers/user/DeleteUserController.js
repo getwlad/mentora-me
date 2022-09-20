@@ -4,7 +4,7 @@ class DeleteUserController {
     const id = req.user;
     const user = await User.findByPk(id);
     await user.destroy();
-    return res.status(200).json({ msg: "sucesso" });
+    return res.status(200).json({ msg: "Usuário deletado com sucesso!" });
   }
 }
 
