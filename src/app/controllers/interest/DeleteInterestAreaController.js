@@ -8,7 +8,7 @@ class DeleteInterestAreaController {
       const admin = await User.findOne({
         where: {
           user_id: userId,
-          isAdmin: true,
+          is_admin: true,
         },
       });
 

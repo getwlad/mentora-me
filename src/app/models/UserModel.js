@@ -22,7 +22,7 @@ User.init(
     password_hash: Sequelize.STRING,
     user_type: Sequelize.ENUM("STUDENT", "MENTOR"),
     password: Sequelize.VIRTUAL(Sequelize.STRING),
-    isAdmin: {
+    is_admin: {
       type: Sequelize.BOOLEAN,
       defaultValue: false,
     },
