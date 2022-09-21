@@ -1,8 +1,23 @@
 import InterestArea from "../../models/InterestAreaModel";
+import User from "../../models/UserModel";
 
 class DeleteInterestAreaController {
   async delete(req, res) {
     try {
+      const userId = req.user;
+      const admin = await User.findOne({
+        where: {
+          user_id: userId,
+          is_admin: true,
+        },
+      });
+
+      if (!admin) {
+        return res
+          .status(403)
+          .json({ error: "Ação inválida para esse tipo de usuário" });
+      }
+
       const { id } = req.params;
       const interestArea = await InterestArea.findOne({
         where: { id },

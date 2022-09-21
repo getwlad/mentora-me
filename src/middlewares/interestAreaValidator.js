@@ -1,12 +1,8 @@
 import * as yup from "yup";
-import regex from "../libs/regexValidators";
 
 async function interestAreaValidator(request, response, next) {
   const schema = yup.object().shape({
-    mentoringArea: yup
-      .string()
-      .required("Nome obrigatório.")
-
+    mentoringArea: yup.string().required("Nome obrigatório."),
   });
 
   await schema

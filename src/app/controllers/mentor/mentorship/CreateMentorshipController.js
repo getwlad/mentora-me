@@ -1,6 +1,5 @@
 import Mentor from "../../../models/MentorModel";
 import Mentorship from "../../../models/MentorshipModel";
-import ListInterestService from "../../../services/interest/ListInterestService";
 class CreateMentorshipController {
   async create(req, res) {
     try {
