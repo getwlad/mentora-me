@@ -1,7 +1,5 @@
 import Sequelize, { Model } from "sequelize";
 import databaseConfig from "../../config/database";
-import Mentor from "./MentorModel";
-import Student from "./StudentModel";
 
 const sequelize = new Sequelize(databaseConfig);
 

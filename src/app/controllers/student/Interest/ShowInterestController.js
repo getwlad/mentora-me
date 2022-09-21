@@ -21,11 +21,11 @@ class ShowInterestController {
         attributes: [],
       });
       if (!student) {
-        return res.status(404).json({ error: "Estudante não cadastrado" });
+        return res.status(404).json({ error: "Estudante não cadastrado(a)." });
       }
 
       if (!student.interests.length > 0) {
-        return res.status(404).json({ error: "Interesses não registrados" });
+        return res.status(404).json({ error: "Interesses não registrados." });
       }
 
       return res.status(200).json(student);

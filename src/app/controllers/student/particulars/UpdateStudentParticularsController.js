@@ -11,7 +11,7 @@ class UpdateStudentParticularsController {
         },
       });
       if (!student) {
-        return res.status(404).json({ error: "Estudante não cadastrado" });
+        return res.status(404).json({ error: "Estudante não cadastrado(a)." });
       }
       const { id } = student;
       const {
@@ -30,7 +30,7 @@ class UpdateStudentParticularsController {
       });
       if (!particulars) {
         return res.status(404).json({
-          error: "caracteristicas não cadastradas",
+          error: "Características não cadastradas.",
         });
       }
       await particulars.update({

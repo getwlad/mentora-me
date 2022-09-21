@@ -41,6 +41,7 @@
   "devDependencies": {
     "@vitest/coverage-c8": "^0.23.4",
     "nodemon": "^2.0.19",
+    "sequelize-cli": "^6.4.1",
     "sqlite3": "^5.1.0",
     "sucrase": "^3.23.0",
     "supertest": "^6.2.4",

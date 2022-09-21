@@ -6,15 +6,15 @@ async function studentValidator(request, response, next) {
     name: yup
       .string()
       .required("Seu nome é obrigatório.")
-      .matches(regex.name, "Nome inválido"),
+      .matches(regex.name, "Nome inválido."),
     cpf: yup
       .string()
-      .required("Seu CPF é obrigatório")
-      .matches(regex.validCPF, "CPF inválido"),
+      .required("Seu CPF é obrigatório.")
+      .matches(regex.validCPF, "CPF inválido."),
     phone: yup
       .string()
-      .required("Seu telefone é obrigatório")
-      .matches(regex.phoneNumber, "Telefone inválido"),
+      .required("Seu telefone é obrigatório.")
+      .matches(regex.phoneNumber, "Telefone inválido."),
   });
 
   await schema

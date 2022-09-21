@@ -12,7 +12,7 @@ class DeleteInterestController {
         },
       });
       if (!student) {
-        return res.status(404).json({ error: "Estudante não cadastrado" });
+        return res.status(404).json({ error: "Estudante não cadastrado(a)." });
       }
       const { mentoringArea } = req.body;
       const areas = await ListInterestService.list();
@@ -29,9 +29,11 @@ class DeleteInterestController {
       if (!interestArea) {
         return res
           .status(404)
-          .json({ error: "Area de Mentoria não encontrada" });
+          .json({ error: "Área de interesse não encontrada." });
       }
-      return res.status(200).json({ message: "sucesso" });
+      return res
+        .status(200)
+        .json({ message: "Área de interesse deletada com sucesso!" });
     } catch (error) {
       return res.status(401).json({ error: error.message });
     }

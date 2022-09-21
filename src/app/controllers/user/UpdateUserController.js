@@ -16,7 +16,7 @@ class UpdateUserController {
           });
 
           if (userEmail) {
-            return res.status(400).json({ error: "email já cadastrado" });
+            return res.status(400).json({ error: "Email já cadastrado." });
           }
         }
       }

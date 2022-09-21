@@ -87,7 +87,7 @@ class MatchController {
 
       return res.status(200).json(bestMatch);
     } catch (error) {
-      return res.status(401).json({ error });
+      return res.status(401).json({ error: error.message });
     }
   }
   async ordMentores(mentors, ordMatch, mentorsLimit) {

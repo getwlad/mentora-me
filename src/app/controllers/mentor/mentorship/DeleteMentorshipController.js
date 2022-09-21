@@ -12,7 +12,7 @@ class DeleteMentorshipController {
         },
       });
       if (!mentor) {
-        return res.status(404).json({ error: "Mentor não cadastrado" });
+        return res.status(404).json({ error: "Mentor(a) não cadastrado(a)." });
       }
       const { id } = mentor;
       const mentorship = await Mentorship.findOne({
@@ -21,10 +21,12 @@ class DeleteMentorshipController {
         },
       });
       if (!mentorship) {
-        return res.status(404).json({ error: "Mentoria não encontrada" });
+        return res.status(404).json({ error: "Mentoria não encontrada." });
       }
       await mentorship.destroy();
-      return res.status(200).json({ message: "sucesso" });
+      return res
+        .status(200)
+        .json({ message: "Mentoria deletada com sucesso!" });
     } catch (error) {
       return res.status(401).json({ error: error.message });
     }

@@ -17,15 +17,15 @@ class CreateMentorController {
       const userExist = await User.findByPk(userId);
 
       if (userExist.user_type !== "MENTOR") {
-        return res.status(400).json({ error: "Tipo de usuário incorreto" });
+        return res.status(400).json({ error: "Tipo de usuário incorreto." });
       }
 
       if (cnpjCadastrado) {
-        return res.status(400).json({ error: "cnpj já cadastrado" });
+        return res.status(400).json({ error: "CNPJ já cadastrado." });
       }
 
       if (userCadastrado) {
-        return res.status(400).json({ error: "mentor já cadastrado" });
+        return res.status(400).json({ error: "Mentor(a) já cadastrado(a)." });
       }
       const areas = await ListInterestService.list();
       let interestAreaId;
@@ -38,7 +38,7 @@ class CreateMentorController {
       if (!interestAreaId) {
         return res
           .status(404)
-          .json({ error: "Area de Mentoria não encontrada" });
+          .json({ error: "Área de Mentoria não encontrada." });
       }
 
       const mentor = await CreateMentorService.createMentor(

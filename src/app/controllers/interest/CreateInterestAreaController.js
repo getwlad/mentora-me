@@ -1,4 +1,5 @@
 import InterestArea from "../../models/InterestAreaModel";
+import User from "../../models/UserModel";
 
 class CreateInterestArea {
   async create(req, res) {
@@ -12,6 +13,20 @@ class CreateInterestArea {
         return res
           .status(400)
           .json({ error: "Área de interesse já cadastrada." });
+      }
+
+      const userId = req.user;
+      const admin = await User.findOne({
+        where: {
+          user_id: userId,
+          is_admin: true,
+        },
+      });
+
+      if (!admin) {
+        return res
+          .status(403)
+          .json({ error: "Ação inválida para esse tipo de usuário" });
       }
 
       const area = await InterestArea.create({ mentoring_area: mentoringArea });

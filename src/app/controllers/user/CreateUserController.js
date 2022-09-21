@@ -8,7 +8,7 @@ class CreateUserController {
     const user = await CreateUserService.createUser(email, password, user_type);
 
     if (!user) {
-      return res.status(401).json({ error: "Email já cadastrado" });
+      return res.status(401).json({ error: "Email já cadastrado." });
     }
 
     const { id } = user;
