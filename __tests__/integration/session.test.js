@@ -16,14 +16,14 @@ describe("Session", () => {
   });
 
   it("should receive jwt token when authenticated with valid credentials", async () => {
-    await server.post("/user").send(data).expect(200);
+    await server.post("/user").send(data).expect(201);
     const response = await server.post("/user/login").send(data).expect(200);
     expect(response.status).toBe(200);
     expect(response._body).toHaveProperty("token");
   });
 
   it("should not receive any token with invalid credentials", async () => {
-    await server.post("/user").send(data).expect(200);
+    await server.post("/user").send(data).expect(201);
     const response = await server.post("/user/login").send({
       ...data,
       password: "1234678",
@@ -32,7 +32,7 @@ describe("Session", () => {
     expect(response._body).toHaveProperty("error");
   });
   it("should not able to login with invalid email", async () => {
-    await server.post("/user").send(data).expect(200);
+    await server.post("/user").send(data).expect(201);
     const response = await server.post("/user/login").send({
       ...data,
       email: null,
@@ -41,7 +41,7 @@ describe("Session", () => {
     expect(response._body).toHaveProperty("error");
   });
   it("should not able to login with invalid password", async () => {
-    await server.post("/user").send(data).expect(200);
+    await server.post("/user").send(data).expect(201);
     const response = await server.post("/user/login").send({
       ...data,
       password: null,

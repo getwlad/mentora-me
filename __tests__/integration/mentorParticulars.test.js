@@ -32,7 +32,7 @@ describe("Mentor particulars", () => {
 
   beforeEach(async () => {
     await destroyModelData(["User", "InterestArea"]);
-    await server.post("/user").send(data).expect(200);
+    await server.post("/user").send(data).expect(201);
     const loginRes = await server.post("/user/login").send(data).expect(200);
     token = loginRes._body.token;
     await server
@@ -41,12 +41,12 @@ describe("Mentor particulars", () => {
       .send({
         mentoringArea: "SEGURANÇA DA INFORMAÇÃO",
       })
-      .expect(200);
+      .expect(201);
     await server
       .post("/mentor")
       .set("Authorization", "bearer " + token)
       .send(mentorData)
-      .expect(200);
+      .expect(201);
   });
   it("should create a mentor particulars with valid data", async () => {
     const res = await server
@@ -85,7 +85,7 @@ describe("Mentor particulars", () => {
     await server
       .post("/user")
       .send({ ...data, email: "teste2@gmail.com" })
-      .expect(200);
+      .expect(201);
     const loginRes = await server
       .post("/user/login")
       .send({ ...data, email: "teste2@gmail.com" })
@@ -105,7 +105,7 @@ describe("Mentor particulars", () => {
       .post("/mentor/particulars")
       .set("Authorization", "bearer " + token)
       .send(particulars)
-      .expect(200);
+      .expect(201);
     const res = await server
       .get("/mentor/particulars")
       .set("Authorization", "bearer " + token);
@@ -130,7 +130,7 @@ describe("Mentor particulars", () => {
     await server
       .post("/user")
       .send({ ...data, email: "teste2@gmail.com" })
-      .expect(200);
+      .expect(201);
     const loginRes = await server
       .post("/user/login")
       .send({ ...data, email: "teste2@gmail.com" })
@@ -147,7 +147,7 @@ describe("Mentor particulars", () => {
       .post("/mentor/particulars")
       .set("Authorization", "bearer " + token)
       .send(particulars)
-      .expect(200);
+      .expect(201);
     const res = await server
       .put("/mentor/particulars")
       .set("Authorization", "bearer " + token)
@@ -162,7 +162,7 @@ describe("Mentor particulars", () => {
       .post("/mentor/particulars")
       .set("Authorization", "bearer " + token)
       .send(particulars)
-      .expect(200);
+      .expect(201);
     const res = await server
       .put("/mentor/particulars")
       .set("Authorization", "bearer " + "token")
@@ -176,7 +176,7 @@ describe("Mentor particulars", () => {
       .post("/mentor/particulars")
       .set("Authorization", "bearer " + token)
       .send(particulars)
-      .expect(200);
+      .expect(201);
     const res = await server
       .put("/mentor/particulars")
       .set("Authorization", "bearer " + token)
@@ -198,7 +198,7 @@ describe("Mentor particulars", () => {
     await server
       .post("/user")
       .send({ ...data, email: "teste2@gmail.com" })
-      .expect(200);
+      .expect(201);
     const loginRes = await server
       .post("/user/login")
       .send({ ...data, email: "teste2@gmail.com" })

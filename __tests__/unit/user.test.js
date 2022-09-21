@@ -26,7 +26,8 @@ describe("User", () => {
   it("should create user with mentor type", async () => {
     const response = await server
       .post("/user")
-      .send({ ...data, user_type: "MENTOR" });
+      .send({ ...data, user_type: "MENTOR" })
+      .expect(201);
     const { body } = response;
     expect(body).toHaveProperty("id");
     expect(body.email).toBe(data.email);
@@ -74,7 +75,7 @@ describe("User", () => {
   //   const response = await server.post("/user").send(data);
   // });
   it("should  able to delete an user", async () => {
-    await server.post("/user").send(data).expect(200);
+    await server.post("/user").send(data).expect(201);
     const loginRes = await server.post("/user/login").send(data).expect(200);
     const token = loginRes._body.token;
     const res = await server
@@ -85,7 +86,7 @@ describe("User", () => {
     expect(res._body).toHaveProperty("msg");
   });
   it("should  not able to delete an user that doesnt exist even more", async () => {
-    await server.post("/user").send(data).expect(200);
+    await server.post("/user").send(data).expect(201);
     const loginRes = await server.post("/user/login").send(data).expect(200);
     const token = loginRes._body.token;
     await server
@@ -101,21 +102,21 @@ describe("User", () => {
     expect(res._body).toHaveProperty("error");
   });
   it("should  able to get a list of  users", async () => {
-    await server.post("/user").send(data).expect(200);
+    await server.post("/user").send(data).expect(201);
     await server
       .post("/user")
       .send({ ...data, email: "teste3@gmail.com" })
-      .expect(200);
+      .expect(201);
     const res = await server.get("/user").expect(200);
     const result = Array.isArray(res._body);
     expect(result).toBe(true);
   });
   it("should  able to get a list of  users with query", async () => {
-    await server.post("/user").send(data).expect(200);
+    await server.post("/user").send(data).expect(201);
     await server
       .post("/user")
       .send({ ...data, email: "teste3@gmail.com" })
-      .expect(200);
+      .expect(201);
     const res = await server
       .get("/user")
       .query({
@@ -132,7 +133,7 @@ describe("User", () => {
     expect(result).toBe(true);
   });
   it("should  able to get one  user", async () => {
-    await server.post("/user").send(data).expect(200);
+    await server.post("/user").send(data).expect(201);
     const loginRes = await server.post("/user/login/").send(data).expect(200);
     const token = loginRes._body.token;
     const resUser = await server
@@ -142,7 +143,7 @@ describe("User", () => {
     expect(resUser._body).toHaveProperty("id");
   });
   it("should  able to  update a  user", async () => {
-    await server.post("/user").send(data).expect(200);
+    await server.post("/user").send(data).expect(201);
     const loginRes = await server.post("/user/login").send(data).expect(200);
     const token = loginRes._body.token;
     const res = await server
@@ -152,11 +153,11 @@ describe("User", () => {
     expect(res._body.email).toBe("teste2@gmail.com");
   });
   it("should  not able to update a  user with an existing email", async () => {
-    await server.post("/user").send(data).expect(200);
+    await server.post("/user").send(data).expect(201);
     await server
       .post("/user")
       .send({ ...data, email: "teste2@gmail.com" })
-      .expect(200);
+      .expect(201);
     const loginRes = await server.post("/user/login").send(data).expect(200);
     const token = loginRes._body.token;
     const res = await server

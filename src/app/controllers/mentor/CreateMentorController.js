@@ -51,7 +51,7 @@ class CreateMentorController {
         interestAreaId
       );
 
-      return res.status(200).json(mentor);
+      return res.status(201).json(mentor);
     } catch (error) {
       return res.status(401).json({ error: error.message });
     }

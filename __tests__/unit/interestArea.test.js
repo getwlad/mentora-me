@@ -14,7 +14,7 @@ describe("Interest", () => {
   let token;
   beforeEach(async () => {
     await destroyModelData(["User", "InterestArea"]);
-    await server.post("/user").send(data).expect(200);
+    await server.post("/user").send(data).expect(201);
     const loginRes = await server.post("/user/login").send(data).expect(200);
     token = loginRes._body.token;
   });
@@ -25,7 +25,7 @@ describe("Interest", () => {
       .send({
         mentoringArea: "Teste",
       })
-      .expect(200);
+      .expect(201);
     expect(res._body).toHaveProperty("id");
     expect(res._body.mentoringArea).toBe(data.mentoringArea);
   });
@@ -37,7 +37,7 @@ describe("Interest", () => {
       .send({
         mentoringArea: "Teste",
       })
-      .expect(200);
+      .expect(201);
     const res = await server
       .post("/interest")
       .set("Authorization", "bearer " + token)
@@ -59,7 +59,7 @@ describe("Interest", () => {
       .send({
         mentoringArea: "Teste",
       })
-      .expect(200);
+      .expect(201);
     const newRoute = `/interest/${resInterest._body.id}`;
     const res = await server
       .delete(newRoute)
@@ -74,7 +74,7 @@ describe("Interest", () => {
       .send({
         mentoringArea: "Teste",
       })
-      .expect(200);
+      .expect(201);
     const newRoute = `/interest/123`;
     const res = await server
       .delete(newRoute)

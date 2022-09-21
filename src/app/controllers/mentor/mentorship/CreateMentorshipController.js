@@ -22,7 +22,7 @@ class CreateMentorshipController {
         mentor_id: id,
       });
 
-      return res.status(200).json(mentorship);
+      return res.status(201).json(mentorship);
     } catch (error) {
       return res.status(401).json({ error: error.message });
     }

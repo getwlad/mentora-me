@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1663551235310" clover="3.2.0">
-  <project timestamp="1663551235310" name="All files">
-    <metrics statements="2871" coveredstatements="2790" conditionals="336" coveredconditionals="293" methods="70" coveredmethods="70" elements="3277" coveredelements="3153" complexity="0" loc="2871" ncloc="2871" packages="25" files="71" classes="71"/>
+<coverage generated="1663593451839" clover="3.2.0">
+  <project timestamp="1663593451839" name="All files">
+    <metrics statements="2878" coveredstatements="2797" conditionals="340" coveredconditionals="297" methods="70" coveredmethods="70" elements="3288" coveredelements="3164" complexity="0" loc="2878" ncloc="2878" packages="25" files="71" classes="71"/>
     <package name="src">
-      <metrics statements="267" coveredstatements="264" conditionals="47" coveredconditionals="45" methods="5" coveredmethods="5"/>
+      <metrics statements="263" coveredstatements="260" conditionals="47" coveredconditionals="45" methods="5" coveredmethods="5"/>
       <file name="app.js" path="C:\Users\wlad_\mentora-me\src\app.js">
-        <metrics statements="54" coveredstatements="52" conditionals="8" coveredconditionals="6" methods="5" coveredmethods="5"/>
+        <metrics statements="50" coveredstatements="48" conditionals="8" coveredconditionals="6" methods="5" coveredmethods="5"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="cond" truecount="0" falsecount="1"/>
         <line num="3" count="1" type="stmt"/>
@@ -45,21 +45,17 @@
         <line num="37" count="1" type="cond" truecount="1" falsecount="0"/>
         <line num="38" count="13" type="stmt"/>
         <line num="39" count="13" type="stmt"/>
-        <line num="40" count="13" type="stmt"/>
+        <line num="40" count="1" type="cond" truecount="1" falsecount="0"/>
         <line num="41" count="13" type="stmt"/>
         <line num="42" count="13" type="stmt"/>
         <line num="43" count="13" type="stmt"/>
-        <line num="44" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="45" count="13" type="stmt"/>
-        <line num="46" count="13" type="stmt"/>
+        <line num="44" count="13" type="cond" truecount="0" falsecount="1"/>
+        <line num="45" count="0" type="stmt"/>
+        <line num="46" count="0" type="stmt"/>
         <line num="47" count="13" type="stmt"/>
-        <line num="48" count="13" type="cond" truecount="0" falsecount="1"/>
-        <line num="49" count="0" type="stmt"/>
-        <line num="50" count="0" type="stmt"/>
-        <line num="51" count="13" type="stmt"/>
-        <line num="52" count="1" type="stmt"/>
-        <line num="53" count="1" type="stmt"/>
-        <line num="54" count="1" type="stmt"/>
+        <line num="48" count="1" type="stmt"/>
+        <line num="49" count="1" type="stmt"/>
+        <line num="50" count="1" type="stmt"/>
       </file>
       <file name="routes.js" path="C:\Users\wlad_\mentora-me\src\routes.js">
         <metrics statements="213" coveredstatements="212" conditionals="39" coveredconditionals="39" methods="0" coveredmethods="0"/>
@@ -354,9 +350,9 @@
       </file>
     </package>
     <package name="src.app.controllers.match">
-      <metrics statements="199" coveredstatements="197" conditionals="39" coveredconditionals="38" methods="4" coveredmethods="4"/>
+      <metrics statements="199" coveredstatements="197" conditionals="38" coveredconditionals="37" methods="4" coveredmethods="4"/>
       <file name="MatchController.js" path="C:\Users\wlad_\mentora-me\src\app\controllers\match\MatchController.js">
-        <metrics statements="199" coveredstatements="197" conditionals="39" coveredconditionals="38" methods="4" coveredmethods="4"/>
+        <metrics statements="199" coveredstatements="197" conditionals="38" coveredconditionals="37" methods="4" coveredmethods="4"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
@@ -462,8 +458,8 @@
         <line num="103" count="1" type="stmt"/>
         <line num="104" count="1" type="cond" truecount="1" falsecount="0"/>
         <line num="105" count="2" type="cond" truecount="1" falsecount="0"/>
-        <line num="106" count="4" type="stmt"/>
-        <line num="107" count="2" type="cond" truecount="1" falsecount="0"/>
+        <line num="106" count="2" type="stmt"/>
+        <line num="107" count="2" type="stmt"/>
         <line num="108" count="2" type="stmt"/>
         <line num="109" count="2" type="stmt"/>
         <line num="110" count="2" type="stmt"/>
@@ -3143,22 +3139,33 @@
       </file>
     </package>
     <package name="utils">
-      <metrics statements="13" coveredstatements="13" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
+      <metrics statements="24" coveredstatements="24" conditionals="6" coveredconditionals="6" methods="1" coveredmethods="1"/>
       <file name="destroyModelData.js" path="C:\Users\wlad_\mentora-me\utils\destroyModelData.js">
-        <metrics statements="13" coveredstatements="13" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <metrics statements="24" coveredstatements="24" conditionals="6" coveredconditionals="6" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
         <line num="5" count="1" type="stmt"/>
-        <line num="6" count="1" type="stmt"/>
-        <line num="7" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="8" count="140" type="stmt"/>
-        <line num="9" count="140" type="stmt"/>
+        <line num="6" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="7" count="140" type="stmt"/>
+        <line num="8" count="233" type="cond" truecount="1" falsecount="0"/>
+        <line num="9" count="233" type="cond" truecount="1" falsecount="0"/>
         <line num="10" count="140" type="stmt"/>
         <line num="11" count="140" type="stmt"/>
-        <line num="12" count="140" type="stmt"/>
-        <line num="13" count="1" type="stmt"/>
+        <line num="12" count="233" type="cond" truecount="1" falsecount="0"/>
+        <line num="13" count="5" type="stmt"/>
+        <line num="14" count="5" type="stmt"/>
+        <line num="15" count="233" type="cond" truecount="1" falsecount="0"/>
+        <line num="16" count="5" type="stmt"/>
+        <line num="17" count="5" type="stmt"/>
+        <line num="18" count="233" type="cond" truecount="1" falsecount="0"/>
+        <line num="19" count="83" type="stmt"/>
+        <line num="20" count="83" type="stmt"/>
+        <line num="21" count="233" type="stmt"/>
+        <line num="22" count="233" type="stmt"/>
+        <line num="23" count="233" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
       </file>
     </package>
   </project>

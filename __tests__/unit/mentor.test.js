@@ -22,7 +22,7 @@ describe("mentor", () => {
   let token;
   beforeEach(async () => {
     await destroyModelData(["User", "InterestArea"]);
-    await server.post("/user").send(data).expect(200);
+    await server.post("/user").send(data).expect(201);
     const loginRes = await server.post("/user/login").send(data).expect(200);
     token = loginRes._body.token;
     await server
@@ -31,14 +31,14 @@ describe("mentor", () => {
       .send({
         mentoringArea: "SEGURANÇA DA INFORMAÇÃO",
       })
-      .expect(200);
+      .expect(201);
   });
   it("should create a mentor with valid data", async () => {
     const res = await server
       .post("/mentor")
       .set("Authorization", "bearer " + token)
       .send(mentorData)
-      .expect(200);
+      .expect(201);
     expect(res._body).toHaveProperty("id");
     expect(res._body.name).toBe(mentorData.name);
   });
@@ -47,7 +47,7 @@ describe("mentor", () => {
       .post("/mentor")
       .set("Authorization", "bearer " + token)
       .send(mentorData)
-      .expect(200);
+      .expect(201);
     const res = await server
       .post("/mentor")
       .set("Authorization", "bearer " + token)
@@ -68,7 +68,7 @@ describe("mentor", () => {
       .post("/mentor")
       .set("Authorization", "bearer " + token)
       .send(mentorData)
-      .expect(200);
+      .expect(201);
     const res = await server
       .post("/mentor")
       .set("Authorization", "bearer " + token)
@@ -96,7 +96,7 @@ describe("mentor", () => {
       passwordConfirmation: "1234567A",
       user_type: "STUDENT",
     };
-    await server.post("/user").send(newData).expect(200);
+    await server.post("/user").send(newData).expect(201);
     const loginRes = await server.post("/user/login").send(newData).expect(200);
     const itoken = loginRes._body.token;
     const res = await server
@@ -145,7 +145,7 @@ describe("mentor", () => {
       .post("/mentor")
       .set("Authorization", "bearer " + token)
       .send(mentorData)
-      .expect(200);
+      .expect(201);
     const res = await server.get("/mentor").query({
       name: mentorData.name,
       cnpj: mentorData.cnpj,
@@ -166,7 +166,7 @@ describe("mentor", () => {
       .post("/mentor")
       .set("Authorization", "bearer " + token)
       .send(mentorData)
-      .expect(200);
+      .expect(201);
     const id = res._body.id;
     const resUser = await server
       .get(`/mentor/${id}/show`)
@@ -186,7 +186,7 @@ describe("mentor", () => {
       .post("/mentor")
       .set("Authorization", "bearer " + token)
       .send(mentorData)
-      .expect(200);
+      .expect(201);
     const res = await server
       .put("/mentor")
       .set("Authorization", "bearer " + token)
@@ -210,7 +210,7 @@ describe("mentor", () => {
       cnpj: "12111668911",
       mentoringArea: "SEGURANÇA DA INFORMAÇÃO",
     };
-    await server.post("/user").send(existData).expect(200);
+    await server.post("/user").send(existData).expect(201);
     const loginRes = await server
       .post("/user/login")
       .send(existData)
@@ -220,11 +220,12 @@ describe("mentor", () => {
       .post("/mentor")
       .set("Authorization", "bearer " + iToken)
       .send(existmentor)
-      .expect(200);
+      .expect(201);
     const reqe = await server
       .post("/mentor")
       .set("Authorization", "bearer " + token)
-      .send(mentorData);
+      .send(mentorData)
+      .expect(201);
 
     const res = await server
       .put("/mentor")
@@ -250,7 +251,7 @@ describe("mentor", () => {
       .post("/mentor")
       .set("Authorization", "bearer " + token)
       .send(mentorData)
-      .expect(200);
+      .expect(201);
 
     const res = await server
       .delete("/mentor")
@@ -263,7 +264,7 @@ describe("mentor", () => {
       .post("/mentor")
       .set("Authorization", "bearer " + token)
       .send(mentorData)
-      .expect(200);
+      .expect(201);
     await server
       .delete("/mentor")
       .set("Authorization", "bearer " + token)

@@ -14,7 +14,7 @@ describe("Wallet", () => {
   let token;
   beforeEach(async () => {
     await destroyModelData(["User"]);
-    await server.post("/user").send(data).expect(200);
+    await server.post("/user").send(data).expect(201);
     const loginRes = await server.post("/user/login").send(data).expect(200);
     token = loginRes._body.token;
   });
