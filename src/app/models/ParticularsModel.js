@@ -12,7 +12,6 @@ Particulars.init(
       defaultValue: Sequelize.UUIDV4,
       primaryKey: true,
     },
-    extrovert: Sequelize.ENUM("1", "2", "3"),
     theory: Sequelize.ENUM("1", "2", "3"),
     practice: Sequelize.ENUM("1", "2", "3"),
     mentoring_in_group: Sequelize.ENUM("1", "2", "3"),

@@ -115,15 +115,6 @@ class MatchController {
     return mentorsParticulars.map((mentorParticulars) => {
       let score = 0;
 
-      if (mentorParticulars.extrovert === particulars.extrovert) {
-        score += 3;
-      }
-      if (mentorParticulars.extrovert < particulars.extrovert) {
-        score += 2;
-      }
-      if (mentorParticulars.extrovert > particulars.extrovert) {
-        score += 1;
-      }
       if (mentorParticulars.theory === particulars.theory) {
         score += 3;
       }

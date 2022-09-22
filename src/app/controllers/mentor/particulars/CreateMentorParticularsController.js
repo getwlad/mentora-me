@@ -14,7 +14,6 @@ class CreateMentorParticularsController {
       }
       const { id } = mentor;
       const {
-        extrovert,
         theory,
         practice,
         mentoringInGroup,
@@ -24,7 +23,6 @@ class CreateMentorParticularsController {
       } = req.body;
       const particulars = await Particulars.create({
         mentor_id: id,
-        extrovert,
         theory,
         practice,
         mentoring_in_group: mentoringInGroup,
