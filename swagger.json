@@ -9,14 +9,16 @@
     {
       "url": "https://mentora-me.herokuapp.com",
       "variables": {}
+    },
+    {
+      "url": "httpt://localhost:3001",
+      "variables": {}
     }
   ],
   "paths": {
     "/balance": {
       "get": {
-        "tags": [
-          "UserBalance"
-        ],
+        "tags": ["UserBalance"],
         "summary": "ShowBalance",
         "operationId": "ShowBalance",
         "parameters": [],
@@ -34,9 +36,7 @@
         ]
       },
       "post": {
-        "tags": [
-          "UserBalance"
-        ],
+        "tags": ["UserBalance"],
         "summary": "AddBalance",
         "operationId": "AddBalance",
         "parameters": [],
@@ -89,9 +89,7 @@
     },
     "/user/login": {
       "post": {
-        "tags": [
-          "User"
-        ],
+        "tags": ["User"],
         "summary": "Login",
         "operationId": "Login",
         "parameters": [],
@@ -131,9 +129,7 @@
     },
     "/user": {
       "get": {
-        "tags": [
-          "User"
-        ],
+        "tags": ["User"],
         "summary": "List",
         "operationId": "List",
         "parameters": [],
@@ -146,9 +142,7 @@
         "deprecated": false
       },
       "post": {
-        "tags": [
-          "User"
-        ],
+        "tags": ["User"],
         "summary": "Create",
         "operationId": "Create",
         "parameters": [],
@@ -190,9 +184,7 @@
         "deprecated": false
       },
       "put": {
-        "tags": [
-          "User"
-        ],
+        "tags": ["User"],
         "summary": "Update",
         "operationId": "Update",
         "parameters": [],
@@ -235,9 +227,7 @@
         ]
       },
       "delete": {
-        "tags": [
-          "User"
-        ],
+        "tags": ["User"],
         "summary": "Delete",
         "operationId": "Delete",
         "parameters": [],
@@ -257,9 +247,7 @@
     },
     "/user/{id}/show": {
       "get": {
-        "tags": [
-          "User"
-        ],
+        "tags": ["User"],
         "summary": "Show",
         "operationId": "Show",
         "parameters": [
@@ -285,9 +273,7 @@
     },
     "/student/match": {
       "get": {
-        "tags": [
-          "Match"
-        ],
+        "tags": ["Match"],
         "summary": "Match",
         "operationId": "Match",
         "parameters": [],
@@ -307,9 +293,7 @@
     },
     "/student/particulars": {
       "post": {
-        "tags": [
-          "StudentParticulars"
-        ],
+        "tags": ["StudentParticulars"],
         "summary": "CreateStudentParticulars",
         "operationId": "CreateStudentParticulars",
         "parameters": [],
@@ -360,9 +344,7 @@
         ]
       },
       "put": {
-        "tags": [
-          "StudentParticulars"
-        ],
+        "tags": ["StudentParticulars"],
         "summary": "UpdateStudentParticulars",
         "operationId": "UpdateStudentParticulars",
         "parameters": [],
@@ -413,9 +395,7 @@
         ]
       },
       "get": {
-        "tags": [
-          "StudentParticulars"
-        ],
+        "tags": ["StudentParticulars"],
         "summary": "ShowStudentParticulars",
         "operationId": "ShowStudentParticulars",
         "parameters": [],
@@ -435,9 +415,7 @@
     },
     "/student/interest": {
       "post": {
-        "tags": [
-          "StudentInterest"
-        ],
+        "tags": ["StudentInterest"],
         "summary": "AddStudentInterest",
         "operationId": "AddStudentInterest",
         "parameters": [],
@@ -478,9 +456,7 @@
         ]
       },
       "delete": {
-        "tags": [
-          "StudentInterest"
-        ],
+        "tags": ["StudentInterest"],
         "summary": "DeleteStudentInterest",
         "operationId": "DeleteStudentInterest",
         "parameters": [],
@@ -498,9 +474,7 @@
         ]
       },
       "get": {
-        "tags": [
-          "StudentInterest"
-        ],
+        "tags": ["StudentInterest"],
         "summary": "ShowStudentInterest",
         "operationId": "ShowStudentInterest",
         "parameters": [],
@@ -520,9 +494,7 @@
     },
     "/student/mentorship": {
       "get": {
-        "tags": [
-          "StudentMentorships"
-        ],
+        "tags": ["StudentMentorships"],
         "summary": "ListMentorship",
         "operationId": "ListMentorship",
         "parameters": [],
@@ -542,9 +514,7 @@
     },
     "/student/buymentorship": {
       "post": {
-        "tags": [
-          "StudentMentorships"
-        ],
+        "tags": ["StudentMentorships"],
         "summary": "BuyMentorship",
         "operationId": "BuyMentorship",
         "parameters": [],
@@ -587,9 +557,7 @@
     },
     "/student": {
       "get": {
-        "tags": [
-          "Student"
-        ],
+        "tags": ["Student"],
         "summary": "ListStudent",
         "operationId": "ListStudent",
         "parameters": [],
@@ -602,9 +570,7 @@
         "deprecated": false
       },
       "post": {
-        "tags": [
-          "Student"
-        ],
+        "tags": ["Student"],
         "summary": "CreateStudent",
         "operationId": "CreateStudent",
         "parameters": [],
@@ -649,9 +615,7 @@
         ]
       },
       "put": {
-        "tags": [
-          "Student"
-        ],
+        "tags": ["Student"],
         "summary": "UpdateStudent",
         "operationId": "UpdateStudent",
         "parameters": [],
@@ -669,9 +633,7 @@
         ]
       },
       "delete": {
-        "tags": [
-          "Student"
-        ],
+        "tags": ["Student"],
         "summary": "DeleteStudent",
         "operationId": "DeleteStudent",
         "parameters": [],
@@ -691,9 +653,7 @@
     },
     "/student/show": {
       "get": {
-        "tags": [
-          "Student"
-        ],
+        "tags": ["Student"],
         "summary": "ShowStudent",
         "operationId": "ShowStudent",
         "parameters": [],
@@ -713,9 +673,7 @@
     },
     "/mentor/particulars": {
       "post": {
-        "tags": [
-          "MentorParticulars"
-        ],
+        "tags": ["MentorParticulars"],
         "summary": "CreateMentorParticulars",
         "operationId": "CreateMentorParticulars",
         "parameters": [],
@@ -766,9 +724,7 @@
         ]
       },
       "put": {
-        "tags": [
-          "MentorParticulars"
-        ],
+        "tags": ["MentorParticulars"],
         "summary": "UpdateMentorParticulars",
         "operationId": "UpdateMentorParticulars",
         "parameters": [],
@@ -819,9 +775,7 @@
         ]
       },
       "get": {
-        "tags": [
-          "MentorParticulars"
-        ],
+        "tags": ["MentorParticulars"],
         "summary": "ShowMentorParticulars",
         "operationId": "ShowMentorParticulars",
         "parameters": [],
@@ -841,9 +795,7 @@
     },
     "/mentor/mentorship": {
       "get": {
-        "tags": [
-          "MentorMentorships"
-        ],
+        "tags": ["MentorMentorships"],
         "summary": "ListMentorship",
         "operationId": "GetListMentorship",
         "parameters": [],
@@ -856,9 +808,7 @@
         "deprecated": false
       },
       "post": {
-        "tags": [
-          "MentorMentorships"
-        ],
+        "tags": ["MentorMentorships"],
         "summary": "CreateMentorship",
         "operationId": "CreateMentorship",
         "parameters": [],
@@ -903,9 +853,7 @@
     },
     "/mentor/mentorship/{mentorshipId}": {
       "get": {
-        "tags": [
-          "MentorMentorships"
-        ],
+        "tags": ["MentorMentorships"],
         "summary": "ShowMentorship",
         "operationId": "ShowMentorship",
         "parameters": [
@@ -934,9 +882,7 @@
         ]
       },
       "put": {
-        "tags": [
-          "MentorMentorships"
-        ],
+        "tags": ["MentorMentorships"],
         "summary": "UpdateMentorship",
         "operationId": "UpdateMentorship",
         "parameters": [
@@ -965,9 +911,7 @@
         ]
       },
       "delete": {
-        "tags": [
-          "MentorMentorships"
-        ],
+        "tags": ["MentorMentorships"],
         "summary": "DeleteMentorship",
         "operationId": "DeleteMentorship",
         "parameters": [
@@ -998,9 +942,7 @@
     },
     "/mentor": {
       "get": {
-        "tags": [
-          "Mentor"
-        ],
+        "tags": ["Mentor"],
         "summary": "ListMentor",
         "operationId": "ListMentor",
         "parameters": [],
@@ -1013,9 +955,7 @@
         "deprecated": false
       },
       "post": {
-        "tags": [
-          "Mentor"
-        ],
+        "tags": ["Mentor"],
         "summary": "CreateMentor",
         "operationId": "CreateMentor",
         "parameters": [],
@@ -1066,9 +1006,7 @@
         ]
       },
       "put": {
-        "tags": [
-          "Mentor"
-        ],
+        "tags": ["Mentor"],
         "summary": "UpdateMentor",
         "operationId": "UpdateMentor",
         "parameters": [],
@@ -1119,9 +1057,7 @@
         ]
       },
       "delete": {
-        "tags": [
-          "Mentor"
-        ],
+        "tags": ["Mentor"],
         "summary": "DeleteMentor",
         "operationId": "DeleteMentor",
         "parameters": [],
@@ -1141,9 +1077,7 @@
     },
     "/mentor/{id}/show": {
       "get": {
-        "tags": [
-          "Mentor"
-        ],
+        "tags": ["Mentor"],
         "summary": "ShowMentor",
         "operationId": "ShowMentor",
         "parameters": [
@@ -1169,9 +1103,7 @@
     },
     "/interest": {
       "post": {
-        "tags": [
-          "InterestArea"
-        ],
+        "tags": ["InterestArea"],
         "summary": "CreateInterestArea",
         "operationId": "CreateInterestArea",
         "parameters": [],
@@ -1212,9 +1144,7 @@
         ]
       },
       "get": {
-        "tags": [
-          "InterestArea"
-        ],
+        "tags": ["InterestArea"],
         "summary": "ListInterestArea",
         "operationId": "ListInterestArea",
         "parameters": [],
@@ -1229,9 +1159,7 @@
     },
     "/interest/{id}": {
       "delete": {
-        "tags": [
-          "InterestArea"
-        ],
+        "tags": ["InterestArea"],
         "summary": "DeleteInterestArea",
         "operationId": "DeleteInterestArea",
         "parameters": [
@@ -1310,10 +1238,7 @@
       },
       "LoginRequest": {
         "title": "LoginRequest",
-        "required": [
-          "email",
-          "password"
-        ],
+        "required": ["email", "password"],
         "type": "object",
         "properties": {
           "email": {
@@ -1330,12 +1255,7 @@
       },
       "CreateRequest": {
         "title": "CreateRequest",
-        "required": [
-          "email",
-          "password",
-          "passwordConfirmation",
-          "user_type"
-        ],
+        "required": ["email", "password", "passwordConfirmation", "user_type"],
         "type": "object",
         "properties": {
           "email": {
@@ -1360,10 +1280,7 @@
       },
       "UpdateRequest": {
         "title": "UpdateRequest",
-        "required": [
-          "email",
-          "password"
-        ],
+        "required": ["email", "password"],
         "type": "object",
         "properties": {
           "email": {
@@ -1460,9 +1377,7 @@
       },
       "AddStudentInterestRequest": {
         "title": "AddStudentInterestRequest",
-        "required": [
-          "mentoringArea"
-        ],
+        "required": ["mentoringArea"],
         "type": "object",
         "properties": {
           "mentoringArea": {
@@ -1475,9 +1390,7 @@
       },
       "DeleteStudentInterestRequest": {
         "title": "DeleteStudentInterestRequest",
-        "required": [
-          "mentoringArea"
-        ],
+        "required": ["mentoringArea"],
         "type": "object",
         "properties": {
           "mentoringArea": {
@@ -1490,9 +1403,7 @@
       },
       "BuyMentorshipRequest": {
         "title": "BuyMentorshipRequest",
-        "required": [
-          "mentoringId"
-        ],
+        "required": ["mentoringId"],
         "type": "object",
         "properties": {
           "mentoringId": {
@@ -1505,11 +1416,7 @@
       },
       "CreateStudentRequest": {
         "title": "CreateStudentRequest",
-        "required": [
-          "name",
-          "cpf",
-          "phone"
-        ],
+        "required": ["name", "cpf", "phone"],
         "type": "object",
         "properties": {
           "name": {
@@ -1610,10 +1517,7 @@
       },
       "CreateMentorshipRequest": {
         "title": "CreateMentorshipRequest",
-        "required": [
-          "name",
-          "price"
-        ],
+        "required": ["name", "price"],
         "type": "object",
         "properties": {
           "name": {
@@ -1710,9 +1614,7 @@
       },
       "CreateInterestAreaRequest": {
         "title": "CreateInterestAreaRequest",
-        "required": [
-          "mentoringArea"
-        ],
+        "required": ["mentoringArea"],
         "type": "object",
         "properties": {
           "mentoringArea": {
