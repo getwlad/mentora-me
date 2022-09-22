@@ -1,10 +1,13 @@
-import destroyModelData from "../../utils/destroyModelData";
+import destroyModelData, { setAdminTrue } from "../../utils/destroyModelData";
 import app from "./../../src/app";
-import { describe, expect, it, beforeEach } from "vitest";
+import { describe, expect, it, beforeEach, beforeAll } from "vitest";
 import supertest from "supertest";
 import Mentor from "../../src/app/models/MentorModel";
 
 describe("Student match", () => {
+  beforeAll(async () => {
+    await setAdminTrue();
+  });
   const server = supertest(app);
   const studentUser = {
     email: "teste1@gmail.com",
@@ -100,11 +103,11 @@ describe("Student match", () => {
   beforeEach(async () => {
     await destroyModelData(["User", "Mentor", "Student", "InterestArea"]);
     //criando usuário estudante
-    await server.post("/user").send(studentUser).expect(200);
+    await server.post("/user").send(studentUser).expect(201);
     //criando usuário mentor
-    await server.post("/user").send(mentorUser).expect(200);
-    await server.post("/user").send(mentorUser2).expect(200);
-    await server.post("/user").send(mentorUser3).expect(200);
+    await server.post("/user").send(mentorUser).expect(201);
+    await server.post("/user").send(mentorUser2).expect(201);
+    await server.post("/user").send(mentorUser3).expect(201);
 
     //login estudante
     const loginStudent = await server
@@ -135,13 +138,13 @@ describe("Student match", () => {
       .post("/interest")
       .set("Authorization", "bearer " + tokenMentor)
       .send(interest)
-      .expect(200);
+      .expect(201);
     //criando perfil estudante
     await server
       .post("/student")
       .set("Authorization", "bearer " + tokenStudent)
       .send(studentData)
-      .expect(200);
+      .expect(201);
     //criando perfil mentor
     await server
       .post("/mentor")
@@ -161,24 +164,24 @@ describe("Student match", () => {
       .post("/mentor/mentorship")
       .set("Authorization", "bearer " + tokenMentor)
       .send(mentorshipData)
-      .expect(200);
+      .expect(201);
 
     //adicionado particularidades mentor
     await server
       .post("/mentor/particulars")
       .set("Authorization", "bearer " + tokenMentor)
       .send(particulars)
-      .expect(200);
+      .expect(201);
     await server
       .post("/mentor/particulars")
       .set("Authorization", "bearer " + tokenMentor2)
       .send(particulars2)
-      .expect(200);
+      .expect(201);
     await server
       .post("/mentor/particulars")
       .set("Authorization", "bearer " + tokenMentor3)
       .send(particulars3)
-      .expect(200);
+      .expect(201);
   });
   it("should student match", async () => {
     //adicionando particularidades estudante
@@ -186,13 +189,13 @@ describe("Student match", () => {
       .post("/student/particulars")
       .set("Authorization", "bearer " + tokenStudent)
       .send(particulars)
-      .expect(200);
+      .expect(201);
     //adicionando interesse estudante
     await server
       .post("/student/interest")
       .set("Authorization", "bearer " + tokenStudent)
       .send(interest)
-      .expect(200);
+      .expect(201);
     //match
     await server
       .get("/student/match")
@@ -212,7 +215,7 @@ describe("Student match", () => {
       .post("/student/particulars")
       .set("Authorization", "bearer " + tokenStudent)
       .send(particulars)
-      .expect(200);
+      .expect(201);
     const res = await server
       .get("/student/match")
       .set("Authorization", "bearer " + tokenStudent)
@@ -225,7 +228,7 @@ describe("Student match", () => {
       .post("/student/interest")
       .set("Authorization", "bearer " + tokenStudent)
       .send(interest)
-      .expect(200);
+      .expect(201);
     const res = await server
       .get("/student/match")
       .set("Authorization", "bearer " + tokenStudent)
@@ -239,13 +242,13 @@ describe("Student match", () => {
       .post("/student/interest")
       .set("Authorization", "bearer " + tokenStudent)
       .send(interest)
-      .expect(200);
+      .expect(201);
     //adicionando particularidades estudante
     await server
       .post("/student/particulars")
       .set("Authorization", "bearer " + tokenStudent)
       .send(particulars)
-      .expect(200);
+      .expect(201);
     const res = await server
       .get("/student/match")
       .set("Authorization", "bearer " + tokenStudent)

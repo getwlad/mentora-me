@@ -24,7 +24,6 @@ User.init(
     password: Sequelize.VIRTUAL(Sequelize.STRING),
     is_admin: {
       type: Sequelize.BOOLEAN,
-      defaultValue: false,
     },
   },
   {

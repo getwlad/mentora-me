@@ -32,7 +32,7 @@ class CreateMentorParticularsController {
         libras,
         minority_groups: minorityGroups,
       });
-      return res.status(200).json(particulars);
+      return res.status(201).json(particulars);
     } catch (error) {
       return res.status(401).json({ error: error.message });
     }

@@ -1,6 +1,6 @@
-import destroyModelData from "../../utils/destroyModelData";
+import destroyModelData, { setAdminTrue } from "../../utils/destroyModelData";
 import app from "./../../src/app";
-import { describe, expect, it, beforeEach } from "vitest";
+import { describe, expect, it, beforeEach, beforeAll } from "vitest";
 import supertest from "supertest";
 
 describe("Student", () => {
@@ -17,9 +17,12 @@ describe("Student", () => {
     phone: "+5562999887766",
   };
   let token;
+  beforeAll(async () => {
+    await setAdminTrue();
+  });
   beforeEach(async () => {
     await destroyModelData(["User"]);
-    await server.post("/user").send(data).expect(200);
+    await server.post("/user").send(data).expect(201);
     const loginRes = await server.post("/user/login").send(data).expect(200);
     token = loginRes._body.token;
   });
@@ -28,7 +31,7 @@ describe("Student", () => {
       .post("/student")
       .set("Authorization", "bearer " + token)
       .send(studentData)
-      .expect(200);
+      .expect(201);
     expect(res._body).toHaveProperty("id");
     expect(res._body.name).toBe(studentData.name);
   });
@@ -37,7 +40,7 @@ describe("Student", () => {
       .post("/student")
       .set("Authorization", "bearer " + token)
       .send(studentData)
-      .expect(200);
+      .expect(201);
     const res = await server
       .post("/student")
       .set("Authorization", "bearer " + token)
@@ -51,7 +54,7 @@ describe("Student", () => {
       .post("/student")
       .set("Authorization", "bearer " + token)
       .send(studentData)
-      .expect(200);
+      .expect(201);
     const res = await server
       .post("/student")
       .set("Authorization", "bearer " + token)
@@ -79,7 +82,7 @@ describe("Student", () => {
       passwordConfirmation: "1234567A",
       user_type: "MENTOR",
     };
-    await server.post("/user").send(newData).expect(200);
+    await server.post("/user").send(newData).expect(201);
     const loginRes = await server.post("/user/login").send(newData).expect(200);
     const itoken = loginRes._body.token;
     const res = await server
@@ -129,7 +132,7 @@ describe("Student", () => {
       .post("/student")
       .set("Authorization", "bearer " + token)
       .send(studentData)
-      .expect(200);
+      .expect(201);
     const res = await server.get("/student").query({
       name: studentData.name,
       cpf: studentData.cpf,
@@ -149,7 +152,7 @@ describe("Student", () => {
       .post("/student")
       .set("Authorization", "bearer " + token)
       .send(studentData)
-      .expect(200);
+      .expect(201);
 
     const resUser = await server
       .get("/student/show")
@@ -169,7 +172,7 @@ describe("Student", () => {
       .post("/student")
       .set("Authorization", "bearer " + token)
       .send(studentData)
-      .expect(200);
+      .expect(201);
     const res = await server
       .put("/student")
       .set("Authorization", "bearer " + token)
@@ -190,7 +193,7 @@ describe("Student", () => {
       cpf: "12345678999",
       phone: "+5562999887766",
     };
-    await server.post("/user").send(existData).expect(200);
+    await server.post("/user").send(existData).expect(201);
     const loginRes = await server
       .post("/user/login")
       .send(existData)
@@ -200,12 +203,12 @@ describe("Student", () => {
       .post("/student")
       .set("Authorization", "bearer " + iToken)
       .send(existStudent)
-      .expect(200);
+      .expect(201);
     await server
       .post("/student")
       .set("Authorization", "bearer " + token)
       .send(studentData)
-      .expect(200);
+      .expect(201);
     const res = await server
       .put("/student")
       .set("Authorization", "bearer " + token)
@@ -230,7 +233,7 @@ describe("Student", () => {
       .post("/student")
       .set("Authorization", "bearer " + token)
       .send(studentData)
-      .expect(200);
+      .expect(201);
 
     const res = await server
       .delete("/student")
@@ -243,7 +246,7 @@ describe("Student", () => {
       .post("/student")
       .set("Authorization", "bearer " + token)
       .send(studentData)
-      .expect(200);
+      .expect(201);
     await server
       .delete("/student")
       .set("Authorization", "bearer " + token)

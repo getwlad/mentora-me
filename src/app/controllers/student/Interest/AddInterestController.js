@@ -32,7 +32,7 @@ class AddInterestController {
           .json({ error: "Área de mentoria não encontrada." });
       }
 
-      return res.status(200).json({ mentoringArea: interestArea });
+      return res.status(201).json({ mentoringArea: interestArea });
     } catch (error) {
       return res.status(401).json({ error: error.message });
     }

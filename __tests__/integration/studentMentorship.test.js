@@ -1,10 +1,13 @@
-import destroyModelData from "../../utils/destroyModelData";
+import destroyModelData, { setAdminTrue } from "../../utils/destroyModelData";
 import app from "./../../src/app";
-import { describe, expect, it, beforeEach } from "vitest";
+import { describe, expect, it, beforeEach, beforeAll } from "vitest";
 import supertest from "supertest";
 
 describe("Student mentorship", () => {
   const server = supertest(app);
+  beforeAll(async () => {
+    await setAdminTrue();
+  });
   const studentUser = {
     email: "teste1@gmail.com",
     password: "1234567A",
@@ -40,8 +43,8 @@ describe("Student mentorship", () => {
   beforeEach(async () => {
     await destroyModelData(["User", "InterestArea"]);
 
-    await server.post("/user").send(studentUser).expect(200);
-    await server.post("/user").send(mentorUser).expect(200);
+    await server.post("/user").send(studentUser).expect(201);
+    await server.post("/user").send(mentorUser).expect(201);
     const loginStudent = await server
       .post("/user/login")
       .send(studentUser)
@@ -58,12 +61,12 @@ describe("Student mentorship", () => {
       .send({
         mentoringArea: "PROGRAMAÇÃO",
       })
-      .expect(200);
+      .expect(201);
     await server
       .post("/student")
       .set("Authorization", "bearer " + tokenStudent)
       .send(studentData)
-      .expect(200);
+      .expect(201);
     await server
       .post("/mentor")
       .set("Authorization", "bearer " + tokenMentor)
@@ -72,7 +75,7 @@ describe("Student mentorship", () => {
       .post("/mentor/mentorship")
       .set("Authorization", "bearer " + tokenMentor)
       .send(mentorshipData)
-      .expect(200);
+      .expect(201);
     idMentorship = resMentorship._body.id;
   });
   it("should student buy mentorship", async () => {
@@ -135,7 +138,7 @@ describe("Student mentorship", () => {
     await server
       .post("/user")
       .send({ ...studentUser, email: "teste3@gmail.com" })
-      .expect(200);
+      .expect(201);
     const login = await server
       .post("/user/login")
       .send({ ...studentUser, email: "teste3@gmail.com" })

@@ -42,6 +42,9 @@ class MatchController {
             model: Mentorship,
             attributes: ["id", "name", "price"],
           },
+          {
+            model: InterestArea,
+          },
         ],
       });
       //obtém só ods ids dos mentores

@@ -32,7 +32,7 @@ class CreateStudentController {
         userId
       );
 
-      return res.status(200).json(student);
+      return res.status(201).json(student);
     } catch (error) {
       return res.status(401).json({ error: error.message });
     }

@@ -1,9 +1,12 @@
-import destroyModelData from "../../utils/destroyModelData";
+import destroyModelData, { setAdminTrue } from "../../utils/destroyModelData";
 import app from "./../../src/app";
-import { describe, expect, it, beforeEach } from "vitest";
+import { describe, expect, it, beforeEach, beforeAll } from "vitest";
 import supertest from "supertest";
 
 describe("Student Interest", () => {
+  beforeAll(async () => {
+    await setAdminTrue();
+  });
   const server = supertest(app);
   const data = {
     email: "teste1@gmail.com",
@@ -23,14 +26,14 @@ describe("Student Interest", () => {
 
   beforeEach(async () => {
     await destroyModelData(["User", "InterestArea"]);
-    await server.post("/user").send(data).expect(200);
+    await server.post("/user").send(data).expect(201);
     const loginRes = await server.post("/user/login").send(data).expect(200);
     token = loginRes._body.token;
     await server
       .post("/student")
       .set("Authorization", "bearer " + token)
       .send(studentData)
-      .expect(200);
+      .expect(201);
     await server
       .post("/interest")
       .set("Authorization", "bearer " + token)
@@ -41,7 +44,7 @@ describe("Student Interest", () => {
       .post("/student/interest")
       .set("Authorization", "bearer " + token)
       .send(interest)
-      .expect(200);
+      .expect(201);
 
     expect(res._body).toHaveProperty("mentoringArea");
     expect(res._body.mentoringArea).toBe(interest.mentoringArea);
@@ -77,7 +80,7 @@ describe("Student Interest", () => {
     await server
       .post("/user")
       .send({ ...data, email: "teste2@gmail.com" })
-      .expect(200);
+      .expect(201);
     const loginRes = await server
       .post("/user/login")
       .send({ ...data, email: "teste2@gmail.com" })
@@ -95,7 +98,7 @@ describe("Student Interest", () => {
     await server
       .post("/user")
       .send({ ...data, email: "teste2@gmail.com" })
-      .expect(200);
+      .expect(201);
     const loginRes = await server
       .post("/user/login")
       .send({ ...data, email: "teste2@gmail.com" })
@@ -114,7 +117,7 @@ describe("Student Interest", () => {
       .post("/student/interest")
       .set("Authorization", "bearer " + token)
       .send(interest)
-      .expect(200);
+      .expect(201);
     const res = await server
       .delete("/student/interest")
       .set("Authorization", "bearer " + token)
@@ -127,7 +130,7 @@ describe("Student Interest", () => {
       .post("/student/interest")
       .set("Authorization", "bearer " + token)
       .send(interest)
-      .expect(200);
+      .expect(201);
     const res = await server
       .delete("/student/interest")
       .set("Authorization", "bearer " + "token")
@@ -149,7 +152,7 @@ describe("Student Interest", () => {
       .post("/student/interest")
       .set("Authorization", "bearer " + token)
       .send(interest)
-      .expect(200);
+      .expect(201);
     const res = await server
       .get("/student/interest")
       .set("Authorization", "bearer " + token)
@@ -161,7 +164,7 @@ describe("Student Interest", () => {
       .post("/student/interest")
       .set("Authorization", "bearer " + token)
       .send(interest)
-      .expect(200);
+      .expect(201);
     const res = await server
       .get("/student/interest")
       .set("Authorization", "bearer " + "token")
@@ -179,7 +182,7 @@ describe("Student Interest", () => {
     await server
       .post("/user")
       .send({ ...data, email: "teste2@gmail.com" })
-      .expect(200);
+      .expect(201);
     const loginRes = await server
       .post("/user/login")
       .send({ ...data, email: "teste2@gmail.com" })

@@ -1,9 +1,12 @@
-import destroyModelData from "../../utils/destroyModelData";
+import destroyModelData, { setAdminTrue } from "../../utils/destroyModelData";
 import app from "./../../src/app";
-import { describe, expect, it, beforeEach } from "vitest";
+import { describe, expect, it, beforeEach, beforeAll } from "vitest";
 import supertest from "supertest";
 
 describe("Wallet", () => {
+  beforeAll(async () => {
+    await setAdminTrue();
+  });
   const server = supertest(app);
   const data = {
     email: "teste1@gmail.com",
@@ -14,7 +17,7 @@ describe("Wallet", () => {
   let token;
   beforeEach(async () => {
     await destroyModelData(["User"]);
-    await server.post("/user").send(data).expect(200);
+    await server.post("/user").send(data).expect(201);
     const loginRes = await server.post("/user/login").send(data).expect(200);
     token = loginRes._body.token;
   });

@@ -18,7 +18,7 @@ class CreateInterestArea {
       const userId = req.user;
       const admin = await User.findOne({
         where: {
-          user_id: userId,
+          id: userId,
           is_admin: true,
         },
       });
@@ -30,7 +30,7 @@ class CreateInterestArea {
       }
 
       const area = await InterestArea.create({ mentoring_area: mentoringArea });
-      return res.status(200).json(area);
+      return res.status(201).json(area);
     } catch (error) {
       return res.status(401).json({ error: error.message });
     }

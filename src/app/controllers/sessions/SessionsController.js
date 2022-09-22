@@ -19,10 +19,10 @@ class SessionsController {
     if (!(await user.checkPassword(password))) {
       return res.status(400).json({ error: "Usuário não autorizado." });
     }
-    const { id } = user;
+    const { id, user_type } = user;
     return res.status(200).json({
       auth: true,
-      user: { id, email },
+      user: { id, email, user_type },
       token: jwt.sign({ id }, authConfig.secret, {
         expiresIn: authConfig.expiresIn,
       }),
