@@ -1,9 +1,12 @@
 import supertest from "supertest";
-import destroyModelData from "../../utils/destroyModelData";
+import destroyModelData, { setAdminTrue } from "../../utils/destroyModelData";
 import app from "../../src/app";
 
-import { describe, expect, it, beforeEach } from "vitest";
+import { describe, expect, it, beforeEach, beforeAll } from "vitest";
 describe("Session", () => {
+  beforeAll(async () => {
+    await setAdminTrue();
+  });
   const server = supertest(app);
   const data = {
     email: "teste2@gmail.com",

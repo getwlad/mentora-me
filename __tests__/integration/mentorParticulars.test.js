@@ -1,7 +1,8 @@
-import destroyModelData from "../../utils/destroyModelData";
+import destroyModelData, { setAdminTrue } from "../../utils/destroyModelData";
 import app from "./../../src/app";
-import { describe, expect, it, beforeEach } from "vitest";
+import { describe, expect, it, beforeEach, beforeAll } from "vitest";
 import supertest from "supertest";
+import User from "../../src/app/models/UserModel";
 
 describe("Mentor particulars", () => {
   const server = supertest(app);
@@ -29,12 +30,17 @@ describe("Mentor particulars", () => {
     minorityGroups: "1",
   };
   let token;
-
+  beforeAll(async () => {
+    await setAdminTrue();
+  });
   beforeEach(async () => {
     await destroyModelData(["User", "InterestArea"]);
     await server.post("/user").send(data).expect(201);
     const loginRes = await server.post("/user/login").send(data).expect(200);
     token = loginRes._body.token;
+    const users = await User.findAll();
+    console.log(users);
+    console.log("estou aquiiiiiiiiiiiiiiii");
     await server
       .post("/interest")
       .set("Authorization", "bearer " + token)

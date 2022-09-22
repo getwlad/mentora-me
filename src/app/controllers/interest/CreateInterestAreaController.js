@@ -18,7 +18,7 @@ class CreateInterestArea {
       const userId = req.user;
       const admin = await User.findOne({
         where: {
-          user_id: userId,
+          id: userId,
           is_admin: true,
         },
       });

@@ -1,10 +1,13 @@
-import destroyModelData from "../../utils/destroyModelData";
+import destroyModelData, { setAdminTrue } from "../../utils/destroyModelData";
 import app from "./../../src/app";
-import { describe, expect, it, beforeEach } from "vitest";
+import { describe, expect, it, beforeEach, beforeAll } from "vitest";
 import supertest from "supertest";
 
 describe("Student mentorship", () => {
   const server = supertest(app);
+  beforeAll(async () => {
+    await setAdminTrue();
+  });
   const studentUser = {
     email: "teste1@gmail.com",
     password: "1234567A",

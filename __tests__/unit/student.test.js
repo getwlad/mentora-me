@@ -1,6 +1,6 @@
-import destroyModelData from "../../utils/destroyModelData";
+import destroyModelData, { setAdminTrue } from "../../utils/destroyModelData";
 import app from "./../../src/app";
-import { describe, expect, it, beforeEach } from "vitest";
+import { describe, expect, it, beforeEach, beforeAll } from "vitest";
 import supertest from "supertest";
 
 describe("Student", () => {
@@ -17,6 +17,9 @@ describe("Student", () => {
     phone: "+5562999887766",
   };
   let token;
+  beforeAll(async () => {
+    await setAdminTrue();
+  });
   beforeEach(async () => {
     await destroyModelData(["User"]);
     await server.post("/user").send(data).expect(201);
