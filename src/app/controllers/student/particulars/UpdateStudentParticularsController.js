@@ -15,7 +15,6 @@ class UpdateStudentParticularsController {
       }
       const { id } = student;
       const {
-        extrovert,
         theory,
         practice,
         mentoringInGroup,
@@ -34,7 +33,6 @@ class UpdateStudentParticularsController {
         });
       }
       await particulars.update({
-        extrovert,
         theory,
         practice,
         mentoring_in_group: mentoringInGroup,
