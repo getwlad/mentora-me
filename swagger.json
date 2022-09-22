@@ -9,10 +9,6 @@
     {
       "url": "https://mentora-me.herokuapp.com",
       "variables": {}
-    },
-    {
-      "url": "http://localhost:3001",
-      "variables": {}
     }
   ],
   "paths": {
@@ -34,12 +30,6 @@
         "security": [
           {
             "bearer": []
-          }
-        ],
-        "servers": [
-          {
-            "url": "https://mentora-me.herokuapp.com",
-            "variables": {}
           }
         ]
       },
@@ -94,12 +84,6 @@
           {
             "bearer": []
           }
-        ],
-        "servers": [
-          {
-            "url": "https://mentora-me.herokuapp.com",
-            "variables": {}
-          }
         ]
       }
     },
@@ -142,13 +126,7 @@
             "headers": {}
           }
         },
-        "deprecated": false,
-        "servers": [
-          {
-            "url": "http://localhost:3001",
-            "variables": {}
-          }
-        ]
+        "deprecated": false
       }
     },
     "/user": {
@@ -165,13 +143,7 @@
             "headers": {}
           }
         },
-        "deprecated": false,
-        "servers": [
-          {
-            "url": "https://mentora-me.herokuapp.com",
-            "variables": {}
-          }
-        ]
+        "deprecated": false
       },
       "post": {
         "tags": [
@@ -193,6 +165,7 @@
                     "example": {
                       "email": "example@example.com",
                       "password": "1234567A",
+                      "passwordConfirmation": "1234567A",
                       "user_type": "STUDENT"
                     }
                   }
@@ -201,6 +174,7 @@
               "example": {
                 "email": "example@example.com",
                 "password": "1234567A",
+                "passwordConfirmation": "1234567A",
                 "user_type": "STUDENT"
               }
             }
@@ -213,13 +187,7 @@
             "headers": {}
           }
         },
-        "deprecated": false,
-        "servers": [
-          {
-            "url": "https://mentora-me.herokuapp.com",
-            "variables": {}
-          }
-        ]
+        "deprecated": false
       },
       "put": {
         "tags": [
@@ -264,12 +232,6 @@
           {
             "bearer": []
           }
-        ],
-        "servers": [
-          {
-            "url": "https://mentora-me.herokuapp.com",
-            "variables": {}
-          }
         ]
       },
       "delete": {
@@ -289,12 +251,6 @@
         "security": [
           {
             "bearer": []
-          }
-        ],
-        "servers": [
-          {
-            "url": "https://mentora-me.herokuapp.com",
-            "variables": {}
           }
         ]
       }
@@ -324,13 +280,7 @@
             "headers": {}
           }
         },
-        "deprecated": false,
-        "servers": [
-          {
-            "url": "https://mentora-me.herokuapp.com",
-            "variables": {}
-          }
-        ]
+        "deprecated": false
       }
     },
     "/student/match": {
@@ -351,12 +301,6 @@
         "security": [
           {
             "bearer": []
-          }
-        ],
-        "servers": [
-          {
-            "url": "http://localhost:3001",
-            "variables": {}
           }
         ]
       }
@@ -380,7 +324,6 @@
                   },
                   {
                     "example": {
-                      "extrovert": "2",
                       "theory": "2",
                       "practice": "3",
                       "mentoringInGroup": "2",
@@ -392,7 +335,6 @@
                 ]
               },
               "example": {
-                "extrovert": "2",
                 "theory": "2",
                 "practice": "3",
                 "mentoringInGroup": "2",
@@ -415,12 +357,6 @@
           {
             "bearer": []
           }
-        ],
-        "servers": [
-          {
-            "url": "https://mentora-me.herokuapp.com",
-            "variables": {}
-          }
         ]
       },
       "put": {
@@ -441,7 +377,6 @@
                   },
                   {
                     "example": {
-                      "extrovert": "2",
                       "theory": "3",
                       "practice": "2",
                       "mentoringInGroup": "1",
@@ -453,7 +388,6 @@
                 ]
               },
               "example": {
-                "extrovert": "2",
                 "theory": "3",
                 "practice": "2",
                 "mentoringInGroup": "1",
@@ -476,12 +410,6 @@
           {
             "bearer": []
           }
-        ],
-        "servers": [
-          {
-            "url": "https://mentora-me.herokuapp.com",
-            "variables": {}
-          }
         ]
       },
       "get": {
@@ -501,12 +429,6 @@
         "security": [
           {
             "bearer": []
-          }
-        ],
-        "servers": [
-          {
-            "url": "https://mentora-me.herokuapp.com",
-            "variables": {}
           }
         ]
       }
@@ -553,12 +475,6 @@
           {
             "bearer": []
           }
-        ],
-        "servers": [
-          {
-            "url": "https://mentora-me.herokuapp.com",
-            "variables": {}
-          }
         ]
       },
       "delete": {
@@ -579,12 +495,6 @@
           {
             "bearer": []
           }
-        ],
-        "servers": [
-          {
-            "url": "https://mentora-me.herokuapp.com",
-            "variables": {}
-          }
         ]
       },
       "get": {
@@ -604,12 +514,6 @@
         "security": [
           {
             "bearer": []
-          }
-        ],
-        "servers": [
-          {
-            "url": "https://mentora-me.herokuapp.com",
-            "variables": {}
           }
         ]
       }
@@ -632,12 +536,6 @@
         "security": [
           {
             "bearer": []
-          }
-        ],
-        "servers": [
-          {
-            "url": "https://mentora-me.herokuapp.com",
-            "variables": {}
           }
         ]
       }
@@ -684,12 +582,6 @@
           {
             "bearer": []
           }
-        ],
-        "servers": [
-          {
-            "url": "https://mentora-me.herokuapp.com",
-            "variables": {}
-          }
         ]
       }
     },
@@ -707,13 +599,7 @@
             "headers": {}
           }
         },
-        "deprecated": false,
-        "servers": [
-          {
-            "url": "https://mentora-me.herokuapp.com",
-            "variables": {}
-          }
-        ]
+        "deprecated": false
       },
       "post": {
         "tags": [
@@ -733,7 +619,7 @@
                   },
                   {
                     "example": {
-                      "name": "Wladmir Rodrigues",
+                      "name": "Example Example",
                       "cpf": "12354759513",
                       "phone": "+5562999626269"
                     }
@@ -741,7 +627,7 @@
                 ]
               },
               "example": {
-                "name": "Wladmir Rodrigues",
+                "name": "Example Example",
                 "cpf": "12354759513",
                 "phone": "+5562999626269"
               }
@@ -759,12 +645,6 @@
         "security": [
           {
             "bearer": []
-          }
-        ],
-        "servers": [
-          {
-            "url": "https://mentora-me.herokuapp.com",
-            "variables": {}
           }
         ]
       },
@@ -786,12 +666,6 @@
           {
             "bearer": []
           }
-        ],
-        "servers": [
-          {
-            "url": "https://mentora-me.herokuapp.com",
-            "variables": {}
-          }
         ]
       },
       "delete": {
@@ -811,12 +685,6 @@
         "security": [
           {
             "bearer": []
-          }
-        ],
-        "servers": [
-          {
-            "url": "https://mentora-me.herokuapp.com",
-            "variables": {}
           }
         ]
       }
@@ -840,12 +708,6 @@
           {
             "bearer": []
           }
-        ],
-        "servers": [
-          {
-            "url": "https://mentora-me.herokuapp.com",
-            "variables": {}
-          }
         ]
       }
     },
@@ -868,7 +730,6 @@
                   },
                   {
                     "example": {
-                      "extrovert": "2",
                       "theory": "2",
                       "practice": "3",
                       "mentoringInGroup": "2",
@@ -880,7 +741,6 @@
                 ]
               },
               "example": {
-                "extrovert": "2",
                 "theory": "2",
                 "practice": "3",
                 "mentoringInGroup": "2",
@@ -903,12 +763,6 @@
           {
             "bearer": []
           }
-        ],
-        "servers": [
-          {
-            "url": "https://mentora-me.herokuapp.com",
-            "variables": {}
-          }
         ]
       },
       "put": {
@@ -929,7 +783,6 @@
                   },
                   {
                     "example": {
-                      "extrovert": "2",
                       "theory": "3",
                       "practice": "2",
                       "mentoringInGroup": "1",
@@ -941,7 +794,6 @@
                 ]
               },
               "example": {
-                "extrovert": "2",
                 "theory": "3",
                 "practice": "2",
                 "mentoringInGroup": "1",
@@ -964,12 +816,6 @@
           {
             "bearer": []
           }
-        ],
-        "servers": [
-          {
-            "url": "https://mentora-me.herokuapp.com",
-            "variables": {}
-          }
         ]
       },
       "get": {
@@ -990,12 +836,6 @@
           {
             "bearer": []
           }
-        ],
-        "servers": [
-          {
-            "url": "https://mentora-me.herokuapp.com",
-            "variables": {}
-          }
         ]
       }
     },
@@ -1013,13 +853,7 @@
             "headers": {}
           }
         },
-        "deprecated": false,
-        "servers": [
-          {
-            "url": "https://mentora-me.herokuapp.com",
-            "variables": {}
-          }
-        ]
+        "deprecated": false
       },
       "post": {
         "tags": [
@@ -1064,12 +898,6 @@
           {
             "bearer": []
           }
-        ],
-        "servers": [
-          {
-            "url": "https://mentora-me.herokuapp.com",
-            "variables": {}
-          }
         ]
       }
     },
@@ -1103,12 +931,6 @@
           {
             "bearer": []
           }
-        ],
-        "servers": [
-          {
-            "url": "https://mentora-me.herokuapp.com",
-            "variables": {}
-          }
         ]
       },
       "put": {
@@ -1139,12 +961,6 @@
         "security": [
           {
             "bearer": []
-          }
-        ],
-        "servers": [
-          {
-            "url": "https://mentora-me.herokuapp.com",
-            "variables": {}
           }
         ]
       },
@@ -1177,12 +993,6 @@
           {
             "bearer": []
           }
-        ],
-        "servers": [
-          {
-            "url": "https://mentora-me.herokuapp.com",
-            "variables": {}
-          }
         ]
       }
     },
@@ -1200,13 +1010,7 @@
             "headers": {}
           }
         },
-        "deprecated": false,
-        "servers": [
-          {
-            "url": "https://mentora-me.herokuapp.com",
-            "variables": {}
-          }
-        ]
+        "deprecated": false
       },
       "post": {
         "tags": [
@@ -1258,12 +1062,6 @@
         "security": [
           {
             "bearer": []
-          }
-        ],
-        "servers": [
-          {
-            "url": "https://mentora-me.herokuapp.com",
-            "variables": {}
           }
         ]
       },
@@ -1318,12 +1116,6 @@
           {
             "bearer": []
           }
-        ],
-        "servers": [
-          {
-            "url": "https://mentora-me.herokuapp.com",
-            "variables": {}
-          }
         ]
       },
       "delete": {
@@ -1343,12 +1135,6 @@
         "security": [
           {
             "bearer": []
-          }
-        ],
-        "servers": [
-          {
-            "url": "https://mentora-me.herokuapp.com",
-            "variables": {}
           }
         ]
       }
@@ -1378,13 +1164,7 @@
             "headers": {}
           }
         },
-        "deprecated": false,
-        "servers": [
-          {
-            "url": "https://mentora-me.herokuapp.com",
-            "variables": {}
-          }
-        ]
+        "deprecated": false
       }
     },
     "/interest": {
@@ -1429,12 +1209,6 @@
           {
             "bearer": []
           }
-        ],
-        "servers": [
-          {
-            "url": "https://mentora-me.herokuapp.com",
-            "variables": {}
-          }
         ]
       },
       "get": {
@@ -1450,13 +1224,7 @@
             "headers": {}
           }
         },
-        "deprecated": false,
-        "servers": [
-          {
-            "url": "https://mentora-me.herokuapp.com",
-            "variables": {}
-          }
-        ]
+        "deprecated": false
       }
     },
     "/interest/{id}": {
@@ -1488,12 +1256,6 @@
         "security": [
           {
             "bearer": []
-          }
-        ],
-        "servers": [
-          {
-            "url": "https://mentora-me.herokuapp.com",
-            "variables": {}
           }
         ]
       }
@@ -1571,6 +1333,7 @@
         "required": [
           "email",
           "password",
+          "passwordConfirmation",
           "user_type"
         ],
         "type": "object",
@@ -1581,6 +1344,9 @@
           "password": {
             "type": "string"
           },
+          "passwordConfirmation": {
+            "type": "string"
+          },
           "user_type": {
             "type": "string"
           }
@@ -1588,6 +1354,7 @@
         "example": {
           "email": "example@example.com",
           "password": "1234567A",
+          "passwordConfirmation": "1234567A",
           "user_type": "STUDENT"
         }
       },
@@ -1614,7 +1381,6 @@
       "CreateStudentParticularsRequest": {
         "title": "CreateStudentParticularsRequest",
         "required": [
-          "extrovert",
           "theory",
           "practice",
           "mentoringInGroup",
@@ -1624,9 +1390,6 @@
         ],
         "type": "object",
         "properties": {
-          "extrovert": {
-            "type": "string"
-          },
           "theory": {
             "type": "string"
           },
@@ -1647,7 +1410,6 @@
           }
         },
         "example": {
-          "extrovert": "2",
           "theory": "2",
           "practice": "3",
           "mentoringInGroup": "2",
@@ -1659,7 +1421,6 @@
       "UpdateStudentParticularsRequest": {
         "title": "UpdateStudentParticularsRequest",
         "required": [
-          "extrovert",
           "theory",
           "practice",
           "mentoringInGroup",
@@ -1669,9 +1430,6 @@
         ],
         "type": "object",
         "properties": {
-          "extrovert": {
-            "type": "string"
-          },
           "theory": {
             "type": "string"
           },
@@ -1692,7 +1450,6 @@
           }
         },
         "example": {
-          "extrovert": "2",
           "theory": "3",
           "practice": "2",
           "mentoringInGroup": "1",
@@ -1766,7 +1523,7 @@
           }
         },
         "example": {
-          "name": "Wladmir Rodrigues",
+          "name": "Example Example",
           "cpf": "12354759513",
           "phone": "+5562999626269"
         }
@@ -1774,7 +1531,6 @@
       "CreateMentorParticularsRequest": {
         "title": "CreateMentorParticularsRequest",
         "required": [
-          "extrovert",
           "theory",
           "practice",
           "mentoringInGroup",
@@ -1784,9 +1540,6 @@
         ],
         "type": "object",
         "properties": {
-          "extrovert": {
-            "type": "string"
-          },
           "theory": {
             "type": "string"
           },
@@ -1807,7 +1560,6 @@
           }
         },
         "example": {
-          "extrovert": "2",
           "theory": "2",
           "practice": "3",
           "mentoringInGroup": "2",
@@ -1819,7 +1571,6 @@
       "UpdateMentorParticularsRequest": {
         "title": "UpdateMentorParticularsRequest",
         "required": [
-          "extrovert",
           "theory",
           "practice",
           "mentoringInGroup",
@@ -1829,9 +1580,6 @@
         ],
         "type": "object",
         "properties": {
-          "extrovert": {
-            "type": "string"
-          },
           "theory": {
             "type": "string"
           },
@@ -1852,7 +1600,6 @@
           }
         },
         "example": {
-          "extrovert": "2",
           "theory": "3",
           "practice": "2",
           "mentoringInGroup": "1",
