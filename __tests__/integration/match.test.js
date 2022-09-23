@@ -3,6 +3,7 @@ import app from "./../../src/app";
 import { describe, expect, it, beforeEach, beforeAll } from "vitest";
 import supertest from "supertest";
 import Mentor from "../../src/app/models/MentorModel";
+import Particulars from "../../src/app/models/ParticularsModel";
 
 describe("Student match", () => {
   beforeAll(async () => {
@@ -43,7 +44,6 @@ describe("Student match", () => {
     price: "0.00",
   };
   const particulars = {
-    extrovert: "2",
     theory: "2",
     practice: "2",
     mentoringInGroup: "2",
@@ -52,7 +52,6 @@ describe("Student match", () => {
     minorityGroups: "2",
   };
   const particulars2 = {
-    extrovert: "1",
     theory: "1",
     practice: "1",
     mentoringInGroup: "1",
@@ -61,7 +60,6 @@ describe("Student match", () => {
     minorityGroups: "1",
   };
   const particulars3 = {
-    extrovert: "3",
     theory: "3",
     practice: "3",
     mentoringInGroup: "3",
@@ -101,7 +99,13 @@ describe("Student match", () => {
   let tokenMentor2;
   let tokenMentor3;
   beforeEach(async () => {
-    await destroyModelData(["User", "Mentor", "Student", "InterestArea"]);
+    await destroyModelData([
+      "Particulars",
+      "Mentor",
+      "Student",
+      "InterestArea",
+      "User",
+    ]);
     //criando usuário estudante
     await server.post("/user").send(studentUser).expect(201);
     //criando usuário mentor
@@ -236,6 +240,7 @@ describe("Student match", () => {
     expect(res._body).toHaveProperty("error");
   });
   it("should student not have any match", async () => {
+    await Particulars.destroy({ where: {} });
     await Mentor.destroy({ where: {} });
     //adicionando interesse estudante
     await server

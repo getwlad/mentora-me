@@ -20,7 +20,6 @@ describe("Student particulars", () => {
     phone: "+5562999887766",
   };
   const particulars = {
-    extrovert: "3",
     theory: "2",
     practice: "3",
     mentoringInGroup: "2",
@@ -31,7 +30,7 @@ describe("Student particulars", () => {
   let token;
 
   beforeEach(async () => {
-    await destroyModelData(["User"]);
+    await destroyModelData(["Particulars", "User"]);
     await server.post("/user").send(data).expect(201);
     const loginRes = await server.post("/user/login").send(data).expect(200);
     token = loginRes._body.token;
@@ -51,7 +50,7 @@ describe("Student particulars", () => {
     expect(res._body).toHaveProperty("id");
     expect(res._body.theory).toBe(particulars.theory);
   });
-  it("should not reate a student particulars without auth", async () => {
+  it("should not create a student particulars without auth", async () => {
     const res = await server
       .post("/student/particulars")
       .set("Authorization", "bearer " + "token")
@@ -65,8 +64,7 @@ describe("Student particulars", () => {
       .post("/student/particulars")
       .set("Authorization", "bearer " + token)
       .send({
-        extrovert: "5",
-        mentoringInGroup: "2",
+        mentoringInGroup: "5",
         mentoringIndividual: "2",
         libras: "1",
         minorityGroups: "1",

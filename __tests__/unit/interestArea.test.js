@@ -109,7 +109,6 @@ describe("Interest", () => {
     expect(res._body).toHaveProperty("error");
   });
   it("should get error tryng to delete interest area without permission", async () => {
-    await setAdminFalse();
     const resInterest = await server
       .post("/interest")
       .set("Authorization", "bearer " + token)
@@ -117,6 +116,7 @@ describe("Interest", () => {
         mentoringArea: "Teste",
       })
       .expect(201);
+    await setAdminFalse();
     const newRoute = `/interest/${resInterest._body.id}`;
     await server
       .post("/user")

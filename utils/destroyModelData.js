@@ -4,10 +4,13 @@ import Student from "../src/app/models/StudentModel";
 import InterestArea from "../src/app/models/InterestAreaModel";
 import { BOOLEAN, Sequelize } from "sequelize";
 import database from "../src/config/database";
+import Particulars from "../src/app/models/ParticularsModel";
 
 const setAdminTrue = async () => {
   const sequelize = new Sequelize(database);
   const queryInterface = sequelize.getQueryInterface();
+  await Particulars.destroy({ where: {} });
+  await User.destroy({ where: {} });
   await queryInterface.changeColumn("user", "is_admin", {
     type: BOOLEAN,
     defaultValue: true,
@@ -37,6 +40,11 @@ const destroyModelData = async (models) => {
         break;
       case "InterestArea":
         await InterestArea.destroy({ where: {} });
+        break;
+      case "Particulars":
+        await Particulars.destroy({ where: {} });
+        break;
+      default:
         break;
     }
   }

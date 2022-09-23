@@ -21,7 +21,6 @@ describe("Mentor particulars", () => {
     mentoringArea: "SEGURANÇA DA INFORMAÇÃO",
   };
   const particulars = {
-    extrovert: "3",
     theory: "2",
     practice: "3",
     mentoringInGroup: "2",
@@ -34,13 +33,10 @@ describe("Mentor particulars", () => {
     await setAdminTrue();
   });
   beforeEach(async () => {
-    await destroyModelData(["User", "InterestArea"]);
+    await destroyModelData(["Particulars", "User", "InterestArea"]);
     await server.post("/user").send(data).expect(201);
     const loginRes = await server.post("/user/login").send(data).expect(200);
     token = loginRes._body.token;
-    const users = await User.findAll();
-    console.log(users);
-    console.log("estou aquiiiiiiiiiiiiiiii");
     await server
       .post("/interest")
       .set("Authorization", "bearer " + token)
@@ -58,7 +54,8 @@ describe("Mentor particulars", () => {
     const res = await server
       .post("/mentor/particulars")
       .set("Authorization", "bearer " + token)
-      .send(particulars);
+      .send(particulars)
+      .expect(201);
 
     expect(res._body).toHaveProperty("id");
     expect(res._body.theory).toBe(particulars.theory);
@@ -76,8 +73,7 @@ describe("Mentor particulars", () => {
       .post("/mentor/particulars")
       .set("Authorization", "bearer " + token)
       .send({
-        extrovert: "5",
-        mentoringInGroup: "2",
+        mentoringInGroup: "5",
         mentoringIndividual: "2",
         libras: "1",
         minorityGroups: "1",
