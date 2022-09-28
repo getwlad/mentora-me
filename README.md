@@ -121,7 +121,7 @@ A implementação do projeto se deu por 5 sprints:
 ## Equipe
 
 - **Ludmila**
-  - [Email](mailto:ghansth@gmail.com) | [Github](https://github.com/ludmila-chagas) | [LinkedIn](https://www.linkedin.com/in/ludmila-chagas-273548187/)
+  - [Email](mailto:ghansth@gmail.com) | [Github](https://github.com/ludmila-chagas) | [LinkedIn](https://www.linkedin.com/in/ludmila-mariana-chagas-273548187/)
 - **Thayná**
   - [Email](mailto:thna.rdg@gmail.com) | [Github](https://github.com/thnardg) | [LinkedIn](https://www.linkedin.com/in/thayna-rdg/)
 - **Wladmir**
