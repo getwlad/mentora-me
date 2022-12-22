@@ -7,7 +7,7 @@
   },
   "servers": [
     {
-      "url": "https://mentora-me.up.railway.app/",
+      "url": "https://mentora-me.cyclic.app",
       "variables": {}
     },
     {
